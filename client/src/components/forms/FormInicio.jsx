@@ -1,6 +1,4 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
-
 
 const FormInicio = () => {
 
@@ -9,9 +7,6 @@ const FormInicio = () => {
     contraseña:""
   })
 
-  const [data, setData] = useState([])
-
-  
 
   const handleChange = (e) => {
     setInfo({...info,[e.target.name]: e.target.value})
