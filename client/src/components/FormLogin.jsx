@@ -4,7 +4,7 @@ import { useState } from "react"
 
 
 
-const FormInit = () => {
+const FormLogin = () => {
 
   const [info, setInfo] = useState({
     email:"",
@@ -38,5 +38,5 @@ const FormInit = () => {
   )
 }
 
-export default FormInit
+export default FormLogin
 
