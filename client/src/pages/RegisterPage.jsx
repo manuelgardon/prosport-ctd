@@ -1,10 +1,11 @@
- import FormRegistro from "../components/forms/FormRegistro"
+import FormRegister from "../components/forms/FormRegister";
+
  
  export default function RegisterPage () {
 
     return(
         <div>
-            <FormRegistro/>
+            <FormRegister />
         </div>
     )
  }
