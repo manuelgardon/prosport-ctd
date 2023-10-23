@@ -27,7 +27,7 @@ const FormRegister = () => {
       return (
       <div className="min-h-screen bg-green-500 flex flex-col items-center justify-center">
         <section className="w-80 flex flex-col items-center">
-            <h2 className="text-4xl mb-5 font-bold">Registrate</h2>
+            <h2 className="text-4xl mb-5 font-bold text-white">Registrate</h2>
 
         <form className="text-center">
             <input type="text" onChange={handleChange} name="nombre" placeholder="Nombre" className={buttom}/>

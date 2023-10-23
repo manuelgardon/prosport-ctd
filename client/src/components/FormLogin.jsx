@@ -22,7 +22,7 @@ const FormLogin = () => {
   return (
   <div className="min-h-screen bg-green-500 flex flex-col items-center justify-center">
     <section className="w-80 flex flex-col items-center">
-      <h2 className="text-4xl mb-5 font-bold">Iniciar sesion</h2> 
+      <h2 className="text-4xl mb-5 font-bold text-white">Iniciar sesion</h2> 
       <form className="text-center">
         
         <input type="email" onChange={handleChange} name="email" className="border-none w-50 bg-white text-black rounded-xl px-3 my-2 font-semibold" placeholder="Email"/>
