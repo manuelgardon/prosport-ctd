@@ -1,22 +1,42 @@
 import { Link } from "react-router-dom";
 
-export default function FormLogin() {
-    return (
-        <div className="min-h-screen bg-green-700 flex flex-col items-center justify-center">
-            <div className="w-80 flex flex-col items-center">
-               <h2 className="text-2xl mb-5 font-bold text-white">Iniciar Sesión</h2>
-               <form className="text-center">
-                <input type="email" placeholder="Email" className="bg-[#18181b] border-none mb-3 text-center w-full rounded-xl"/>
-                <input type="password" placeholder="Contraseña"
-                className="bg-[#18181b] border-none mb-3 w-full p-1"/>
-                <button className="bg-white text-red-700 px-4 py-2 rounded mt-2 hover:bg-yellow-300">Ingresar</button>
-                <div className="mt-3">
-                    <span>Dont have an account yet?</span>
-                    <strong><Link to={'/register'} className="underline">Register now</Link></strong>
-                </div>
-               </form>
-            </div>
-        </div>
-    );
+import { useState } from "react"
+
+
+
+const FormInit = () => {
+
+  const [info, setInfo] = useState({
+    email:"",
+    contraseña:""
+  })
+
+  const [data, setData] = useState([])
+
+  
+
+  const handleChange = (e) => {
+    setInfo({...info,[e.target.name]: e.target.value})
+    
+  }
+  return (
+  <div className="min-h-screen bg-green-500 flex flex-col items-center justify-center">
+    <section className="w-80 flex flex-col items-center">
+      <h2 className="text-4xl mb-5 font-bold">Iniciar sesion</h2> 
+      <form className="text-center">
+        
+        <input type="email" onChange={handleChange} name="email" className="border-none w-50 bg-white text-black rounded-xl px-3 my-2 font-semibold" placeholder="Email"/>
+        
+        <input type="password" onChange={handleChange} name="contraseña" className="border-none w-50 bg-white text-black rounded-xl mb-2 px-3 font-semibold" placeholder="Contraseña"/>
+
+        <button type="submit" className="w-40 bg-white text-black mt-4">Iniciar sesion</button>
+    {/* <div>No tienes una cuenta? <Link to={"/register"}>Registrate</Link></div> */}
+    </form>
+
+    </section>
+  </div>
+  )
 }
+
+export default FormInit
 
