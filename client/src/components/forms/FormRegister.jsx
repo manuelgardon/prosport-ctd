@@ -20,7 +20,6 @@ const FormRegister = () => {
     
       const handleChange = (e) => {
         setInfo({...info,[e.target.name]: e.target.value})
-        console.log(info);
       }
 
       const buttom ="border-none w-50 bg-white text-black rounded-xl px-3 mb-2 font-semibold"
