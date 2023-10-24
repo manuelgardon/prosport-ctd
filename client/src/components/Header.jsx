@@ -3,7 +3,7 @@ export default function Header() {
     return (
         <div className="fixed w-full">
             <header>
-                <nav className="dark:bg-[#0c2434] border-gray-200 px-4 lg:px-6 py-2.5 ">
+                <nav className="dark:bg-[#222B2A] border-gray-200 px-4 lg:px-6 py-2.5 ">
                     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <Link to={'/'} className="flex items-center">
                             <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
