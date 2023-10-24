@@ -18,10 +18,11 @@ export default function IndexPage() {
             <ul className="grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-center">
                 {characters.length > 0 && characters.splice(0, 10).map(character => (
                     <li key={character.id} className="">
-                        <div className="flex rounded-t-xl">
+                        <div className="flex rounded-t-xl relative">
 
                         <img src={character.image} alt={character.name} className="rounded-t border-collapse"/>
-                        <img src="src/Icons/Like.png" alt="" className="w-5 h-5 my-2 relative right-7"/>
+                        <img src="src/Icons/Like.png" alt="" className="w-5 h-5 my-2 absolute right-3"/>
+                        
                         </div>
                        
 
