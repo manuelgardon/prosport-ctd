@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 export default function Header() {
     return (
-        <div className="fixed w-full">
+        <div className="fixed w-fuLl">
             <header>
                 <nav className="dark:bg-[#0c2434] border-gray-200 px-4 lg:px-6 py-2.5 ">
                     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">

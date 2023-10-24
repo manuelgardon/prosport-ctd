@@ -9,9 +9,9 @@ import Footer from './components/Footer'
 
 function App() {
 
-
+  // app
   return (
-    <BrowserRouter>
+    <BrowserRouter> 
       <Header />
         <Routes>
           <Route path='/'>

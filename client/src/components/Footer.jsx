@@ -3,7 +3,7 @@ export default function Footer() {
 
         <footer className="bottom-0 left-0 z-20 w-full p-4 bg-white  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-[#0c2434] dark:border-gray-600 mb-0">
             <section className="flex items-center gap-2">
-                <strong className="text-white">LOGOTIPO DE MI EMPRESA</strong>
+                <strong className="text-white">LOGOTIP DE MI EMPRESA</strong>
                 <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" className="hover:underline">Pro-Sport™</a>. All Rights Reserved.
                 </span>
             </section>
