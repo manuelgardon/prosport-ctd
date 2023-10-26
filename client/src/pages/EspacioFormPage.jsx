@@ -43,23 +43,23 @@ function EspacioFormPage() {
                 <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
                     <h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>Crea un nuevo producto</h1>
                     <form className='space-y-4 md:space-y-6' onSubmit={addNewClub}>
-                        <h2 className="block mb-2 text-2sm font-medium text-gray-900 dark:text-white">Nombre</h2>
-                        <p ><small className="text-gray-500 block mb-2 text-sm font-medium">Nombre del club</small></p>
-                        <input type="text" placeholder="title, for example: My amazing apartment"
+                        <h2 className="block -mb-2 text-2sm font-medium text-gray-900 dark:text-white">Nombre</h2>
+                        <p ><small className="text-gray-500 block -mb-4 text-sm font-medium">Nombre del club</small></p>
+                        <input type="text" placeholder="Nombre del establecimiento"
                             value={nombre}
                             onChange={e => setNombre(e.target.value)}
-                            className="w-full mb-2 border my-1 py-2 px-3 rounded-2xl bg-gray-50 border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            className="w-full -mb-4 border -my-1 py-2 px-3 rounded-2xl bg-gray-50 border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         />
-                        <h2 className="block mb-2 text-2sm font-medium text-gray-900 dark:text-white">Deporte</h2>
+                        <h2 className="block -mb-2 text-2sm font-medium text-gray-900 dark:text-white">Deporte</h2>
                         <p>
-                            <small className="text-gray-500 block mb-2 text-sm font-medium">
+                            <small className="text-gray-500 block -mb-4 text-sm font-medium">
                                 El deporte que se realizara en el club
                             </small>
                         </p>
-                        <input type="text" placeholder="address"
+                        <input type="text" placeholder="Deporte a practicar"
                             value={deporte}
                             onChange={e => setDeporte(e.target.value)}
-                            className="w-full mb-2 border my-1 py-2 px-3 rounded-2xl bg-gray-50 border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            className="w-full -mb-6 border my-0 py-2 px-3 rounded-2xl bg-gray-50 border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         />
                         {/*<h2 className="block mb-2 text-2sm font-medium text-gray-900 dark:text-white">Description</h2>
                             <p>
@@ -70,13 +70,13 @@ function EspacioFormPage() {
                                 value={description}
                                 onChange={e => setDescription(e.target.value)}
                         />*/}
-                        <h2 className="block mb-2 text-2sm font-medium text-gray-900 dark:text-white">Check in & out</h2>
+                        <h2 className="block -mb-10 text-2sm font-medium text-gray-900 dark:text-white">Fecha de reserva</h2>
                         <section className=" flex flex-col items-center justify-center">
                             <div>
                                 <h3 className="mt-2 -mb-1 block  text-2sm font-medium text-gray-900 dark:text-white">Dia semana</h3>
                                 <input type="text"
                                     value={diaSemana}
-                                    onChange={e => setDiasemana(e.target.value)} placeholder="12"
+                                    onChange={e => setDiasemana(e.target.value)} placeholder="Dia a registrar EJ: 11"
                                     className='mb-1 border my-1 py-1 px-2 rounded-2xl w-full bg-gray-50 border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' />
                             </div>
                             <div>
@@ -90,14 +90,14 @@ function EspacioFormPage() {
                                 <h3 className="mt-2 -mb-1 block  text-2sm font-medium text-gray-900 dark:text-white">Hora inicio</h3>
                                 <input type="number"
                                     value={horaInicio}
-                                    onChange={e => setHoraInicio(e.target.value)} placeholder="12"
+                                    onChange={e => setHoraInicio(e.target.value)} placeholder="Hora inicio de reserva"
                                     className='mb-1 border my-1 py-1 px-2 rounded-2xl w-full bg-gray-50 border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' />
                             </div>
                             <div>
                                 <h3 className="mt-2 -mb-1 block  text-2sm font-medium text-gray-900 dark:text-white">Hora fin</h3>
                                 <input type="number"
                                     value={horaFin}
-                                    onChange={e => setHoraFin(e.target.value)} placeholder="12"
+                                    onChange={e => setHoraFin(e.target.value)} placeholder="Hora din de reserva"
                                     className='mb-1 border my-1 py-1 px-2 rounded-2xl w-full bg-gray-50 border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' />
                             </div>
                         </section>
