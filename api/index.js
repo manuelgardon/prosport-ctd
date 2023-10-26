@@ -2,7 +2,6 @@ const clubDeportivoController = require('./controllers/club.controller');
 const espacioController = require('./controllers/espacio.controller');
 const usuarioController = require('./controllers/usuario.controller');
 const reservaController = require('./controllers/reserva.controller');
-const Espacio = require('./models/espacios.model')
 
 // Funciones del controlador para manejar rutas CRUD
 const express = require('express');
@@ -13,7 +12,7 @@ const port = 1234;
 const fs = require('fs');
 const multer = require('multer')
 const path = require('path'); 
-
+require('dotenv').config();
 
 
 // Todos los metodos manipularan los datos como JSON
@@ -27,7 +26,7 @@ app.use(
 );
 
 // Conexión a la base de datos
-mongoose.connect();
+mongoose.connect(process.env.MONGO_URL);
 
 // Rutas CRUD de clubes deportivos
 app.get('/api/clubes', clubDeportivoController.obtenerTodos);
