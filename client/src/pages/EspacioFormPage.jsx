@@ -97,7 +97,7 @@ function EspacioFormPage() {
                                 <h3 className="mt-2 -mb-1 block  text-2sm font-medium text-gray-900 dark:text-white">Hora fin</h3>
                                 <input type="number"
                                     value={horaFin}
-                                    onChange={e => setHoraFin(e.target.value)} placeholder="Hora din de reserva"
+                                    onChange={e => setHoraFin(e.target.value)} placeholder="Hora fin de reserva"
                                     className='mb-1 border my-1 py-1 px-2 rounded-2xl w-full bg-gray-50 border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' />
                             </div>
                         </section>
