@@ -15,7 +15,7 @@ function EspacioFormPage() {
 
     async function addNewClub(event) {
         event.preventDefault()
-        const data = await axios.post('http://localhost:1233/api/espacios', {
+        const data = await axios.post('http://localhost:1234/api/espacios', {
             deporte,
             nombre,
             cantidadDeParticipantes,
