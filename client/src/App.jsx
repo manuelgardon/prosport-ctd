@@ -6,6 +6,7 @@ import RegisterPage from './pages/RegisterPage'
 import PaymentPage from './pages/PaymentPage'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import EspaciosFormPage from './pages/EspacioFormPage'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
             <Route path='/login' element={<LoginPage />}></Route>
             <Route path='/register' element={<RegisterPage />}></Route>
             <Route path='/payment' element={<PaymentPage />}></Route>
+            <Route path='/api/espacios/new' element={<EspaciosFormPage/>}></Route>
           </Route>
         </Routes>
 
