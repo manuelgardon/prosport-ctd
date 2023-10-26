@@ -1,4 +1,5 @@
-import EspacioFormPage from "../components/forms/EspacioFormPage"
+import EspacioFormPage from "./EspacioFormPage"
+
 
 
 const RegisterProductPage = () => {
