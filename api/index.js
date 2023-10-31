@@ -7,7 +7,7 @@ const reservaController = require('./controllers/reserva.controller');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const cors = require('cors')
+const cors = require('cors');
 const port = 1234;
 const fs = require('fs');
 const multer = require('multer')
@@ -21,7 +21,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(
   cors({
     credentials: true,
-    origin: 'http://localhost:5174',
+    origin: 'http://127.0.0.1:8085',
   })
 );
 
