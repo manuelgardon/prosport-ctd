@@ -32,7 +32,7 @@ const crear = async (req, res) => {
     nombre,
     fotosAgregadas,
     cantidadDeParticipantes,
-    diaSemana,
+    fechaReserva,
     horaInicio,
     horaFin
   } = req.body;
@@ -41,7 +41,7 @@ const crear = async (req, res) => {
     nombre,
     fotos: fotosAgregadas,
     cantidadDeParticipantes,
-    diaSemana,
+    fechaReserva,
     horaInicio,
     horaFin
   });

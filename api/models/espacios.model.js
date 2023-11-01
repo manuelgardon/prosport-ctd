@@ -14,7 +14,7 @@ const espacioSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  diaSemana: {
+  fechaReserva: {
     type: String,
     required: true
   },
