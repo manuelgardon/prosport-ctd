@@ -36,7 +36,7 @@ function EspacioFormPage() {
     return (
         <section className='bg-gray-500 dark:bg-[#18181B] grow'>
 
-            <div className="flex flex-col items-center justify-center px-6 pt-[100px] m-4 my-12 md:h-screen lg:pt-20 ">
+            <div className="flex flex-col items-center justify-center px-6 pt-[100px] m-4 my-12 md:h-screen lg:pt-20">
                 <Link to={'/'} className="flex gap-2 items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                     <img className="w-9 h-9 object-contain" src={logo} alt="logo" />
                     Pro-Sport
@@ -61,7 +61,7 @@ function EspacioFormPage() {
                             <select
                                 value={deporte}
                                 onChange={e => setDeporte(e.target.value)}
-                                className="w-full mb-2 border my-1 py-2 px-3 rounded-2xl"
+                                className="w-full mb-2 border my-1 py-2 px-3 rounded-2xl bg-gray-50 border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             >
                                 <option value="Futbol">Futbol</option>
                                 <option value="Basquet">Basquet</option>
