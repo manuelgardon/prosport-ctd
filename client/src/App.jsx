@@ -6,7 +6,6 @@ import RegisterPage from './pages/RegisterPage'
 import PaymentPage from './pages/PaymentPage'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import RegisterProductPage from './pages/RegisterProductPage'
 import EspacioFormPage from './pages/EspacioFormPage'
 
 function App() {
@@ -22,10 +21,8 @@ function App() {
             <Route path='/register' element={<RegisterPage />}></Route>
             <Route path='/payment' element={<PaymentPage />}></Route>
             <Route path='/api/espacios/new' element={<EspacioFormPage />}></Route>
-            <Route path='/registerProduct' element={<RegisterProductPage />}></Route>
           </Route>
         </Routes>
-
       <Footer />
     </BrowserRouter>
     
