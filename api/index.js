@@ -11,7 +11,9 @@ const cors = require('cors');
 const port = 1234;
 const fs = require('fs');
 const multer = require('multer')
-const path = require('path'); 
+const path = require('path');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 
@@ -27,6 +29,10 @@ app.use(
 
 // Conexión a la base de datos
 mongoose.connect(process.env.MONGO_URL);
+
+// Rutas de identificacion de usuarios
+app.get('/login',)
+app.get('/registro',)
 
 // Rutas CRUD de clubes deportivos
 app.get('/api/clubes', clubDeportivoController.obtenerTodos);
