@@ -4,17 +4,19 @@ const usuarioController = require('./controllers/usuario.controller');
 const reservaController = require('./controllers/reserva.controller');
 
 // Funciones del controlador para manejar rutas CRUD
+import app from './app';
 const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors');
+const path = require('path');
 const port = 1234;
 const fs = require('fs');
 const multer = require('multer')
-const path = require('path');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 require('dotenv').config();
 
+// Conexión a la base de datos
+mongoose.connect(process.env.MONGO_URL);
 
 // Todos los metodos manipularan los datos como JSON
 app.use(express.json());
@@ -25,9 +27,6 @@ app.use(
     origin: 'http://127.0.0.1:8085',
   })
 );
-
-// Conexión a la base de datos
-mongoose.connect(process.env.MONGO_URL);
 
 function validarToken(req, res, next) {
     // Queremos chequear el token que nos envian, verificarlo, y devolver el usuario
@@ -43,7 +42,7 @@ function validarToken(req, res, next) {
     })
 }
 
-app.get('/registro',)
+// app.get('/registro',)
 
 // Rutas CRUD de clubes deportivos
 app.get('/api/clubes', validarToken, clubDeportivoController.obtenerTodos);
