@@ -4,7 +4,6 @@ const usuarioController = require('./controllers/usuario.controller');
 const reservaController = require('./controllers/reserva.controller');
 
 // Funciones del controlador para manejar rutas CRUD
-const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors');
@@ -30,19 +29,31 @@ app.use(
 // Conexión a la base de datos
 mongoose.connect(process.env.MONGO_URL);
 
-// Rutas de identificacion de usuarios
-app.get('/login',)
+function validarToken(req, res, next) {
+    // Queremos chequear el token que nos envian, verificarlo, y devolver el usuario
+    // para obtener el usuario y permitirle la vista a espacios
+    const headerAutenticacion = req.headers['authorization']
+    const token = headerAutenticacion && headerAutenticacion.split(' ')[1]
+    if (token === null) return res.sendStatus(401)
+
+    jwt.verify(token, process.env.TOKEN_SECRETO_ACCESO, (err, email) => {
+        if(err) return res.sendStatus(403)
+        req.email = email
+        next()
+    })
+}
+
 app.get('/registro',)
 
 // Rutas CRUD de clubes deportivos
-app.get('/api/clubes', clubDeportivoController.obtenerTodos);
+app.get('/api/clubes', validarToken, clubDeportivoController.obtenerTodos);
 app.get('/api/clubes/:id', clubDeportivoController.obtenerPorId);
 app.post('/api/clubes', clubDeportivoController.crear);
 app.put('/api/clubes/:id', clubDeportivoController.actualizar);
 app.delete('/api/clubes/:id', clubDeportivoController.eliminar);
 
 // Rutas CRUD de espacios
-app.get('/api/espacios', espacioController.obtenerTodos);
+app.get('/api/espacios', validarToken, espacioController.obtenerTodos);
 app.get('/api/espacios/:id', espacioController.obtenerPorId);
 app.post('/api/espacios', espacioController.crear);
 app.put('/api/espacios/:id', espacioController.actualizar);
