@@ -10,18 +10,19 @@ function EspacioFormPage() {
     const [nombre, setNombre] = useState('')
     const [fotosAgregadas, setFotosAgregadas] = useState([])
     const [cantidadDeParticipantes, setCantidadDeParticipantes] = useState(1)
-    const [diaSemana, setDiasemana] = useState('')
+    const [fechaReserva, setFechaReserva] = useState('')
     const [horaInicio, setHoraInicio] = useState('')
     const [horaFin, setHoraFin] = useState('')
     const [redirect, setRedirect] = useState(false)
 
     async function addNewClub(event) {
         event.preventDefault()
-        const data = await axios.post('http://localhost:8085/api/espacios', {
+        // eslint-disable-next-line no-unused-vars
+        const data = await axios.post('http://localhost:1234/api/espacios', {
             deporte,
             nombre,
             cantidadDeParticipantes,
-            diaSemana,
+            fechaReserva,
             horaInicio,
             horaFin
         })
@@ -83,8 +84,8 @@ function EspacioFormPage() {
                                 <div>
                                     <h3 className="mt-2 -mb-1 block  text-2sm font-medium text-gray-900 dark:text-white">Dia semana</h3>
                                     <input type="text"
-                                        value={diaSemana}
-                                        onChange={e => setDiasemana(e.target.value)} placeholder="Dia a registrar EJ: 11"
+                                        value={fechaReserva}
+                                        onChange={e => setFechaReserva(e.target.value)} placeholder="Dia a registrar EJ: 11"
                                         className='mb-1 border my-1 py-1 px-2 rounded-2xl w-full bg-gray-50 border-gray-300 text-gray-900 sm:text-sm focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' />
                                 </div>
                                 <div>
