@@ -36,7 +36,7 @@ function EspacioFormPage() {
     return (
         <section className='bg-gray-500 dark:bg-[#18181B] grow'>
 
-            <div className="flex flex-col items-center justify-center px-6 pt-[100px] m-4 my-12 md:h-screen lg:pt-20">
+            <div className="flex flex-col items-center justify-center px-6 pt-[100px] m-4 my-12 md:h-screen lg:pt-20 lg:mb-20">
                 <Link to={'/'} className="flex gap-2 items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                     <img className="w-9 h-9 object-contain" src={logo} alt="logo" />
                     Pro-Sport
