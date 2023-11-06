@@ -1,6 +1,11 @@
+// const express = require('express');
+// const app = express();
 const Usuario = require('../models/usuario.model');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+// const cookieParser = require('cookie-parser');
+// app.use(cookieParser());
+
 
 // Registro de usuarios
 const registrarUsuario = async (req, res) => {
@@ -31,7 +36,7 @@ const iniciarSesion = async (req, res) => {
     const contraseniaMatch = await bcrypt.compare(contrasenia, usuario.contrasenia);
     if (contraseniaMatch) {
       const token = jwt.sign({ usuarioId: usuario._id }, process.env.TOKEN_SECRETO ); // Posible tercer parametro { expiresIn: '30m' }
-      res.json({ token });
+      // res.cookie('token', token).json(usuario);
     } else {
       res.status(401).json({ mensaje: 'Credenciales inválidas' });
     }
@@ -42,7 +47,7 @@ const iniciarSesion = async (req, res) => {
 
 // Cerrar sesión
 const cerrarSesion = (req, res) => {
-  // Simplemente elimina el token del cliente, no es necesario hacer nada en el servidor.
+  // res.clearCookie('token');
   res.json({ mensaje: 'Sesión cerrada con éxito' });
 };
 
