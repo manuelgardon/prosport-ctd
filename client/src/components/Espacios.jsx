@@ -55,3 +55,6 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
         </main>
     );
 }
+
+
+

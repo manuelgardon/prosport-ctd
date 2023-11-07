@@ -93,6 +93,7 @@ const obtenerEspaciosPaginados = (req) => {
   const inicio = (pagina - 1) * porPagina
   const filtroDeporte = req.query.deporte
 
+  
   let query = { skip: inicio, limit: porPagina }
   if (filtroDeporte && filtroDeporte !== 'All') {
     query.where = { deporte: filtroDeporte }
