@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const espacioSchema = new mongoose.Schema({
+  propietario: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Usuario',
+    required: true
+  },
   deporte: {
     type: String,
     required: true
@@ -25,8 +30,11 @@ const espacioSchema = new mongoose.Schema({
   horaFin: {
     type: String,
     required: true
+  },
+  descripcion: {
+    type: String,
+    required: true
   }
-
 });
 
 const Espacio = mongoose.model('Espacio', espacioSchema);

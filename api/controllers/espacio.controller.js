@@ -8,7 +8,7 @@ const obtenerTodos = (req, res) => {
     })
     .catch((error) => {
       res.status(500).json({ error: error.message });
-    });
+  });
 };
 
 // Obtener un espacio por su ID
@@ -28,8 +28,10 @@ const obtenerPorId = (req, res) => {
 // Crear un nuevo espacio
 const crear = async (req, res) => {
   const {
+    propietario,
     deporte,
     nombre,
+    descripcion,
     fotosAgregadas,
     cantidadDeParticipantes,
     fechaReserva,
@@ -37,8 +39,10 @@ const crear = async (req, res) => {
     horaFin
   } = req.body;
   const nuevoEspacio = await Espacio.create({
+    propietario,
     deporte,
     nombre,
+    descripcion,
     fotos: fotosAgregadas,
     cantidadDeParticipantes,
     fechaReserva,
