@@ -11,7 +11,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
     useEffect(() => {
         async function cargarEspacios() {
             try {
-                const response = await axios.get(`http://localhost:8085/api/espacios?pagina=${pagina}$porPagina${espaciosPorPagina}&deporte=${filtros.deporte}`);
+                const response = await axios.get(`http://localhost:1234/api/espacios?pagina=${pagina}$porPagina${espaciosPorPagina}&deporte=${filtros.deporte}`);
                 if (!response.data) {
                     throw new Error('Error al cargar los espacios.');
                 }
