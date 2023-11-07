@@ -20,6 +20,6 @@ export default function IndexPage() {
 
 
     return (
-        <Espacios changeFilters={setFiltros} espacios={filteredEspacios} setEspacios={setEspacios} />
+        <Espacios changeFilters={setFiltros} espacios={filteredEspacios} setEspacios={setEspacios} filtros={filtros} setFiltros={setFiltros}/>
     )
 }
