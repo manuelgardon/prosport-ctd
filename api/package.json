@@ -7,7 +7,7 @@
     "build": "babel src --out-dir build",
     "dev": "nodemon index.js --exec babel-node",
     "startAuth": "nodemon servAutent.js",
-    "start": "node build/index.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
