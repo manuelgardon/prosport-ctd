@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const espacioSchema = new mongoose.Schema({
+  propietario: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Usuario',
+    required: true
+  },
   deporte: {
     type: String,
     required: true
@@ -9,13 +14,18 @@ const espacioSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  fotos: [String],
+  fotos: { type: [String], required: true },
+  descripcion: { type: String, required: true },
   cantidadDeParticipantes: {
     type: Number,
     required: true
   },
   fechaReserva: {
     type: String,
+    required: true
+  },
+  caracteristicas: {
+    type: [String],
     required: true
   },
   horaInicio: {
@@ -25,8 +35,11 @@ const espacioSchema = new mongoose.Schema({
   horaFin: {
     type: String,
     required: true
+  },
+  descripcion: {
+    type: String,
+    required: true
   }
-
 });
 
 const Espacio = mongoose.model('Espacio', espacioSchema);

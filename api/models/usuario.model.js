@@ -14,10 +14,22 @@ const usuarioSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  domicilio: String,
-  fechaNacimiento: Date,
-  telefono: String,
-  dni: String,
+  domicilio: {
+    type: String,
+    required: true
+  },
+  fechaNacimiento: {
+    type: String,
+    required: true
+  },
+  telefono: {
+    type: String,
+    required: true
+  },
+  dni: {
+    type: String,
+    required: true
+  },
   contrasenia: {
     type: String,
     required: true

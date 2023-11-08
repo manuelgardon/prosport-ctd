@@ -11,7 +11,7 @@ export default function IndexPage() {
     const filterEspacios = (espacios) => {
         return espacios.filter(espacio => {
             return (
-                filtros.deporte === 'All' || espacio.deporte === filtros.deporte 
+                filtros.deporte === 'All' || espacio.deporte === filtros.deporte
             )
         })
     }
@@ -20,6 +20,15 @@ export default function IndexPage() {
 
 
     return (
-        <Espacios changeFilters={setFiltros} espacios={filteredEspacios} setEspacios={setEspacios} filtros={filtros} setFiltros={setFiltros}/>
+        <main className=" dark:text-white w-[100%] flex flex-col justify-center items-center px-10 py-[80px] lg:py-[145px] grow">
+            <section className="flex flex-col lg:flex-row justify-between w-full lg:w-[900px] text-centergap-10 lg:text-left px-10 lg:px-0 my-[150px] ">
+                <aside className="flex flex-col justify-center items-start gap-5">
+                    <h1 className="text-4xl lg:text-5xl font-bold">Pro-Sport</h1>
+                    <h2 className="text-xl lg:text-2xl font-bold">Espacios para practicar tus deportes favoritos y realizar tu reserva online.</h2>
+                </aside>
+            </section>
+            <Espacios changeFilters={setFiltros} espacios={filteredEspacios} setEspacios={setEspacios} filtros={filtros} setFiltros={setFiltros} />
+        </main>
+
     )
 }

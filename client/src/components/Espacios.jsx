@@ -29,7 +29,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
 
 
     return (
-        <main className="dark:bg-[#18181B] dark:text-white w-900 flex flex-col justify-center items-center px-10 py-[80px] lg:py-[145px] grow">
+        <section>
             <Filters onChange={changeFilters} />
             <ul className="grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-center">
                 {espacios.length > 0 && espacios.map(espacio => (
@@ -52,9 +52,6 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
                 <button onClick={() => cambiarPagina(2)}>Página 2</button>
                 <button onClick={() => cambiarPagina(3)}>Página 3</button>
             </div>
-        </main>
+        </section>
     );
 }
-
-
-
