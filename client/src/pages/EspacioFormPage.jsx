@@ -108,6 +108,7 @@ function EspacioFormPage() {
                     <option value="Futbol">Futbol</option>
                     <option value="Basquet">Basquet</option>
                     <option value="Voleibol">Voleibol</option>
+                    <option value="Tenis">Tenis</option>
                 </select>
 
                 <UploaderPhotos fotosAgregadas={fotosAgregadas} onChange={setFotosAgregadas} />

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { IconFootball, IconBasketball, IconVolleyball, IconBxGridSmall } from "./icons";
+import { IconFootball, IconBasketball, IconVolleyball, IconBxGridSmall, IconBxTennisBall } from "./icons";
 
 export default function Filters({ onChange }) {
 
@@ -41,6 +41,13 @@ export default function Filters({ onChange }) {
             >
                 <IconVolleyball />
                 Voleibol
+            </button>
+            <button
+                onClick={() => handleFilter('Tenis')}
+                className="block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
+            >
+                <IconBxTennisBall />
+                Tenis
             </button>
         </section>
 
