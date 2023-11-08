@@ -14,7 +14,7 @@ function EspacioFormPage() {
     const [caracteristicas, setCaracterisitcas] = useState([])
     const [fotosAgregadas, setFotosAgregadas] = useState([])
     const [cantidadDeParticipantes, setCantidadDeParticipantes] = useState(1)
-    const [diaSemana, setDiasemana] = useState('')
+    const [fechaReserva, setFechaReserva] = useState('')
     const [horaInicio, setHoraInicio] = useState('')
     const [horaFin, setHoraFin] = useState('')
     const [redirect, setRedirect] = useState(false)
