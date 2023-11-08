@@ -10,7 +10,7 @@ export function UploaderPhotos({fotosAgregadas, onChange}) {
         for (let i = 0; i < files.length; i++) {
             data.append('fotos ', files[i])
         }
-        axios.post('http://localhost:1234/upload', data, {
+        axios.post('http://localhost:1234/uploads', data, {
             headers: { 'Content-Type':'multipart/form-data' }
         }).then(response => {
             const { data: fileNames } = response

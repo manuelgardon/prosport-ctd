@@ -1,18 +1,23 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
-module.exports = (req, res, next) => {
-  const { token } = req.cookies;
-  console.log(token);
-  if (!token) {
-    return res.status(401).json({ error: 'Acceso denegado' });
-  }
+const authMiddleware = (req, res, next) => {
+    const token = req.cookies.token;
+    if (token) {
+      jwt.verify(token, process.env.TOKEN_SECRETO, (error, usuarioData) => {
+        if (error) {
+          console.error(error);
+          return res.status(401).json({ error: 'Error al verificar el token' });
+        }
+        if (usuarioData.id) {
+          req.usuarioData = usuarioData;
+          next(); 
+        } else {
+          res.status(401).json({ error: 'Usuario no encontrado' });
+        }
+      });
+    } else {
+      res.status(401).json({ error: 'Token no proporcionado' });
+    }
+  };
 
-  try {
-    const decoded = jwt.verify(token, process.env.TOKEN_SECRETO);
-    req.usuario = decoded;
-    next();
-  } catch (error) {
-    res.status(401).json({ error: 'Token inválido' });
-  }
-};
+module.exports = authMiddleware;
