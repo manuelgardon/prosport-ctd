@@ -15,6 +15,8 @@ const multer = require('multer')
 const path = require('path'); 
 require('dotenv').config();
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 const authMiddleware = require('./middleware/auth');
 
 app.use(bodyParser.json());

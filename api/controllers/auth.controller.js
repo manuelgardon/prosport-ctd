@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
-
+app.use(express.json());
 
 // Registro de usuarios
 const registrarUsuario = async (req, res) => {
@@ -35,11 +35,16 @@ const iniciarSesion = async (req, res) => {
     }
     const contraseniaMatch = await bcrypt.compare(contrasenia, usuario.contrasenia);
     if (contraseniaMatch) {
-      const token = jwt.sign({ usuarioId: usuario._id }, process.env.TOKEN_SECRETO ); // Posible tercer parametro { expiresIn: '30m' }
-      res.cookie('token', token).json(usuario);
+      try {
+        const token = jwt.sign({ usuarioId: usuario._id }, process.env.TOKEN_SECRETO ); // Posible tercer parametro { expiresIn: '30m' }
+        res.cookie('token', token).json(usuario);
+      } catch (error) {
+        res.status(500).json({ mensaje: 'No se guardó el token' })
+      }
     } else {
       res.status(401).json({ mensaje: 'Credenciales inválidas' });
     }
+
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
