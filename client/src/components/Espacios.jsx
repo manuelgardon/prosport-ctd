@@ -6,7 +6,11 @@ import Filters from "../components/Filters"
 export default function Espacios({ espacios, setEspacios, changeFilters }){
 
     useEffect(() => {
-        axios.get('http://localhost:1234/api/espacios').then((response) => {
+        axios.get('http://localhost:1234/api/espacios', {
+            withCredentials: true,
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then((response) => {
             setEspacios(response.data)
         })
     }, [setEspacios])

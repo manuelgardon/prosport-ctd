@@ -37,7 +37,11 @@ const iniciarSesion = async (req, res) => {
     if (contraseniaMatch) {
       try {
         const token = jwt.sign({ usuarioId: usuario._id }, process.env.TOKEN_SECRETO ); // Posible tercer parametro { expiresIn: '30m' }
-        res.cookie('token', token).json(usuario);
+        res.cookie('token', token, { 
+          sameSite: 'none', // Establece SameSite a None
+          secure: true, // Requiere HTTPS para enviar la cookie (importante en SameSite=None)
+          httpOnly: true, // Para proteger la cookie contra ataques XSS
+        }).json(usuario);
       } catch (error) {
         res.status(500).json({ mensaje: 'No se guardó el token' })
       }
