@@ -11,45 +11,47 @@ export default function Filters({ onChange }) {
     };
 
     return (
+        <div className="w-full overflow-x-auto">
 
-        <section className="flex gap-3 text-black justify-center items-center sm:relative w-full mb-10" >
-            <label>Categoría</label>
+        <section className="flex whitespace-nowrap gap-3 text-black sm:relative mb-10" >
+            
             <button
                 onClick={() => handleFilter('All')}
-                className="block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
+                className="inline-block p-2 my-2 ml-3 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
             >
                 <IconBxGridSmall />
                 Todas
             </button>
             <button
                 onClick={() => handleFilter('Futbol')}
-                className="block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
+                className="inline-block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
             >
                 <IconFootball />
                 Futbol
             </button>
             <button
                 onClick={() => handleFilter('Basquet')}
-                className="block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
+                className="inline-block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
             >
                 <IconBasketball />
                 Basket
             </button>
             <button
                 onClick={() => handleFilter('Voleibol')}
-                className="block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
+                className="inline-block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
             >
                 <IconVolleyball />
                 Voleibol
             </button>
             <button
                 onClick={() => handleFilter('Tenis')}
-                className="block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
+                className="inline-block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
             >
                 <IconBxTennisBall />
                 Tenis
             </button>
         </section>
+        </div>
 
     );
 }
