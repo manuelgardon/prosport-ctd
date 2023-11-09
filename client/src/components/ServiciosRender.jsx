@@ -13,14 +13,14 @@ export default function ServiciosRender({ caracteristicas }){
   ];
 
   return (
-    <div className="caracteristicas-container">
-      <h3>Características:</h3>
-      <ul>
+    <div className="caracteristicas-container my-5">
+      <h3 className="text-center text-4xl text-[#00FF9D]">Características:</h3>
+      <ul className="border border-white">
         {caracteristicas.map((caracteristica, index) => {
           const caracteristicaData = caracteristicasData.find((data) => data.name === caracteristica);
           if (caracteristicaData) {
             return (
-              <li key={index}>
+              <li key={index} className="text-white">
                 {caracteristicaData.icon} {caracteristicaData.name}
               </li>
             );

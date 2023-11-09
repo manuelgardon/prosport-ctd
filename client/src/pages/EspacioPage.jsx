@@ -21,7 +21,7 @@ export default function EspacioPage() {
 
     if (renderFotos) {
         return (
-            <section>
+            <section className="">
                 <article>
                     <h2>Galeria de fotos de {espacio.nombre}</h2>
                     <button onClick={() => setRenderFotos(false)}>Cerrrar galeria</button>
@@ -35,8 +35,9 @@ export default function EspacioPage() {
         )
     }
     return (
+    <div className="w-screen flex justify-center">
 
-        <section className="mt-[90px] relative">
+        <section className="mt-[90px] flex flex-col w-21">
             <section className="grid gap-2 grid-cols-[2fr_1fr] rounded-2xl overflow-hidden">
                 <div>
                     {espacio.fotos?.[0] && (
@@ -56,14 +57,17 @@ export default function EspacioPage() {
                     )}
                 </div>
             </section>
-            <button className="bg-white rounded-2xl border-black shadow-md shadow-gray-600 absolute bottom-2 right-2 py-2 px-4 flex gap-2 font-medium" onClick={() => setRenderFotos(true)}>
-                Show more photos
-            </button>
+          
             <article className="text-white">
-                <h2>{espacio.nombre}</h2>
-                <p>{espacio.descripcion}</p>
+                <h2 className="bg-[#1D2223] text-[#17B289] text-2xl text-center" >{espacio.nombre}</h2>
+                <p className="bg-[#1D2223] border-2 border-[#FF9B27] text-[#FF9B27] rounded-b text-center">{espacio.descripcion}</p>
             </article>
             <ServiciosRender caracteristicas={espacio.caracteristicas}/>
+            <button className="bg-white rounded-2xl border-black shadow-md shadow-gray-600  bottom-2 right-2 py-2 px-4 flex gap-2 font-medium mx-auto" onClick={() => setRenderFotos(true)}>
+                Show more photos
+            </button>
         </section>
+    </div>
+
     )
 }
