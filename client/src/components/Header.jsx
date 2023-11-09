@@ -8,7 +8,7 @@ import { COOKIE_EXPIRED } from '../utils/utils'
 export default function Header() {
 
     const { user, setUser } = useContext(UserContext)
-    const [scrolling, setScrolling] = useState(false);
+    const [scrolling, setScrolling] = useState(false)
     // const [redirect, setRedirect] = useState(false)
 
     useEffect(() => {
@@ -21,7 +21,7 @@ export default function Header() {
                 // Usuario ha hecho scroll hacia arriba, se restaura el header
                 setScrolling(false);
             }
-        };
+        }
 
         // Agregar el evento de scroll al montar el componente
         window.addEventListener('scroll', handleScroll);
@@ -29,8 +29,17 @@ export default function Header() {
         // Limpieza del evento al desmontar el componente
         return () => {
             window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+        }
+    }, [])
+
+    const obtenerIniciales = (nombre, apellido) => {
+        let iniciales = '';
+
+        nombre ? iniciales += nombre[0].toUpperCase() : ''
+        apellido ? iniciales += apellido[0].toUpperCase() : ''
+
+        return iniciales;
+    };
 
     async function logOut() {
         try {
@@ -47,13 +56,13 @@ export default function Header() {
     return (
         <header className={`w-full fixed z-10 pt-5${scrolling ? 'bg-opacity-90 backdrop-blur-md' : ''}`}>
             <nav className="border-gray-200 px-4 lg:px-6 py-2.5 ">
-                <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+                <section className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <Link to={'/'} className="flex items-center">
                         <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
                         <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Pro-Sport</span>
                     </Link>
                     {user ? (
-                        <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+                        <section className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 justify-between items-center">
                                 <li>
                                     <button className=""><Link to={'/account/espacios'}>Mis Espacios</Link></button>
@@ -61,8 +70,13 @@ export default function Header() {
                                 <li>
                                     <button className="" onClick={logOut}>Cerrar Sesión</button>
                                 </li>
+                            {user.nombre && user.apellido &&  (
+                                <div className="profile-image w-10 h-10 bg-[#17B289] rounded-full flex justify-center items-center text-white text-xl font-semibold">
+                                    {obtenerIniciales(user.nombre, user.apellido)}
+                                </div>
+                            )}
                             </ul>
-                        </div>
+                        </section>
                     ) :
                         (
                             <div className="flex items-center lg:order-2">
@@ -77,7 +91,7 @@ export default function Header() {
                                 </button>
                             </div>
                         )}
-                </div>
+                </section>
             </nav >
         </header >
     )

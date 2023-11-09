@@ -153,8 +153,8 @@ app.get('/api/profile', (req, res) => {
   if (token) {
     jwt.verify(token, process.env.TOKEN_SECRETO, {}, async (error, data) => {
       if (error) throw error;
-      const { nombre, email, _id } = await Usuario.findById(data.id);
-      res.json({ nombre, email, _id });
+      const { nombre, apellido, email, _id } = await Usuario.findById(data.id);
+      res.json({ nombre, apellido, email, _id });
     });
   } else {
     res.json(null);
