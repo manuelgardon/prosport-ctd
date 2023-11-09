@@ -46,11 +46,11 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
                     </Link>
                 ))}
             </ul>
-            <div>
+            <div className="w-screen flex justify-between my-5">
                 {/* Aqui deberia de renderizarse una funcion que agregue o elimine un boton para cada pagina en funcion de cuantos espacios hay registrados y renderizados */}
-                <button onClick={() => cambiarPagina(1)}>Página 1</button>
-                <button onClick={() => cambiarPagina(2)}>Página 2</button>
-                <button onClick={() => cambiarPagina(3)}>Página 3</button>
+                <button onClick={() => cambiarPagina(1)} className="text-[#00FF9D] bg-[#131818] border-[#00FF9D] border dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 ml-3">Página 1</button>
+                <button onClick={() => cambiarPagina(2)} className="text-[#00FF9D] bg-[#131818] border-[#00FF9D] border dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Página 2</button>
+                <button onClick={() => cambiarPagina(3)} className="text-[#00FF9D] bg-[#131818] border-[#00FF9D] border dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Página 3</button>
             </div>
         </section>
     );
