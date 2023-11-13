@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import axios from 'axios'
 import { useState } from "react";
 import logo from '../../assets/logo.svg'
+import emailjs from 'emailjs-com'
 
 const FormRegister = () => {
 
@@ -15,8 +16,8 @@ const FormRegister = () => {
   const [dni, setDni] = useState('');
   const [contrasenia, setContrasenia] = useState('');
 
-  async function registerUser(e) {
-    e.preventDefault()
+  const registerUser = async () => {
+    
     await axios.post('http://localhost:1234/registro', {
       nombre,
       apellido,
@@ -27,9 +28,34 @@ const FormRegister = () => {
       dni,
       contrasenia
     })
-    alert('Register done!')
+    alert('Register done!');
   }
+    emailjs.init("Blgi9VopKOYoDr-NN")
 
+   const sendWelcomeEmail = async () => {
+    // Envía el correo de bienvenida
+    const templateParams = {
+      to_email: email,  
+      user_name: `${nombre} ${apellido}`, // Utiliza el nombre y apellido del usuario
+    };
+
+    try {
+      const response = await emailjs.send('service_l6prbvb', 'template_w88qplt', templateParams);
+      console.log('Correo electrónico de bienvenida enviado con éxito:', response);
+    } catch (error) {
+      console.error('Error al enviar el correo electrónico de bienvenida:', error);
+    }
+  };
+  
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    // Realiza el registro del usuario
+    await registerUser();
+
+    // Envía el correo de bienvenida
+    await sendWelcomeEmail();
+  };
   return (
     <section className="grow" >
       <div className="flex flex-col items-center justify-center px-6 pt-[100px] md:h-screen lg:pt-0">
@@ -42,7 +68,7 @@ const FormRegister = () => {
             <h1 className="text-[#59B9A0] text-xl leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               REGISTRARSE
             </h1>
-            <form className="space-y-4 md:space-y-6" onSubmit={registerUser}>
+            <form className="space-y-4 md:space-y-6" onSubmit={handleFormSubmit}>
               <div>
                 <label className="text-[#8AB0A6] block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu nombre</label>
                 <input type="text" value={nombre} onChange={(e => setNombre(e.target.value))} className="bg-[#8AB0A6] bg-opacity-5 border border-[#8AB0A6] text-gray-100 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nombre" required />
