@@ -1,4 +1,4 @@
-const ClubDeportivo = require('../models/club.model'); // Importa el modelo
+const ClubDeportivo = require('../models/club.model');
 
 // Función para obtener todos los clubes deportivos
 const obtenerTodos = (req, res) => {

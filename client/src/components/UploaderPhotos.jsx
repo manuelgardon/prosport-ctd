@@ -2,7 +2,7 @@
 import axios from "axios"
 import { UploadIcon } from "./icons"
 
-export function UploaderPhotos({fotosAgregadas, onChange}) {
+export default function UploaderPhotos({fotosAgregadas, onChange}) {
 
     function uploadPhoto(event) {
         const files = event.target.files

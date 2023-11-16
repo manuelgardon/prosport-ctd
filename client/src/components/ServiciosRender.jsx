@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { IconParkingSquare, IconTruckMedical } from "./icons";
 
+// este componente se renderiza en EspacioPage
 export default function ServiciosRender({ caracteristicas }){
-  // Definir iconos y nombres de características
+  // definimos los iconos y nombres de cada caracteristica en un array
   const caracteristicasData = [
     { name: 'Estacionamiento', icon: <IconParkingSquare/> },
     { name: 'Atencion medica', icon: <IconTruckMedical/>},
@@ -13,14 +14,14 @@ export default function ServiciosRender({ caracteristicas }){
   ];
 
   return (
-    <div className="caracteristicas-container my-5">
-      <h3 className="text-center text-4xl text-[#00FF9D]">Características:</h3>
-      <ul className="border border-white">
+    <div className="caracteristicas-container">
+      <h3>Características:</h3>
+      <ul>
         {caracteristicas.map((caracteristica, index) => {
           const caracteristicaData = caracteristicasData.find((data) => data.name === caracteristica);
           if (caracteristicaData) {
             return (
-              <li key={index} className="text-white">
+              <li key={index}>
                 {caracteristicaData.icon} {caracteristicaData.name}
               </li>
             );

@@ -9,3 +9,9 @@ body {
     min-height: 100vh;
     background: linear-gradient( #0e3e32 , #18181b 90%);
 }
+
+.hora-ocupada{
+    background-color: #FFCCCC;
+    color: #FF0000;
+    font-weight: bold;
+}

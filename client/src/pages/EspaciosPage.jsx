@@ -52,11 +52,14 @@ export default function EspaciosPage() {
     }
 
     function handleDelete(id) {
+        // lanzamos la alerta en caso de que se presione el boton eliminar
+        // y pasamos el id del espacio que se quiere eliminar
         setEspacioPorEliminar(id);
         setAlerta(true);
     }
 
     function handleCancel() {
+        // si presionamos cancelar, se cierra la alerta y no se elimina el espacio
         setAlerta(false)
     }
 
@@ -72,41 +75,29 @@ export default function EspaciosPage() {
         setAlerta(false)
     }
 
-
     return (
-        <section className='w-screen mt-[100px] flex flex-col justify-between items-center pt-20'>
-            <div className='flex flex-col'>
-                
-                <h1 className="text-4xl text-[#17B289]">Espacios</h1>
-                <button className='text-[#00FF9D] bg-[#131818] border-[#00FF9D] border dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 mt-6'>
-
-                <Link to={'/account/espacios/new'} className="hover:text-primary  text-[#17B289]">
-                    CREAR ESPACIO
-                </Link>
-                </button>
-            </div>
-            <div className='flex mt-6 flex-col justify-between items-center'>
+        <section className='mt-[500px]'>
+            <h1 className="text-4xl text-white">Espacios</h1>
+            <Link to={'/account/espacios/new'} className="relative -right-[580px] hover:text-primary text-white">
+                CREAR ESPACIO
+            </Link>
             <hr className="mt-4 mb-4" />
-                
             {espacios.length > 0 && espacios.map(espacio => (
-                <article key={espacio._id} className='text-white w-full my-4 rounded-sm'>
-                    <div className="flex w-55 h-20 bg-gray-300 grow shrink-0">
+                <article key={espacio._id} className='text-white'>
+                    <div className="flex w-32 h-32 bg-gray-300 grow shrink-0">
                         {espacio.fotos.length > 0 && (
                             <img className="w-full" src={'http://localhost:1234/uploads/' + espacio.fotos[0]} alt={espacio.nombre} />
                         )}
                     </div>
                     <div className="grow-0 shrink text-white">
-                        <h2 className=" bg-[#1D2223] text-[#17B289] text-2xl">{espacio.nombre}</h2>
-                        <p className='bg-[#1D2223] border-2 border-[#FF9B27] text-[#FF9B27] rounded-b'><small>{espacio.deporte}</small></p>
-                        
-                    </div>
-                    <div className='mt-4 flex justify-around'>
-                        <button>
-                            <Link to={'/account/espacios/' + espacio._id} className="grow-0 shrink text-[#00FF9D] bg-[#131818] border-[#00FF9D] border dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
+                        <h2 className="text-xl">{espacio.nombre}</h2>
+                        <p><small>{espacio.deporte}</small></p>
+                        <Link to={'/account/espacios/' + espacio._id} className="relative -right-[580px] hover:text-primary">
                             EDITAR
-                            </Link>
-                        </button>
-                        <button onClick={() => handleDelete(espacio._id)} className="grow-0 shrink text-[#00FF9D] bg-[#131818] border-[#00FF9D] border dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 ml-2 mt-1">
+                        </Link>
+                    </div>
+                    <div className="grow-0 shrink text-white">
+                        <button onClick={() => handleDelete(espacio._id)}>
                             ELIMINAR
                         </button>
                     </div>
@@ -123,7 +114,6 @@ export default function EspaciosPage() {
                     </div>
                 </div>
             )}
-            </div>
         </section>
     )
 

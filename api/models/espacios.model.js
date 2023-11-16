@@ -20,10 +20,6 @@ const espacioSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  fechaReserva: {
-    type: String,
-    required: true
-  },
   caracteristicas: {
     type: [String],
     required: true
@@ -39,7 +35,8 @@ const espacioSchema = new mongoose.Schema({
   descripcion: {
     type: String,
     required: true
-  }
+  },
+  precio:{type:Number, required:true}
 });
 
 const Espacio = mongoose.model('Espacio', espacioSchema);
