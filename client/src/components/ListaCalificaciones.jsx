@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { getInitials } from '../utils/utils'
 import StarRating from 'react-star-ratings';
 

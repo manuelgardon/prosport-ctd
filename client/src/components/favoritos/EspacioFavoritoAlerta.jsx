@@ -12,5 +12,5 @@ export default function EspacioFavoritoAlerta({ handleCancel, eliminarFavorito, 
                 </div>
             </div>
         </div>
-    )
+    );
 }

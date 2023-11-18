@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 export default function EspacioFavoritoCard({ favorito, handleDelete }) {
     return (
         <ul >
-            <li className=" w-1/3 relative"> 
+            <li className=" w-1/3 relative mt-2">
                 <h2 className="font-bold text-3xl pb-2 text-white">{favorito.espacioId.nombre}</h2>
                 <Link to={'/espacio/' + favorito.espacioId._id}>
                     <section className="grid gap-2 grid-cols-[2fr_1fr] rounded-2xl overflow-hidden w-[500px]">
@@ -30,7 +30,7 @@ export default function EspacioFavoritoCard({ favorito, handleDelete }) {
                         </div>
                     </section>
                 </Link>
-                <button onClick={() => handleDelete(favorito)} className="absolute top-14 right-32">
+                <button onClick={() => handleDelete(favorito)} className="absolute top-14 -right-40">
                     <FontAwesomeIcon icon={faHeart} size='2x' className="text-[#17B289]"
                     />
                 </button>

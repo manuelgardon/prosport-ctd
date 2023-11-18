@@ -8,24 +8,24 @@ export default function EspacioCard({ espacio, agregarFavorito, eliminarFavorito
 
     function handleClick() {
         if (esFavorito) {
-            eliminarFavorito(espacio);
+            eliminarFavorito(espacio)
         } else {
-            agregarFavorito(espacio);
+            agregarFavorito(espacio)
         }
     }
 
     return (
         <ul className='relative'>
             <li>
-                <Link to={'/espacio/' + espacio._id}>
+                <Link to={'/espacio/' + espacio?._id}>
                     <div className="rounded-2xl mb-2 flex">
-                        {espacio.fotos?.[0] && (
-                            <img className="rounded-2xl object-cover aspect-square" src={'http://localhost:1234/uploads/' + espacio.fotos[0]} alt="" />
+                        {espacio?.fotos?.[0] && (
+                            <img className="rounded-2xl object-cover aspect-square" src={'http://localhost:1234/uploads/' + espacio?.fotos[0]} alt="" />
                         )}
                     </div>
-                    <p className="bg-[#1D2223] text-[#17B289] text-2xl">{espacio.nombre}</p>
-                    <p className="bg-[#1D2223] border-2 border-[#FF9B27] text-[#FF9B27] rounded-b">{espacio.deporte}</p>
-                    <p className="bg-[#1D2223] border-2 border-[#FF9B27] text-[#FF9B27] rounded-b">Precio por hora: ${espacio.precio}</p>
+                    <p className="bg-[#1D2223] text-[#17B289] text-2xl">{espacio?.nombre}</p>
+                    <p className="bg-[#1D2223] border-2 border-[#FF9B27] text-[#FF9B27] rounded-b">{espacio?.deporte}</p>
+                    <p className="bg-[#1D2223] border-2 border-[#FF9B27] text-[#FF9B27] rounded-b">Precio por hora: ${espacio?.precio}</p>
                 </Link>
                 <div className='absolute top-5 right-5'>
                     <button onClick={handleClick}>

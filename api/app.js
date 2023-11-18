@@ -72,7 +72,7 @@ app.delete('/api/favoritos/:id', authMiddleware, favoritoController.eliminar)
 
 // Rutas de calificaciones
 app.post('/api/calificaciones', authMiddleware, calificacionController.crear)
-app.get('/api/:espacioId/calificaciones', authMiddleware, calificacionController.obtenerCalificaciones)
+app.get('/api/:espacioId/calificaciones', calificacionController.obtenerCalificaciones)
 
 // Rutas CRUD de usuarios
 app.get('/api/usuarios', usuarioController.obtenerTodos);

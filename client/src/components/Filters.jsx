@@ -18,6 +18,17 @@ export default function Filters({ onChange }) {
         }));
         setCategoriaSeleccionada(deporte)
     }
+    function reestablecerPrecio() {
+        onChange((prevState) => ({
+            ...prevState,
+            precio: 'All',
+            precioMinimo: 0,
+            precioMaximo: 0
+        }));
+
+        setPrecioMinimo(0)
+        setPrecioMaximo(0)
+    }
 
     function handleChangeRangoPrecio([min, max]) {
         setPrecioMinimo(min);
@@ -48,7 +59,7 @@ export default function Filters({ onChange }) {
 
             </div>
             <section className="flex gap-3 justify-center items-center sm:relative w-full mb-10">
-                <div className="left-0 mt-2 bg-[#202222] p-4 rounded-lg shadow-lg z-10
+                <div className="left-0 mt-2 bg-[#202222] p-4 rounded-lg shadow-lg z-1
                 flex w-[500px] justify-center items-center gap-3">
                     <label className="text-white mb-2">Rango de precios</label>
                     <Slider
@@ -68,6 +79,7 @@ export default function Filters({ onChange }) {
                     >
                         Aceptar
                     </button>
+                    <button onClick={reestablecerPrecio} className="bg-red-500 p-2 text-white rounded-lg hover:bg-red-700 mt-4">Quitar</button>
                 </div>
 
                 {/* ------------------- Filtros por categoria --------------------- */}
@@ -101,12 +113,12 @@ export default function Filters({ onChange }) {
                     Voleibol
                 </button>
                 <button
-                onClick={() => handleChangeCategoria('Tenis')}
-                className="inline-block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
-            >
-                <IconBxTennisBall />
-                Tenis
-            </button>
+                    onClick={() => handleChangeCategoria('Tenis')}
+                    className="inline-block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
+                >
+                    <IconBxTennisBall />
+                    Tenis
+                </button>
 
             </section>
         </section>
