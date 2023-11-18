@@ -3,6 +3,7 @@ const espacioController = require('./controllers/espacio.controller')
 const usuarioController = require('./controllers/usuario.controller')
 const reservaController = require('./controllers/reserva.controller')
 const favoritoController = require('./controllers/favorito.controller')
+const calificacionController = require('./controllers/calificacion.controller')
 const authMiddleware = require('./middlewares/auth.middleware')
 const Usuario = require('./models/usuario.model')
 const Reserva = require('./models/reserva.model')
@@ -68,6 +69,10 @@ app.delete('/api/reservas/:id', reservaController.eliminar);
 app.get('/api/user/favoritos', authMiddleware, favoritoController.obtenerPorUsuario)
 app.post('/api/favoritos', authMiddleware, favoritoController.crear)
 app.delete('/api/favoritos/:id', authMiddleware, favoritoController.eliminar)
+
+// Rutas de calificaciones
+app.post('/api/calificaciones', authMiddleware, calificacionController.crear)
+app.get('/api/:espacioId/calificaciones', authMiddleware, calificacionController.obtenerCalificaciones)
 
 // Rutas CRUD de usuarios
 app.get('/api/usuarios', usuarioController.obtenerTodos);

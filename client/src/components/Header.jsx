@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
+import { getInitials } from '../utils/utils'
 import logo from '../assets/logo.svg'
 import axios from 'axios'
 import { Link, Navigate } from "react-router-dom"
@@ -31,20 +32,6 @@ export default function Header() {
             window.removeEventListener('scroll', handleScroll);
         }
     }, [])
-
-    const getInitials = (nombre, apellido) => {
-        let initials = '';
-      
-        if (nombre) {
-          initials += nombre[0].toUpperCase();
-        }
-      
-        if (apellido) {
-          initials += apellido[0].toUpperCase();
-        }
-      
-        return initials;
-      };
 
     async function logOut() {
         try {

@@ -6,6 +6,14 @@ const espacioSchema = new mongoose.Schema({
     ref: 'Usuario',
     required: true
   },
+  calificaciones:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Calificacion',
+  }],
+  calificacionesPromedio: {
+    type: Number,
+    default: 0
+  },
   deporte: {
     type: String,
     required: true

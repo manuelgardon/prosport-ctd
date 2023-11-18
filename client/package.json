@@ -27,6 +27,7 @@
     "react-datepicker": "^4.21.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.18.0",
+    "react-star-ratings": "^2.3.0",
     "react-time-picker": "^6.5.2",
     "tailwind": "^4.0.0"
   },
