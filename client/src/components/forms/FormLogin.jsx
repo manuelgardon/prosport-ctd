@@ -13,28 +13,22 @@ const FormLogin = () => {
   const [contrasenia, setPassword] = useState('')
   const [redirect, setRedirect] = useState(false)
 
+  
   async function handleLogin(e) {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const response = await axios.post('http://localhost:1234/login', {
+      const { data } = await axios.post('http://localhost:1234/login', {
         email,
-        contrasenia,
-      }, { withCredentials: true });
-
-      if (response.status === 200) {
-        setUser(response.data);
-        setRedirect(true);
-        alert('Login done!');
-      }  else {
-        alert('Error al iniciar sesión');
-      }
+        contrasenia
+      }, { withCredentials: true })
+      setUser(data)
+      setRedirect(true)
+      alert('Login done!')
     } catch (error) {
-      if (error.response.status === 404) {
-          alert('Usuario no encontrado');
-      }
+      alert('Error al iniciar sesión')
     }
-  }
 
+  }
 
   if (redirect) {
     return <Navigate to={'/'} />

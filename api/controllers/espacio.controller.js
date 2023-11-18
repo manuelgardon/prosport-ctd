@@ -56,10 +56,11 @@ const crear = async (req, res) => {
     cantidadDeParticipantes,
     fechaReserva,
     horaInicio,
-    horaFin
+    horaFin,
+    precio
   } = req.body;
 
-    const usuarioData = req.usuarioData; // Accede a los datos del usuario validado
+    const usuarioData = req.usuarioData
     const espacio = await Espacio.create({
       propietario: usuarioData.id,
       deporte,
@@ -70,7 +71,8 @@ const crear = async (req, res) => {
       cantidadDeParticipantes,
       fechaReserva,
       horaInicio,
-      horaFin
+      horaFin,
+      precio
     })
     res.json(espacio)
 }
@@ -87,7 +89,8 @@ const actualizar = async (req, res) => {
     cantidadDeParticipantes,
     diaSemana,
     horaInicio,
-    horaFin
+    horaFin, 
+    precio
   } = req.body
 
   const espacio = await Espacio.findById(id)
@@ -102,7 +105,8 @@ const actualizar = async (req, res) => {
         cantidadDeParticipantes,
         diaSemana,
         horaInicio,
-        horaFin
+        horaFin,
+        precio
       }
       )
       espacio.save()

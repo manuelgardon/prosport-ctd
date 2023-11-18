@@ -34,7 +34,6 @@ const usuarioSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  foto: String
 });
 
 const Usuario = mongoose.model('Usuario', usuarioSchema);
