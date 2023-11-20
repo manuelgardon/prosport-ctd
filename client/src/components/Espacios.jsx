@@ -5,6 +5,8 @@ import axios from "axios"
 import Filters from "../components/Filters"
 import EspacioCard from './EspacioCard'
 import { UserContext } from '../UserContext'
+import Swal from 'sweetalert2'
+import "../utils/utilsCSS.css"
 
 export default function Espacios({ espacios, setEspacios, changeFilters, filtros }) {
 
@@ -65,13 +67,49 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
                     setFavoritos((prevFavoritos) => [...prevFavoritos, { espacioId: espacio, _id: response.data.id }])
                     actualizarCookies([...favoritos, { espacioId: espacio, _id: response.data.id }]); // agregamos el espacio a las cookies
                 } else {
-                    alert(`Error al agregar espacio a favoritos: ${response.data.message}`)
+                    Swal.fire({
+
+                        title:"Error al agregar espacio a favoritos",
+                        text: response.data.message,
+                        icon: "error",
+                        background:"#212121",
+                        backdrop:true,
+                        color: "#00FF9D",
+                        allowOutsideClick:false,
+                        allowEscapeKey:true,
+                        allowEnterKey:true,
+                        confirmButtonText: "Aceptar",
+                        confirmButtonColor: "#00FF9D",
+                        buttonsStyling: false,
+                        customClass:{
+                            popup:"swal-popu",
+                            confirmButton:"swal"
+                        },
+                        });
                 }
             } catch (error) {
                 console.error('Error al agregar espacio a favoritos:', error)
             }
         } else {
-            alert('Debes iniciar sesión para agregar espacios a favoritos')
+            
+            Swal.fire({
+
+                title:"Debes iniciar sesión para agregar espacios a favoritos",
+                icon: "warning",
+                background:"#212121",
+                backdrop:true,
+                color: "#00FF9D",
+                allowOutsideClick:false,
+                allowEscapeKey:true,
+                allowEnterKey:true,
+                confirmButtonText: "Aceptar",
+                confirmButtonColor: "#00FF9D",
+                buttonsStyling: false,
+                customClass:{
+                    popup:"swal-popu",
+                    confirmButton:"swal"
+                },
+                });
         }
     }
 
@@ -90,11 +128,45 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
                         return nuevaListaFavoritos
                     });
                 } else {
-                    alert('Error al eliminar espacio de favoritos')
+                    Swal.fire({
+
+                        title:"Error al eliminar espacio de favoritos",
+                        icon: "error",
+                        background:"#212121",
+                        backdrop:true,
+                        color: "#00FF9D",
+                        allowOutsideClick:false,
+                        allowEscapeKey:true,
+                        allowEnterKey:true,
+                        confirmButtonText: "Aceptar",
+                        confirmButtonColor: "#00FF9D",
+                        buttonsStyling: false,
+                        customClass:{
+                            popup:"swal-popu",
+                            confirmButton:"swal"
+                        },
+                        });
                 }
             } catch (error) {
                 console.error('Error al eliminar espacio de favoritos', error)
-                alert('Error al eliminar espacio de favoritos')
+                Swal.fire({
+
+                    title:"Error al eliminar espacio de favoritos",
+                    icon: "error",
+                    background:"#212121",
+                    backdrop:true,
+                    color: "#00FF9D",
+                    allowOutsideClick:false,
+                    allowEscapeKey:true,
+                    allowEnterKey:true,
+                    confirmButtonText: "Aceptar",
+                    confirmButtonColor: "#00FF9D",
+                    buttonsStyling: false,
+                    customClass:{
+                        popup:"swal-popu",
+                        confirmButton:"swal"
+                    },
+                    });
             }
         }
     }

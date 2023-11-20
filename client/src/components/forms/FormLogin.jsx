@@ -6,7 +6,7 @@ import axios from "axios"
 import { useState, useContext } from "react"
 import { UserContext } from "../../UserContext"
 import Swal from "sweetalert2"
-import "./FormLogin.css"
+import "../../utils/utilsCSS.css"
 
 
 const FormLogin = () => {
@@ -27,7 +27,24 @@ const FormLogin = () => {
       }, { withCredentials: true })
       setUser(data)
       setRedirect(true)
-      alert('Login done!')
+      Swal.fire({
+
+        title:"Iniciaste sesion",
+        icon: "success",
+        background:"#212121",
+        backdrop:true,
+        color: "#00FF9D",
+        allowOutsideClick:false,
+        allowEscapeKey:true,
+        allowEnterKey:true,
+        confirmButtonText: "Aceptar",
+        confirmButtonColor: "#00FF9D",
+        buttonsStyling: false,
+        customClass:{
+          popup:"swal-popu",
+          confirmButton:"swal"
+        },
+      })
     } catch (error) {
       Swal.fire({
 
@@ -47,11 +64,7 @@ const FormLogin = () => {
           popup:"swal-popu",
           confirmButton:"swal"
         },
-       
-        
-        
-        
-        })
+      });
 
       
       

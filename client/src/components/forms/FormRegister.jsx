@@ -4,6 +4,8 @@ import axios from 'axios'
 import { useState } from "react";
 import logo from '../../assets/logo.svg'
 import emailjs from 'emailjs-com'
+import Swal from "sweetalert2"
+import "../../utils/utilsCSS.css"
 
 
 
@@ -32,12 +34,46 @@ export default function FormRegistro() {
         dni,
         contrasenia
       })
-      alert('Register done!');
+      Swal.fire({
+
+        title:"Registro completado!",
+        icon: "success",
+        background:"#212121",
+        backdrop:true,
+        color: "#00FF9D",
+        allowOutsideClick:false,
+        allowEscapeKey:true,
+        allowEnterKey:true,
+        confirmButtonText: "Aceptar",
+        confirmButtonColor: "#00FF9D",
+        buttonsStyling: false,
+        customClass:{
+          popup:"swal-popu",
+          confirmButton:"swal"
+        },
+      });
       setRedirect(true)
       console.log(response.data)
       await sendWelcomeEmail();
     } catch (error) {
-      alert('El email ya está registrado');
+      Swal.fire({
+
+        title:"Email ya está registrado",
+        icon: "warning",
+        background:"#212121",
+        backdrop:true,
+        color: "#00FF9D",
+        allowOutsideClick:false,
+        allowEscapeKey:true,
+        allowEnterKey:true,
+        confirmButtonText: "Aceptar",
+        confirmButtonColor: "#00FF9D",
+        buttonsStyling: false,
+        customClass:{
+          popup:"swal-popu",
+          confirmButton:"swal"
+        },
+      });
     }
   }
   emailjs.init("Blgi9VopKOYoDr-NN")
@@ -88,11 +124,11 @@ export default function FormRegistro() {
               </div>
               <div>
                 <label className="text-[#8AB0A6] block mb-2 text-sm text-base dark:text-white">Fecha Nacimiento</label>
-                <input type="text" value={fechaNacimiento} onChange={(e => setDomicilio(e.target.value))} className="bg-[#8AB0A6] bg-opacity-0 border-b-2 border-[#8AB0A6] text-[#8AB0A6] sm:text-sm block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                <input type="text" value={fechaNacimiento} onChange={(e => setFechaNacimiento(e.target.value))} className="bg-[#8AB0A6] bg-opacity-0 border-b-2 border-[#8AB0A6] text-[#8AB0A6] sm:text-sm block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
               </div>
               <div>
                 <label className="text-[#8AB0A6] block mb-2 text-sm text-base dark:text-white">Domicilio</label>
-                <input type="text" value={domicilio} onChange={(e => setFechaNacimiento(e.target.value))} className="bg-[#8AB0A6] bg-opacity-0 border-b-2 border-[#8AB0A6] text-[#8AB0A6] sm:text-sm block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                <input type="text" value={domicilio} onChange={(e => setDomicilio(e.target.value))} className="bg-[#8AB0A6] bg-opacity-0 border-b-2 border-[#8AB0A6] text-[#8AB0A6] sm:text-sm block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
               </div>
               <div>
                 <label className="text-[#8AB0A6] block mb-2 text-sm text-base dark:text-white">Teléfono</label>
