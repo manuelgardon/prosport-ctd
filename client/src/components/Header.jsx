@@ -5,12 +5,14 @@ import axios from 'axios'
 import { Link, Navigate } from "react-router-dom"
 import { UserContext } from '../UserContext'
 import { COOKIE_EXPIRED } from '../utils/utils'
+import Cookies from 'js-cookie'
 
 export default function Header() {
 
     const { user, setUser } = useContext(UserContext)
     const [scrolling, setScrolling] = useState(false)
     // const [redirect, setRedirect] = useState(false)
+    const usuarioId = user?._id
 
     useEffect(() => {
         // Función para manejar el evento de scroll
@@ -37,6 +39,7 @@ export default function Header() {
         try {
             await axios.post('http://localhost:1234/api/logout')
             document.cookie = COOKIE_EXPIRED
+            Cookies.remove(`favoritos_${usuarioId}`)
             setUser(null)
             window.location.reload()
             return <Navigate to={'/'} />

@@ -57,7 +57,6 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
     async function publicarCalificacion() {
         if (token) {
             if(calificacion !== calificacionInicial || comentario !== comentarioInicial  ) {
-                alert('Se agregó la calificación con éxito')
                 try {
                     const response = await axios.post(
                         'http://localhost:1234/api/calificaciones',
@@ -70,6 +69,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
                     )
                     if (response.status === 201) {
                         alert('Se agrego la calificacion con exito')
+                        window.location.reload()
                     }
                 } catch (error) {
                     if (error.response.status === 403) {

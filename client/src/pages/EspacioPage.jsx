@@ -6,6 +6,7 @@ import Reserva from "../components/Reserva"
 import GaleriaEspacio from "../components/GaleriaEspacio"
 import Calificacion from "../components/Calificacion"
 import StarRating from 'react-star-ratings'
+import CompartirEspacio from "../components/compartir/CompartirEspacio"
 
 export default function EspacioPage() {
 
@@ -25,6 +26,15 @@ export default function EspacioPage() {
         setPromedio(promedio)
     }
     /* ----------------------------------------------------------------------- */
+
+    // revisamos si el promedio es entero o decimal para mostrarlo correctamente
+    function esEntero(promedio){
+        if(promedio % 2 === 0){
+            return promedio
+        } else {
+            return parseFloat(promedio.toFixed(1))
+        }
+    }
 
     useEffect(() => {
         if (!id) return
@@ -55,6 +65,7 @@ export default function EspacioPage() {
 
         <section className="mt-[90px] relative">
             <GaleriaEspacio espacio={espacio} />
+            <CompartirEspacio espacio={espacio} />
             <section className="flex justify-between px-10 mt-10">
                 <article className="text-white">
                     <h2>{espacio.nombre}</h2>
@@ -69,7 +80,7 @@ export default function EspacioPage() {
                             numberOfStars={1}
                             isInteractive={false}
                         />
-                        <h3 className="text-3xl text-white font-bold">{promedio.toFixed(1)}</h3>
+                        <h3 className="text-3xl text-white font-bold">{esEntero(promedio)}</h3>
                     </div>
                     <Reserva precio={espacio.precio} />
                 </section>

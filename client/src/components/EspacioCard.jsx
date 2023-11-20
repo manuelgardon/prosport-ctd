@@ -3,14 +3,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart as heartSolid } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as heartNormal } from '@fortawesome/free-regular-svg-icons'
 import { Link } from "react-router-dom"
+import { useEffect, useState } from 'react'
 
-export default function EspacioCard({ espacio, agregarFavorito, eliminarFavorito, esFavorito }) {
+export default function EspacioCard({ espacio, agregarFavorito, eliminarFavorito, esFavoritoInicial }) {
+
+    const [esFavorito, setEsFavorito] = useState(esFavoritoInicial)
+
+    useEffect(() => {
+        // aqui actualizamos el estado de esFavorito cuando la prop esFavoritoInicial cambia en espacios
+        setEsFavorito(esFavoritoInicial)
+    }, [esFavoritoInicial])
 
     function handleClick() {
         if (esFavorito) {
             eliminarFavorito(espacio)
+            setEsFavorito(false)
         } else {
             agregarFavorito(espacio)
+            setEsFavorito(true)
         }
     }
 

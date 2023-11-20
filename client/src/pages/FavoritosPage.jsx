@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { Link, Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 // import { COOKIE_FAVORITOS_EXPIRED } from '../utils/utils';
 import EspacioFavoritoAlerta from '../components/favoritos/EspacioFavoritoAlerta';
 import EspacioFavoritoCard from '../components/favoritos/EspacioFavoritoCard';
+import { UserContext } from '../UserContext';
 
 export default function FavoritosPage() {
 
@@ -14,9 +15,13 @@ export default function FavoritosPage() {
     const [vacio, setVacio] = useState(true)
     const [favoritos, setFavoritos] = useState([])
     const token = Cookies.get('token')
+    const { user } = useContext(UserContext)
+    const usuarioId = user?._id
 
     function actualizarCookies(nuevaListaFavoritos) {
-        Cookies.set('favoritos', JSON.stringify(nuevaListaFavoritos))
+        if(usuarioId){
+            Cookies.set(`favoritos_${usuarioId}`, JSON.stringify(nuevaListaFavoritos));
+        }
     }
 
     useEffect(() => {
@@ -32,7 +37,7 @@ export default function FavoritosPage() {
         }
 
         cargarFavoritos()
-    }, [token])
+    }, [token, usuarioId])
 
     useEffect(() => {
         // actualizamos vacío si después de la eliminación no hay más favoritos
@@ -53,11 +58,14 @@ export default function FavoritosPage() {
             const response = await axios.delete(`http://localhost:1234/api/favoritos/${favorito.espacioId._id}`, { withCredentials: true })
 
             if (response.status === 200) {
+                console.log(response)
                 // actualizamos el estado local de favoritos
                 setFavoritos(prevFavoritos => prevFavoritos.filter(f => f._id !== favorito._id))
                 const nuevaListaFavoritos = favoritos.filter(f => f._id !== favorito._id)
                 actualizarCookies(nuevaListaFavoritos)
-                document.cookie = `favoritos${favorito.espacioId._id}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/` // eliminamos el espacio favorito de las cookies
+                console.log('Nuevo array de favoritos:', nuevaListaFavoritos);
+                document.cookie = `favoritos_${favorito.espacioId._id}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/` // eliminamos el espacio favorito de las cookies
+                console.log(`Cookie eliminada: favoritos_${favorito.espacioId._id}`);
             } else {
                 alert('Error al eliminar espacio de favoritos')
             }
@@ -84,5 +92,5 @@ export default function FavoritosPage() {
                 <EspacioFavoritoAlerta handleCancel={handleCancel} eliminarFavorito={eliminarFavorito} espacioPorEliminar={espacioPorEliminar} />
             )}
         </section>
-    );
+    )
 }

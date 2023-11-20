@@ -22,7 +22,6 @@ const multer = require('multer')
 const path = require('path');
 require('dotenv').config();
 const bodyParser = require('body-parser');
-const { obtenerPorUsuario } = require('./controllers/favorito.controller')
 app.use(cookieParser());
 
 app.use(bodyParser.json());
