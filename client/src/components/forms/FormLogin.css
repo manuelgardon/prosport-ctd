@@ -1,0 +1,12 @@
+.swal-popu {
+    border: 3px #00FF9D solid;
+    border-radius: 5%;
+}
+
+button.swal{
+    color:black;
+    background-color: #00FF9D;
+    width: 15vh;
+    height: 5vh;
+    border-radius: 0.5rem;
+}

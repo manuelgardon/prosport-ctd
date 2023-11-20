@@ -5,6 +5,9 @@ import logo from '../../assets/logo.svg'
 import axios from "axios"
 import { useState, useContext } from "react"
 import { UserContext } from "../../UserContext"
+import Swal from "sweetalert2"
+import "./FormLogin.css"
+
 
 const FormLogin = () => {
 
@@ -12,6 +15,7 @@ const FormLogin = () => {
   const [email, setEmail] = useState('')
   const [contrasenia, setPassword] = useState('')
   const [redirect, setRedirect] = useState(false)
+
 
   
   async function handleLogin(e) {
@@ -25,7 +29,34 @@ const FormLogin = () => {
       setRedirect(true)
       alert('Login done!')
     } catch (error) {
-      alert('Error al iniciar sesión')
+      Swal.fire({
+
+        title:"Error de inicio",
+        text: error.message,
+        icon: "error",
+        background:"#212121",
+        backdrop:true,
+        color: "#00FF9D",
+        allowOutsideClick:false,
+        allowEscapeKey:true,
+        allowEnterKey:true,
+        confirmButtonText: "Aceptar",
+        confirmButtonColor: "#00FF9D",
+        buttonsStyling: false,
+        customClass:{
+          popup:"swal-popu",
+          confirmButton:"swal"
+        },
+       
+        
+        
+        
+        })
+
+      
+      
+      
+      
     }
 
   }

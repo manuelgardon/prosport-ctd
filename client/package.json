@@ -21,6 +21,7 @@
     "axios": "^1.6.0",
     "date-fns": "^2.30.0",
     "emailjs-com": "^3.2.0",
+    "jquery": "^3.7.1",
     "js-cookie": "^3.0.5",
     "rc-slider": "^10.4.0",
     "react": "^18.2.0",
@@ -29,6 +30,7 @@
     "react-router-dom": "^6.18.0",
     "react-star-ratings": "^2.3.0",
     "react-time-picker": "^6.5.2",
+    "sweetalert2": "^11.10.1",
     "tailwind": "^4.0.0"
   },
   "devDependencies": {

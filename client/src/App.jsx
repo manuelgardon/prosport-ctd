@@ -15,6 +15,12 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import FavoritosPage from './pages/FavoritosPage'
 import ListaReservas from './pages/ReservasPage'
+import jQuery from 'jquery';
+import swal from 'sweetalert2';
+
+window.$ = jQuery;
+
+window.Swal = swal;
 
 function App() {
 
