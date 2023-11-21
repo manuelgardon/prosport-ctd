@@ -1,20 +1,13 @@
 /* eslint-disable react/prop-types */
 import UploaderPhotos from '../UploaderPhotos'
-<<<<<<< Updated upstream
-import Servicios from '../Servicios'; 
+import Servicios from '../Servicios';
 import { DateRangePicker } from 'react-date-range';
+import CiudadSelect from './CiudadSelectForm';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 
-export default function FormEspacio({ nombre, deporte, fotosAgregadas,  descripcion, cantidadDeParticipantes,diasDisponibles,  precio, caracteristicas, setNombre, setDeporte, setFotosAgregadas, setDescripcion,
+export default function FormEspacio({ nombre, deporte, fotosAgregadas, descripcion, ciudad, cantidadDeParticipantes, diasDisponibles, precio, caracteristicas, setNombre, setDeporte, setFotosAgregadas, setDescripcion, setCiudad,
     setCantidadDeParticipantes, setPrecio, setCaracterisitcas, addNewEspacio, setDiasDisponibles
-=======
-import Servicios from '../Servicios';
-import CiudadSelect from './CiudadSelectForm';
-
-export default function FormEspacio({ nombre, deporte, fotosAgregadas, descripcion, ciudad, fechaReserva, cantidadDeParticipantes, horaInicio, horaFin, precio, caracteristicas, setNombre, setDeporte, setFotosAgregadas, setDescripcion, setCiudad, setFechaReserva,
-    setCantidadDeParticipantes, setHoraInicio, setHoraFin, setPrecio, setCaracterisitcas, addNewEspacio
->>>>>>> Stashed changes
 }) {
     return (
         <div className="flex justify-center grow mt-[60px] py-10 p-6 w-full">
@@ -52,7 +45,7 @@ export default function FormEspacio({ nombre, deporte, fotosAgregadas, descripci
                     </small>
                 </p>
                 <div className='mb-10'>
-                    <CiudadSelect ciudad={ciudad} onChange={setCiudad}/>
+                    <CiudadSelect ciudad={ciudad} onChange={setCiudad} />
                 </div>
                 <UploaderPhotos fotosAgregadas={fotosAgregadas} onChange={setFotosAgregadas} />
                 <h2 className="text-2xl mt-4">Descripcion</h2>
@@ -92,19 +85,19 @@ export default function FormEspacio({ nombre, deporte, fotosAgregadas, descripci
                     <h3 className="mt-2 -mb-1">Días disponibles</h3>
                     <DateRangePicker
                         onChange={(ranges) => setDiasDisponibles({
-                            startDate: new Date(ranges.selection.startDate), 
+                            startDate: new Date(ranges.selection.startDate),
                             endDate: new Date(ranges.selection.endDate),
                         })}
                         showSelectionPreview={true}
                         moveRangeOnFirstSelection={false}
-                        ranges={[{ 
-                                startDate: new Date(diasDisponibles.startDate), 
-                                endDate: new Date(diasDisponibles.endDate), 
-                                key: 'selection' 
-                                }]}
+                        ranges={[{
+                            startDate: new Date(diasDisponibles.startDate),
+                            endDate: new Date(diasDisponibles.endDate),
+                            key: 'selection'
+                        }]}
                         direction="horizontal"
-                        />
-                    </div>
+                    />
+                </div>
                 <Servicios selected={caracteristicas} onChange={setCaracterisitcas} />
                 <button className="bg-primary mt-2 w-full p-2 text-white rounded-2xl">Save</button>
             </form>
