@@ -7,6 +7,8 @@ import { useState } from "react";
 import EspacioFavoritoAlerta from '../components/favoritos/EspacioFavoritoAlerta';
 import EspacioFavoritoCard from '../components/favoritos/EspacioFavoritoCard';
 import { UserContext } from '../UserContext';
+import Swal from 'sweetalert2';
+import "../utils/utilsCSS.css"
 
 export default function FavoritosPage() {
 
@@ -67,7 +69,24 @@ export default function FavoritosPage() {
                 document.cookie = `favoritos_${favorito.espacioId._id}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/` // eliminamos el espacio favorito de las cookies
                 console.log(`Cookie eliminada: favoritos_${favorito.espacioId._id}`);
             } else {
-                alert('Error al eliminar espacio de favoritos')
+                Swal.fire({
+
+                    title:"Error al eliminar espacio de favoritos",
+                    icon: "error",
+                    background:"#212121",
+                    backdrop:true,
+                    color: "#00FF9D",
+                    allowOutsideClick:false,
+                    allowEscapeKey:true,
+                    allowEnterKey:true,
+                    confirmButtonText: "Aceptar",
+                    confirmButtonColor: "#00FF9D",
+                    buttonsStyling: false,
+                    customClass:{
+                        popup:"swal-popu",
+                        confirmButton:"swal"
+                    },
+                  })
             }
             setAlerta(false)
         } catch (error) {
