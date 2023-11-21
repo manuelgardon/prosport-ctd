@@ -5,6 +5,9 @@ import { setHours, setMinutes, differenceInHours } from 'date-fns'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import FormReserva from './forms/FormReserva'
+import Swal from 'sweetalert2'
+import "../utils/utilsCSS.css"
+
 // recibimos el valor del precio del espacio desde el componente EspacioPage
 export default function Reserva({ precio }) {
     
@@ -70,7 +73,24 @@ export default function Reserva({ precio }) {
         event.preventDefault()
         if (token) {
             if (horaInicio >= horaFin) {
-                alert('Revisa que la hora de inicio no sea mayor a la hora de finalización')
+                Swal.fire({
+
+                    title:"Revisa que la hora de inicio no sea mayor a la hora de finalización",
+                    icon: "warning",
+                    background:"#212121",
+                    backdrop:true,
+                    color: "#00FF9D",
+                    allowOutsideClick:false,
+                    allowEscapeKey:true,
+                    allowEnterKey:true,
+                    confirmButtonText: "Aceptar",
+                    confirmButtonColor: "#00FF9D",
+                    buttonsStyling: false,
+                    customClass:{
+                        popup:"swal-popu",
+                        confirmButton:"swal"
+                    },
+                    });
                 return
             }
             // convertimos la fecha en formato ISO y luego dividimos la cadena para tomar
@@ -93,7 +113,24 @@ export default function Reserva({ precio }) {
             )
 
             if (reservaExistente) {
-                alert('Las fechas y horas seleccionadas ya han sido reservadas')
+                Swal.fire({
+
+                    title:"Las fechas y horas seleccionadas ya han sido reservadas",
+                    icon: "warning",
+                    background:"#212121",
+                    backdrop:true,
+                    color: "#00FF9D",
+                    allowOutsideClick:false,
+                    allowEscapeKey:true,
+                    allowEnterKey:true,
+                    confirmButtonText: "Aceptar",
+                    confirmButtonColor: "#00FF9D",
+                    buttonsStyling: false,
+                    customClass:{
+                        popup:"swal-popu",
+                        confirmButton:"swal"
+                    },
+                    });
                 return
             }
 
@@ -112,17 +149,70 @@ export default function Reserva({ precio }) {
                 )
 
                 setReservasExistente((prevReservas) => [...prevReservas, response.data])
-                alert('Reserva exitosa')
+                Swal.fire({
+
+                    title:"Reserva exitosa",
+                    icon: "success",
+                    background:"#212121",
+                    backdrop:true,
+                    color: "#00FF9D",
+                    allowOutsideClick:false,
+                    allowEscapeKey:true,
+                    allowEnterKey:true,
+                    confirmButtonText: "Aceptar",
+                    confirmButtonColor: "#00FF9D",
+                    buttonsStyling: false,
+                    customClass:{
+                        popup:"swal-popu",
+                        confirmButton:"swal"
+                    },
+                    })
                 console.log(response.data)
             } catch (error) {
                 if (error.response && error.response.status === 400) {
                     alert(error.response.data.message)
+                    Swal.fire({
+
+                        title:"Error en la reserva",
+                        text: error.response.data.message,
+                        icon: "error",
+                        background:"#212121",
+                        backdrop:true,
+                        color: "#00FF9D",
+                        allowOutsideClick:false,
+                        allowEscapeKey:true,
+                        allowEnterKey:true,
+                        confirmButtonText: "Aceptar",
+                        confirmButtonColor: "#00FF9D",
+                        buttonsStyling: false,
+                        customClass:{
+                          popup:"swal-popu",
+                          confirmButton:"swal"
+                        },
+                      })
                 } else {
                     console.error('Error al hacer la reserva:', error)
                 }
             }
         } else {
-            alert('Debes iniciar sesión para realizar una reserva')
+            Swal.fire({
+
+                title:"Debes iniciar sesión para realizar una reserva",
+                icon: "warning",
+                background:"#212121",
+                backdrop:true,
+                color: "#00FF9D",
+                allowOutsideClick:false,
+                allowEscapeKey:true,
+                allowEnterKey:true,
+                confirmButtonText: "Aceptar",
+                confirmButtonColor: "#00FF9D",
+                buttonsStyling: false,
+                customClass:{
+                    popup:"swal-popu",
+                    confirmButton:"swal"
+                },
+                })
         }
     }
 

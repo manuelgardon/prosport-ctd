@@ -5,6 +5,8 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import { UserContext } from '../UserContext'
 import ListaCalificaciones from './ListaCalificaciones'
+import Swal from 'sweetalert2'
+import "../utils/utilsCSS.css"
 
 export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalificacion }) {
 
@@ -68,19 +70,88 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
                         { withCredentials: true }
                     )
                     if (response.status === 201) {
-                        alert('Se agrego la calificacion con exito')
+                        Swal.fire({
+
+                            title:"Se agrego la calificacion con exito",
+                            icon: "success",
+                            background:"#212121",
+                            backdrop:true,
+                            color: "#00FF9D",
+                            allowOutsideClick:false,
+                            allowEscapeKey:true,
+                            allowEnterKey:true,
+                            confirmButtonText: "Aceptar",
+                            confirmButtonColor: "#00FF9D",
+                            buttonsStyling: false,
+                            customClass:{
+                                popup:"swal-popu",
+                                confirmButton:"swal"
+                            },
+                            });
                         window.location.reload()
                     }
                 } catch (error) {
                     if (error.response.status === 403) {
-                        alert('No puedes calificar este espacio si no has hecho una reserva antes')
+                        Swal.fire({
+
+                            title:"No puedes calificar este espacio si no has hecho una reserva antes",
+                            icon: "warning",
+                            background:"#212121",
+                            backdrop:true,
+                            color: "#00FF9D",
+                            allowOutsideClick:false,
+                            allowEscapeKey:true,
+                            allowEnterKey:true,
+                            confirmButtonText: "Aceptar",
+                            confirmButtonColor: "#00FF9D",
+                            buttonsStyling: false,
+                            customClass:{
+                                popup:"swal-popu",
+                                confirmButton:"swal"
+                            },
+                            });
                     }
                 }
             } else {
-                alert('No has realizado cambios en la calificación o el comentario')
+                Swal.fire({
+
+                    title:"No has realizado cambios en la calificación o el comentario",
+                    icon: "error",
+                    background:"#212121",
+                    backdrop:true,
+                    color: "#00FF9D",
+                    allowOutsideClick:false,
+                    allowEscapeKey:true,
+                    allowEnterKey:true,
+                    confirmButtonText: "Aceptar",
+                    confirmButtonColor: "#00FF9D",
+                    buttonsStyling: false,
+                    customClass:{
+                        popup:"swal-popu",
+                        confirmButton:"swal"
+                    },
+                    });
             }
         } else {
-            alert('Debes iniciar sesión para calificar este espacio')
+            Swal.fire({
+
+                title:"Debes iniciar sesión para calificar este espacio",
+                icon: "warning",
+                background:"#212121",
+                backdrop:true,
+                color: "#00FF9D",
+                allowOutsideClick:false,
+                allowEscapeKey:true,
+                allowEnterKey:true,
+                confirmButtonText: "Aceptar",
+                confirmButtonColor: "#00FF9D",
+                buttonsStyling: false,
+                customClass:{
+                    popup:"swal-popu",
+                    confirmButton:"swal"
+                },
+                });
+            
         }
     }
 
