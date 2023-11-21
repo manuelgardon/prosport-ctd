@@ -5,12 +5,9 @@ import { setHours, setMinutes, differenceInHours } from 'date-fns'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import FormReserva from './forms/FormReserva'
-<<<<<<< HEAD
 import Swal from 'sweetalert2'
 import "../utils/utilsCSS.css"
 
-=======
->>>>>>> f6d0c8bcdf9a0f7322b8077fcf53e45dad306f0b
 // recibimos el valor del precio del espacio desde el componente EspacioPage
 export default function Reserva({ precio }) {
     
