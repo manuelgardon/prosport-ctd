@@ -13,7 +13,9 @@ export default function EspacioPage() {
     const [espacio, setEspacio] = useState()
     const [renderFotos, setRenderFotos] = useState(false)
     const [calificacion, setCalificacion] = useState(0)
+    const [cantidadCalificaciones, setCantidadCalificaciones] = useState([])
     const [promedio, setPromedio] = useState(0)
+    const [fechasDisponibles, setFechasDisponibles] = useState([]);
     const { id } = useParams()
 
 
@@ -41,6 +43,12 @@ export default function EspacioPage() {
         axios.get(`http://localhost:1234/api/espacios/${id}`)
             .then((response) => {
                 setEspacio(response.data)
+                const calificaciones = response.data.calificaciones.length
+                setCantidadCalificaciones(calificaciones)
+                setFechasDisponibles(response.data.diasDisponibles || []);
+            })
+            .catch((error) => {
+                console.error('Error al obtener el espacio', error);
             })
     }, [id])
 
@@ -82,7 +90,12 @@ export default function EspacioPage() {
                         />
                         <h3 className="text-3xl text-white font-bold">{esEntero(promedio)}</h3>
                     </div>
-                    <Reserva precio={espacio.precio} />
+                    <div>
+                        {cantidadCalificaciones === 1 && <p className="text-white text-xl">Calificado por {cantidadCalificaciones} usuario</p>}
+                        {cantidadCalificaciones > 1 && <p className="text-white text-xl">Calificado por {cantidadCalificaciones} usuarios</p>}
+                        {cantidadCalificaciones === 0 && <p className="text-white text-xl">Sin calificaciones</p>}
+                    </div>
+                    <Reserva precio={espacio.precio} fechasDisponibles={fechasDisponibles} />
                 </section>
             </section>
             <section>

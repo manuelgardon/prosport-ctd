@@ -36,6 +36,7 @@ export default function EspacioCard({ espacio, agregarFavorito, eliminarFavorito
                     <p className="bg-[#1D2223] text-[#17B289] text-2xl">{espacio?.nombre}</p>
                     <p className="bg-[#1D2223] border-2 border-[#FF9B27] text-[#FF9B27] rounded-b">{espacio?.deporte}</p>
                     <p className="bg-[#1D2223] border-2 border-[#FF9B27] text-[#FF9B27] rounded-b">Precio por hora: ${espacio?.precio}</p>
+                    <p className="bg-[#1D2223] border-2 border-[#FF9B27] text-[#FF9B27] rounded-b">{espacio?.ciudad}</p>
                 </Link>
                 <div className='absolute top-5 right-5'>
                     <button onClick={handleClick}>

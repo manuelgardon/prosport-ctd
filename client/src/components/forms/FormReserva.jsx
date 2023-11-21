@@ -9,8 +9,10 @@ export default function FormReserva({
     handleChangeHoraFin,
     precioTotal,
     handleReserva,
-    setFechaReserva
+    setFechaReserva,
+    diasDisponibles,
 }) {
+    const fechaMaxima = diasDisponibles ? new Date(Math.max(...diasDisponibles.map(date => new Date(date)))) : new Date();
     return (
         <section className="mt-10">
             <form className="w-full max-w-sm mx-auto bg-slate-600" onSubmit={handleReserva}>
@@ -28,6 +30,11 @@ export default function FormReserva({
                             />
                         )}
                         format="dd/MM/yyyy"
+                        dateConstraints={{
+                            start: new Date(),
+                            end: fechaMaxima,
+                        }}
+
                     />
                 </div>
 

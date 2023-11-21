@@ -72,7 +72,8 @@ const crear = async (req, res) => {
       fechaReserva,
       horaInicio,
       horaFin,
-      precio
+      precio,
+      reservaId: espacioId,
     });
 
     res.status(200).json(reserva);

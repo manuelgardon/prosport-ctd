@@ -51,12 +51,11 @@ const crear = async (req, res) => {
     deporte,
     nombre,
     descripcion,
+    ciudad,
     caracteristicas,
     fotosAgregadas,
     cantidadDeParticipantes,
-    fechaReserva,
-    horaInicio,
-    horaFin,
+    diasDisponibles,
     precio
   } = req.body;
 
@@ -66,12 +65,11 @@ const crear = async (req, res) => {
       deporte,
       nombre,
       descripcion,
+      ciudad,
       caracteristicas,
       fotos: fotosAgregadas,
       cantidadDeParticipantes,
-      fechaReserva,
-      horaInicio,
-      horaFin,
+      diasDisponibles,
       precio
     })
     res.json(espacio)
@@ -84,12 +82,11 @@ const actualizar = async (req, res) => {
     deporte,
     nombre,
     descripcion,
+    ciudad,
     caracteristicas,
     fotosAgregadas,
     cantidadDeParticipantes,
-    diaSemana,
-    horaInicio,
-    horaFin, 
+    diasDisponibles,
     precio
   } = req.body
 
@@ -100,12 +97,11 @@ const actualizar = async (req, res) => {
         deporte,
         nombre,
         descripcion,
+        ciudad,
         caracteristicas,
         fotos: fotosAgregadas,
         cantidadDeParticipantes,
-        diaSemana,
-        horaInicio,
-        horaFin,
+        diasDisponibles,
         precio
       }
       )

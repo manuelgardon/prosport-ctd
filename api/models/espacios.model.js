@@ -24,6 +24,10 @@ const espacioSchema = new mongoose.Schema({
   },
   fotos: { type: [String], required: true },
   descripcion: { type: String, required: true },
+  ciudad: {
+    type: String,
+    required: true
+  },
   cantidadDeParticipantes: {
     type: Number,
     required: true
@@ -32,18 +36,14 @@ const espacioSchema = new mongoose.Schema({
     type: [String],
     required: true
   },
-  horaInicio: {
-    type: String,
-    required: true
+  diasDisponibles:{
+    type: [Date],
+      required: true
   },
-  horaFin: {
-    type: String,
-    required: true
-  },
-  descripcion: {
-    type: String,
-    required: true
-  },
+  reservas: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Reserva',
+  }],
   precio:{type:Number, required:true}
 });
 
