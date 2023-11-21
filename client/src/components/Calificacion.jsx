@@ -8,8 +8,8 @@ import ListaCalificaciones from './ListaCalificaciones'
 
 export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalificacion }) {
 
-    const [calificacionInicial, setCalificacionInicial] = useState(0)
-    const [calificacion, setCalificacion] = useState(0)
+    const [calificacionInicial, setCalificacionInicial] = useState(1)
+    const [calificacion, setCalificacion] = useState(1)
     const [vacio, setVacio] = useState(true)
     const [promedio, setPromedio] = useState(0)
     const [calificaciones, setCalificaciones] = useState([])

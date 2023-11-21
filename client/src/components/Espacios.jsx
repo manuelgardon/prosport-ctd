@@ -8,6 +8,7 @@ import { UserContext } from '../UserContext'
 
 export default function Espacios({ espacios, setEspacios, changeFilters, filtros }) {
 
+    const [totalEspacios, setTotalEspacios] = useState(0)
     const [pagina, setPagina] = useState(1)
     const espaciosPorPagina = 10
     const [favoritos, setFavoritos] = useState([])
@@ -23,6 +24,23 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
 
     useEffect(() => {
 
+        async function cargarEspacios() {
+            try {
+                const response = await axios.get(
+                    `http://localhost:1234/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}&ciudad=${filtros.ciudad}`
+                )
+    
+                if (!response.data) {
+                    throw new Error('Error al cargar los espacios.')
+                }
+                setEspacios(response.data.espacios)
+                setTotalEspacios(response.data.totalEspacios)
+                console.log(response.data)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
         async function cargarFavoritos() {
             // cargamos los favoritos de cada usuario
             try {
@@ -35,20 +53,8 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
                 console.error(error)
             }
         }
-        async function cargarEspacios() {
-            try {
-                const response = await axios.get(`http://localhost:1234/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}&ciudad=${filtros.ciudad}`);
-                if (!response.data) {
-                    throw new Error('Error al cargar los espacios.')
-                }
-                setEspacios(response.data)
-            } catch (error) {
-                console.error(error)
-            }
-        }
-        
-        cargarFavoritos()
         cargarEspacios()
+        cargarFavoritos()
     }, [pagina, setEspacios, filtros.deporte, filtros.ciudad, usuarioId, token, setUser])
 
     const cambiarPagina = (nuevaPagina) => {
@@ -98,7 +104,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
             }
         }
     }
-    
+
 
 
     return (
@@ -106,11 +112,11 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
             <Filters onChange={changeFilters} />
             {espacios.length > 0 ? (
                 <ul className="grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-center">
-                    {espacios.map(espacio => (
+                    {espacios.map((espacio) => (
                         <EspacioCard
                             key={espacio._id}
                             espacio={espacio}
-                            esFavoritoInicial={favoritos.some(favorito => favorito.espacioId._id === espacio._id)}
+                            esFavoritoInicial={favoritos.some((favorito) => favorito.espacioId._id === espacio._id)}
                             agregarFavorito={agregarFavorito}
                             eliminarFavorito={eliminarFavorito}
                         />
@@ -120,11 +126,16 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
                 <h2 className="font-bold text-4xl mb-10">No hay espacios disponibles que coincidan con los filtros seleccionados.</h2>
             )}
             <div>
-                {/* Aqui deberia de renderizarse una funcion que agregue o elimine un boton para cada pagina en funcion de cuantos espacios hay registrados y renderizados */}
-                <button onClick={() => cambiarPagina(1)}>Página 1</button>
-                <button onClick={() => cambiarPagina(2)}>Página 2</button>
-                <button onClick={() => cambiarPagina(3)}>Página 3</button>
-            </div >
+                {/* aqui creamos una array de un objeto nuevo iterable con la propiedad length la cual nos inidca la cantidad de paginas que van a ser necesarias para representar la cantidad de espacios por pagina */}
+                {Array.from({ length: Math.ceil(totalEspacios / espaciosPorPagina) }, (_, index) => (
+                    <button key={index} className={
+                        "mx-1 px-4 py-2 rounded-md bg-green-500 text-white font-bold " +
+                        (pagina === index + 1 ? "bg-green-700" : "")
+                    } onClick={() => cambiarPagina(index + 1)}>
+                        Página {index + 1}
+                    </button>
+                ))}
+            </div>
         </section >
     );
 }

@@ -18,24 +18,27 @@ const obtenerPorId = async (req, res) => {
 
 const obtenerEspaciosPaginados = async (req, res) => {
   try {
-    const pagina = parseInt(req.query.pagina) || 1;
-    const porPagina = 10;
-    const inicio = (pagina - 1) * porPagina;
-    const filtroDeporte = req.query.deporte;
 
-    let query = { skip: inicio, limit: porPagina };
+    const porPagina = 10
+    const filtroDeporte = req.query.deporte
+
+    let query = {}
     if (filtroDeporte && filtroDeporte !== 'All') {
-      query.where = { deporte: filtroDeporte };
+      query = { deporte: filtroDeporte }
     }
 
-    const espaciosPaginados = await Espacio.find(query.where)
-      .skip(query.skip)
-      .limit(query.limit);
+    const totalEspacios = await Espacio.countDocuments(query)
+    const pagina = parseInt(req.query.pagina) || 1
+    const inicio = (pagina - 1) * porPagina
 
-    res.json(espaciosPaginados);
+    const espaciosPaginados = await Espacio.find(query)
+      .skip(inicio)
+      .limit(porPagina)
+
+    res.json({espacios: espaciosPaginados, totalEspacios})
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Error al obtener los espacios paginados.');
+    console.error(error)
+    res.status(500).send('Error al obtener espacios paginados')
   }
 };
 

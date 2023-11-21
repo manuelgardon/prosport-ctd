@@ -4,7 +4,7 @@ import Slider from "rc-slider";
 import 'rc-slider/assets/index.css';
 import { IconFootball, IconBasketball, IconVolleyball, IconBxGridSmall, IconBxTennisBall } from "./icons";
 
-export default function Filters({ onChange }) {
+export default function Filters({ onChange, cargarEspacios }) {
 
     const [precioMinimo, setPrecioMinimo] = useState(0)
     const [precioMaximo, setPrecioMaximo] = useState(0)
@@ -17,6 +17,7 @@ export default function Filters({ onChange }) {
             deporte,
         }));
         setCategoriaSeleccionada(deporte)
+        cargarEspacios()
     }
     function reestablecerPrecio() {
         onChange((prevState) => ({
@@ -28,6 +29,7 @@ export default function Filters({ onChange }) {
 
         setPrecioMinimo(0)
         setPrecioMaximo(0)
+        cargarEspacios()
     }
 
     function handleChangeRangoPrecio([min, max]) {
@@ -42,6 +44,7 @@ export default function Filters({ onChange }) {
             precioMinimo: precioMinimo,
             precioMaximo: precioMaximo,
         }));
+        cargarEspacios()
         // setVentanaPrecios(false);
     }
 
