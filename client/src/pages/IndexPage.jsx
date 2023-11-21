@@ -1,5 +1,6 @@
 import Espacios from "../components/Espacios"
 import { useState } from "react"
+import CiudadSelectIndex from "../components/CiudadSelectFiltros"
 
 export default function IndexPage() {
 
@@ -8,19 +9,21 @@ export default function IndexPage() {
         deporte: 'All',
         precio: 'All',
         precioMinimo: 0,
-        precioMaximo: 1000
+        precioMaximo: 1000,
+        ciudad: ''
     })
 
     const filterEspacios = (espacios) => {
         return espacios.filter(espacio => {
           return (
             (filtros.precio === 'All' ||
-            (espacio.precio >= filtros.precioMinimo &&
-              espacio.precio <= filtros.precioMaximo)) &&
-            (filtros.deporte === 'All' || espacio.deporte === filtros.deporte)
-          );
-        });
-      };
+              (espacio.precio >= filtros.precioMinimo &&
+                espacio.precio <= filtros.precioMaximo)) &&
+            (filtros.deporte === 'All' || espacio.deporte === filtros.deporte) &&
+            (filtros.ciudad === '' || espacio.ciudad === filtros.ciudad) // Nuevo filtro por ciudad
+          )
+        })
+      }
 
     const filteredEspacios = filterEspacios(espacios)
 
@@ -33,6 +36,7 @@ export default function IndexPage() {
                     <h2 className="text-xl lg:text-2xl font-bold">Espacios para practicar tus deportes favoritos y realizar tu reserva online.</h2>
                 </aside>
             </section>
+            <CiudadSelectIndex onChange={(ciudad) => setFiltros((prevFiltros) => ({ ...prevFiltros, ciudad }))} />
             <Espacios changeFilters={setFiltros} espacios={filteredEspacios} setEspacios={setEspacios} filtros={filtros} setFiltros={setFiltros} />
         </main>
 

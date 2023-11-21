@@ -37,7 +37,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
         }
         async function cargarEspacios() {
             try {
-                const response = await axios.get(`http://localhost:1234/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}`);
+                const response = await axios.get(`http://localhost:1234/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}&ciudad=${filtros.ciudad}`);
                 if (!response.data) {
                     throw new Error('Error al cargar los espacios.')
                 }
@@ -49,7 +49,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
         
         cargarFavoritos()
         cargarEspacios()
-    }, [pagina, setEspacios, filtros.deporte, usuarioId, token, setUser])
+    }, [pagina, setEspacios, filtros.deporte, filtros.ciudad, usuarioId, token, setUser])
 
     const cambiarPagina = (nuevaPagina) => {
         setPagina(nuevaPagina)

@@ -59,7 +59,7 @@ export default function Filters({ onChange }) {
 
             </div>
             <section className="flex gap-3 justify-center items-center sm:relative w-full mb-10">
-                <div className="left-0 mt-2 bg-[#202222] p-4 rounded-lg shadow-lg z-1
+                <div className="left-0 mt-2 bg-[#202222] p-4 rounded-lg 
                 flex w-[500px] justify-center items-center gap-3">
                     <label className="text-white mb-2">Rango de precios</label>
                     <Slider

@@ -14,7 +14,12 @@ const reservaSchema = new mongoose.Schema({
   fechaReserva: { type: Date, required: true },
   horaInicio: { type: String, required: true },
   horaFin: { type: String, required: true },
-  precio: {type: Number, required: true}
+  precio: {type: Number, required: true},
+  
+  reservaId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Espacio',
+  },
 });
 
 const Reserva = mongoose.model('Reserva', reservaSchema);

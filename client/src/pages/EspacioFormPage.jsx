@@ -8,17 +8,18 @@ function EspacioFormPage() {
     const [deporte, setDeporte] = useState('')
     const [nombre, setNombre] = useState('')
     const [descripcion, setDescripcion] = useState('')
+    const [ciudad, setCiudad] = useState('')
     const [caracteristicas, setCaracterisitcas] = useState([])
     const [fotosAgregadas, setFotosAgregadas] = useState([])
     const [cantidadDeParticipantes, setCantidadDeParticipantes] = useState(1)
-    const [fechaReserva, setFechaReserva] = useState('')
-    const [horaInicio, setHoraInicio] = useState('')
-    const [horaFin, setHoraFin] = useState('')
+    const [diasDisponibles, setDiasDisponibles] = useState({ startDate: new Date(), endDate: new Date()});
     const [precio, setPrecio] = useState(100)
     const [redirect, setRedirect] = useState(false)
     const { id } = useParams()
     const location = useLocation()
     const token = Cookies.get('token')
+
+    
 
     useEffect(() => {
         if (!id) return
@@ -28,30 +29,34 @@ function EspacioFormPage() {
                 setDeporte(data.deporte)
                 setNombre(data.nombre)
                 setDescripcion(data.descripcion)
+                setCiudad(data.ciudad)
                 setCaracterisitcas(data.caracteristicas)
                 setFotosAgregadas(data.fotos)
                 setCantidadDeParticipantes(data.cantidadDeParticipantes)
-                setFechaReserva(data.fechaReserva)
-                setHoraInicio(data.horaInicio)
-                setHoraFin(data.horaFin)
+                setDiasDisponibles({
+                    startDate : new Date(data.diasDisponibles.startDate),
+                    endDate: new Date(data.diasDisponibles.endDate)})
                 setPrecio(data.precio)
             })
     }, [id])
 
+
+    
     async function addNewEspacio(e) {
         e.preventDefault()
+        const { startDate, endDate } = diasDisponibles;
+        const datesArray = getDatesArray(startDate, endDate);
         if (!id) {
             if (token) {
                 await axios.post('http://localhost:1234/api/espacios', {
                     deporte,
                     nombre,
                     descripcion,
+                    ciudad,
                     caracteristicas,
                     fotosAgregadas,
                     cantidadDeParticipantes,
-                    fechaReserva,
-                    horaInicio,
-                    horaFin,
+                    diasDisponibles: datesArray.map(date => date.toISOString()),
                     precio
                 }, { withCredentials: true })
                 setRedirect(true)
@@ -62,17 +67,26 @@ function EspacioFormPage() {
                 deporte,
                 nombre,
                 descripcion,
+                ciudad,
                 caracteristicas,
                 fotosAgregadas,
                 cantidadDeParticipantes,
-                fechaReserva,
-                horaInicio,
-                horaFin,
+                diasDisponibles: datesArray.map(date => date.toISOString()),
                 precio
             }, { withCredentials: true })
             setRedirect(true)
         }
     }
+
+    function getDatesArray(startDate, endDate) {
+        const datesArray = [];
+        let currentDate = startDate;
+        while (currentDate <= endDate) {
+          datesArray.push(new Date(currentDate));
+          currentDate.setDate(currentDate.getDate() + 1);
+        }
+        return datesArray;
+      }
 
     if (!token && location.pathname === `/account/espacios/${id}`) {
         return <Navigate to={'/'} />
@@ -88,20 +102,26 @@ function EspacioFormPage() {
             deporte={deporte}
             fotosAgregadas={fotosAgregadas}
             descripcion={descripcion}
+<<<<<<< Updated upstream
+            diasDisponibles={diasDisponibles}
+=======
+            ciudad={ciudad}
             fechaReserva={fechaReserva}
+>>>>>>> Stashed changes
             cantidadDeParticipantes={cantidadDeParticipantes}
-            horaInicio={horaInicio}
-            horaFin={horaFin}
             precio={precio}
             caracteristicas={caracteristicas}
             setNombre={setNombre}
             setDeporte={setDeporte}
             setFotosAgregadas={setFotosAgregadas}
             setDescripcion={setDescripcion}
+<<<<<<< Updated upstream
+            setDiasDisponibles={setDiasDisponibles}
+=======
+            setCiudad={setCiudad}
             setFechaReserva={setFechaReserva}
+>>>>>>> Stashed changes
             setCantidadDeParticipantes={setCantidadDeParticipantes}
-            setHoraInicio={setHoraInicio}
-            setHoraFin={setHoraFin}
             setPrecio={setPrecio}
             setCaracterisitcas={setCaracterisitcas}
             addNewEspacio={addNewEspacio}

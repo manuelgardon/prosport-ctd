@@ -5,7 +5,6 @@ import { setHours, setMinutes, differenceInHours } from 'date-fns'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import FormReserva from './forms/FormReserva'
-
 // recibimos el valor del precio del espacio desde el componente EspacioPage
 export default function Reserva({ precio }) {
     
@@ -16,20 +15,31 @@ export default function Reserva({ precio }) {
     const [precioTotal, setPrecioTotal] = useState();
     const { id } = useParams()
     const token = Cookies.get('token')
+    const [diasDisponibles, setDiasDisponibles] = useState([]);
 
     useEffect(() => {
         async function obtenerReservaExistente() {
-            try {
-                const response = await axios.get('http://localhost:1234/api/reservas')
-                setReservasExistente(response.data)
-            } catch (error) {
-                console.error('Error al obtener las reservas:', error)
-            }
+          try {
+            const response = await axios.get(`http://localhost:1234/api/reservas?espacioId=${id}`);
+            setReservasExistente(response.data);
+          } catch (error) {
+            console.error('Error al obtener las reservas:', error);
+          }
         }
-
-        obtenerReservaExistente()
-    }, [])
-
+    
+        async function obtenerDiasDisponibles() {
+          try {
+            const response = await axios.get(`http://localhost:1234/api/espacios/${id}`);
+            setDiasDisponibles(response.data.diasDisponibles);
+          } catch (error) {
+            console.error('Error al obtener los días disponibles:', error);
+          }
+        }
+    
+        obtenerReservaExistente();
+        obtenerDiasDisponibles();
+      }, [id]);
+    
     function calcularPrecio() {
         const horaInicioDate = new Date(horaInicio);
         const horaFinDate = new Date(horaFin);
@@ -65,13 +75,19 @@ export default function Reserva({ precio }) {
             }
             // convertimos la fecha en formato ISO y luego dividimos la cadena para tomar
             // solo la fecha
-            const fechaReservaStr = fechaReserva.toISOString().split('T')[0]
+            const fechaReservaISO = fechaReserva.toLocaleDateString('en-US');
+            console.log('fechaReservaISO:', fechaReservaISO);
+            const diasDisponiblesStrings = diasDisponibles.map(date => new Date(date).toLocaleDateString('en-US'));
+            console.log('diasDisponiblesStrings:', diasDisponiblesStrings);
             const horaFinStr = horaFin.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
             const horaInicioStr = horaInicio.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) // los argumentos hour y minute sirven para setear un formato a la cadena de tiempo, ej: '2-digit' => '01' en vez de '1' en el caso de las horas
-
+            if (!diasDisponiblesStrings.includes(fechaReservaISO)) {
+                alert('La fecha de reserva no está dentro del intervalo permitido');
+                return;
+            }
             const reservaExistente = reservasExistente.find(
                 (reserva) => reserva.espacioId === id &&
-                    reserva.fechaReserva === fechaReservaStr &&
+                    reserva.fechaReserva === fechaReservaISO &&
                     reserva.horaInicio === horaInicioStr &&
                     reserva.horaFin === horaFinStr
             )
@@ -87,7 +103,7 @@ export default function Reserva({ precio }) {
                     'http://localhost:1234/api/reservas',
                     {
                         espacioId: id,
-                        fechaReserva: fechaReservaStr,
+                        fechaReserva: fechaReservaISO,
                         horaInicio: horaInicioStr,
                         horaFin: horaFinStr,
                         precio: precioTotal
