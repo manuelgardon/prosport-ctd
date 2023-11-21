@@ -102,12 +102,8 @@ function EspacioFormPage() {
             deporte={deporte}
             fotosAgregadas={fotosAgregadas}
             descripcion={descripcion}
-<<<<<<< Updated upstream
             diasDisponibles={diasDisponibles}
-=======
             ciudad={ciudad}
-            fechaReserva={fechaReserva}
->>>>>>> Stashed changes
             cantidadDeParticipantes={cantidadDeParticipantes}
             precio={precio}
             caracteristicas={caracteristicas}
@@ -115,12 +111,8 @@ function EspacioFormPage() {
             setDeporte={setDeporte}
             setFotosAgregadas={setFotosAgregadas}
             setDescripcion={setDescripcion}
-<<<<<<< Updated upstream
             setDiasDisponibles={setDiasDisponibles}
-=======
             setCiudad={setCiudad}
-            setFechaReserva={setFechaReserva}
->>>>>>> Stashed changes
             setCantidadDeParticipantes={setCantidadDeParticipantes}
             setPrecio={setPrecio}
             setCaracterisitcas={setCaracterisitcas}
