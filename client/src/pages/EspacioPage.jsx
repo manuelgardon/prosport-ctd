@@ -59,7 +59,7 @@ export default function EspacioPage() {
             <section>
                 <article>
                     <h2>Galeria de fotos de {espacio.nombre}</h2>
-                    <button onClick={() => setRenderFotos(false)}>Cerrrar galeria</button>
+                    <button onClick={() => setRenderFotos(false)}>Cerrar galeria</button>
                 </article>
                 {espacio.fotos.length > 0 && espacio.fotos.map((foto, index) => (
                     <article key={index}>
@@ -71,7 +71,7 @@ export default function EspacioPage() {
     }
     return (
 
-        <section className="mt-[90px] relative">
+        <section className="mt-[90px] relative mx-auto my-auto">
             <GaleriaEspacio espacio={espacio} />
             <CompartirEspacio espacio={espacio} />
             <section className="flex justify-between px-10 mt-10">

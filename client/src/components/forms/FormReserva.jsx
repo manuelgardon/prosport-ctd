@@ -15,9 +15,9 @@ export default function FormReserva({
     const fechaMaxima = diasDisponibles ? new Date(Math.max(...diasDisponibles.map(date => new Date(date)))) : new Date();
     return (
         <section className="mt-10">
-            <form className="w-full max-w-sm mx-auto bg-slate-600" onSubmit={handleReserva}>
+            <form className="w-full max-w-sm mx-auto bg-opacity-50 backdrop-blur-lg bg-[#223331] px-4 py-4 rounded-lg" onSubmit={handleReserva}>
                 <div className="mb-4">
-                    <label htmlFor="startDate" className="block text-gray-700 text-sm font-bold mb-2">
+                    <label htmlFor="startDate" className="block text-[#AAF0D5] text-sm font-bold mb-2">
                         Fecha de inicio de reserva:
                     </label>
                     <DatePicker
@@ -39,7 +39,7 @@ export default function FormReserva({
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="startTime" className="block text-gray-700 text-sm font-bold mb-2">
+                    <label htmlFor="startTime" className="block text-[#AAF0D5] text-sm font-bold mb-2">
                         Hora de inicio de reserva:
                     </label>
                     <TimePicker
@@ -57,7 +57,7 @@ export default function FormReserva({
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="endTime" className="block text-gray-700 text-sm font-bold mb-2">
+                    <label htmlFor="endTime" className="block text-[#AAF0D5] text-sm font-bold mb-2">
                         Hora de finalización de reserva:
                     </label>
                     <TimePicker
@@ -75,7 +75,7 @@ export default function FormReserva({
                 </div>
                 {precioTotal && (
                     <div className="mb-4">
-                        <label htmlFor="precioTotal" className="block text-gray-700 text-sm font-bold mb-2">
+                        <label htmlFor="precioTotal" className="block text-[#AAF0D5] text-sm font-bold mb-2">
                             Precio Total:
                         </label>
                         <p>${precioTotal}</p>
@@ -84,7 +84,7 @@ export default function FormReserva({
 
                 <button
                     type="submit"
-                    className="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:border-primary-600"
+                    className="w-full hover:bg-[#17B289] hover:bg-opacity-5 text-[#17B289] font-bold py-2 px-4 rounded border border-[#17B289] "
                 >
                     Reservar
                 </button>
