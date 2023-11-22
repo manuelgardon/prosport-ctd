@@ -17,6 +17,7 @@
 
 #### TODO 
 
-- Agregar un campo para que un espacio tenga una ciudad
-- Filtrar espacios por ciudad
+- ✅ Agregar un campo para que un espacio tenga una ciudad
+- ✅Filtrar espacios por ciudad
 - Agregar funcionalidad para compratir el espacio en distintas redes sociales
+- Arreglar funcionalidad de espacios paginados, paginas hardcodeadeas hay que automatizarlas

@@ -13,7 +13,7 @@ export default function GaleriaEspacio({ espacio }) {
                 </article>
                 {espacio.fotos.length > 0 && espacio.fotos.map((foto, index) => (
                     <article key={index}>
-                        <img src={'http://localhost:1234/uploads/' + foto} alt={espacio.nombre} />
+                        <img src={`https://1023c07-prosport.s3.amazonaws.com/${foto}`} alt={espacio.nombre} />
                     </article>
                 ))}
             </section>
@@ -25,18 +25,18 @@ export default function GaleriaEspacio({ espacio }) {
                 <div>
                     {espacio.fotos?.[0] && (
                         //foto principal
-                        <img className="aspect-square object-cover cursor-pointer" src={'http://localhost:1234/uploads/' + espacio.fotos[0]} alt=""
+                        <img className="aspect-square object-cover cursor-pointer" src={`https://1023c07-prosport.s3.amazonaws.com/${espacio.fotos[0]}`} alt=""
                             onClick={() => setRenderFotos(true)} />
                     )}
                 </div>
                 <div className="grid">
                     {espacio.fotos?.[1] && (
-                        <img className="aspect-square object-cove cursor-pointer" src={'http://localhost:1234/uploads/' + espacio.fotos[1]} alt=""
+                        <img className="aspect-square object-cove cursor-pointer" src={`https://1023c07-prosport.s3.amazonaws.com/${espacio.fotos[1]}`} alt=""
                             onClick={() => setRenderFotos(true)} />
                     )}
                     <div className="overflow-hidden">
                         {espacio.fotos?.[2] && (
-                            <img className="aspect-square object-cover cursor-pointer" src={'http://localhost:1234/uploads/' + espacio.fotos[2]} alt=""
+                            <img className="aspect-square object-cover cursor-pointer" src={`https://1023c07-prosport.s3.amazonaws.com/${espacio.fotos[2]}`}alt=""
                                 onClick={() => setRenderFotos(true)} />
                         )}
                     </div>

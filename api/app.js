@@ -19,6 +19,7 @@ const cors = require('cors')
 const port = 1234;
 const fs = require('fs');
 const multer = require('multer')
+const AWS = require('aws-sdk');
 const path = require('path');
 require('dotenv').config();
 const bodyParser = require('body-parser');
@@ -91,7 +92,7 @@ app.get('/test', (req, res) => {
 })
 
 // Subir fotos desde archivos locales
-const photosMiddleware = multer({ dest: 'uploads/' })
+/*const photosMiddleware = multer({ dest: 'uploads/' })
 app.post('/uploads', photosMiddleware.array('fotos ', 50), (req, res) => {
 
   const uploadedFiles = []
@@ -105,6 +106,40 @@ app.post('/uploads', photosMiddleware.array('fotos ', 50), (req, res) => {
   }
   res.json(uploadedFiles)
 })
+*/
+
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
+
+app.post('/uploads', upload.array('fotos', 50), (req, res) => {
+  const files = req.files
+  if (!files || files.length === 0) {
+    res.status(400).json({ mensaje: 'No se han subido archivos' })
+  }
+  const s3 = new AWS.S3({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION
+  })
+
+  const uploadPromises = files.map((file, index)=> {
+    const params = {
+      Bucket: process.env.AWS_BUCKET_NAME,
+      Key: file.originalname,
+      Body: file.buffer,
+    }
+    return s3.upload(params).promise()
+  })
+
+  Promise.all(uploadPromises)
+  .then((results) => {
+    res.json({success: true})
+  }) 
+  .catch((error) =>{ 
+    res.status(500).json({ mensaje: 'Error al subir archivos a S3:', error })
+  })
+})
+
 
 
 // Ruta de registro

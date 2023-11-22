@@ -40,7 +40,7 @@ const obtenerEspaciosPaginados = async (req, res) => {
     console.error(error)
     res.status(500).send('Error al obtener espacios paginados')
   }
-};
+}
 
 
 const obtenerPorUsuario = async (req, res) => {

@@ -86,7 +86,7 @@ export default function EspaciosPage() {
                 <article key={espacio._id} className='text-white'>
                     <div className="flex w-32 h-32 bg-gray-300 grow shrink-0">
                         {espacio.fotos.length > 0 && (
-                            <img className="w-full" src={'http://localhost:1234/uploads/' + espacio.fotos[0]} alt={espacio.nombre} />
+                            <img className="w-full" src={`https://1023c07-prosport.s3.amazonaws.com/${espacio?.fotos[0]}`} alt={espacio.nombre} />
                         )}
                     </div>
                     <div className="grow-0 shrink text-white">
