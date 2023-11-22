@@ -102,7 +102,24 @@ export default function Reserva({ precio }) {
             const horaFinStr = horaFin.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
             const horaInicioStr = horaInicio.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) // los argumentos hour y minute sirven para setear un formato a la cadena de tiempo, ej: '2-digit' => '01' en vez de '1' en el caso de las horas
             if (!diasDisponiblesStrings.includes(fechaReservaISO)) {
-                alert('La fecha de reserva no está dentro del intervalo permitido');
+                Swal.fire({
+
+                    title:"La fecha de reserva no está dentro del intervalo permitido",
+                    icon: "error",
+                    background:"#212121",
+                    backdrop:true,
+                    color: "#00FF9D",
+                    allowOutsideClick:false,
+                    allowEscapeKey:true,
+                    allowEnterKey:true,
+                    confirmButtonText: "Aceptar",
+                    confirmButtonColor: "#00FF9D",
+                    buttonsStyling: false,
+                    customClass:{
+                        popup:"swal-popu",
+                        confirmButton:"swal"
+                    },
+                    });
                 return;
             }
             const reservaExistente = reservasExistente.find(
@@ -170,7 +187,6 @@ export default function Reserva({ precio }) {
                 console.log(response.data)
             } catch (error) {
                 if (error.response && error.response.status === 400) {
-                    alert(error.response.data.message)
                     Swal.fire({
 
                         title:"Error en la reserva",

@@ -64,13 +64,7 @@ const FormLogin = () => {
           confirmButton:"swal"
         },
       });
-
-      
-      
-      
-      
     }
-
   }
 
   if (redirect) {
