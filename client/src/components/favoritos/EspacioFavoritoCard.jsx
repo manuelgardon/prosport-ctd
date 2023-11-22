@@ -8,22 +8,22 @@ export default function EspacioFavoritoCard({ favorito, handleDelete }) {
     return (
         <ul >
             <li className=" w-1/3 relative mt-2">
-                <h2 className="font-bold text-3xl pb-2 text-white">{favorito.espacioId.nombre}</h2>
-                <Link to={'/espacio/' + favorito.espacioId._id}>
+                <h2 className="font-bold text-3xl pb-2 text-white">{favorito.espacioId?.nombre}</h2>
+                <Link to={'/espacio/' + favorito.espacioId?._id}>
                     <section className="grid gap-2 grid-cols-[2fr_1fr] rounded-2xl overflow-hidden w-[500px]">
                         <div>
-                            {favorito.espacioId.fotos?.[0] && (
+                            {favorito.espacioId?.fotos?.[0] && (
                                 //foto principal
                                 <img className="aspect-square object-cover cursor-pointer" src={`https://1023c07-prosport.s3.amazonaws.com/${favorito.espacioId.fotos[0]}`} alt=''
                                 />
                             )}
                         </div>
                         <div className="grid">
-                            {favorito.espacioId.fotos?.[1] && (
+                            {favorito.espacioId?.fotos?.[1] && (
                                 <img className="aspect-square object-cove cursor-pointer" src={`https://1023c07-prosport.s3.amazonaws.com/${favorito.espacioId.fotos[1]}`} alt=""
                                 />
                             )}
-                            {favorito.espacioId.fotos?.[2] && (
+                            {favorito.espacioId?.fotos?.[2] && (
                                 <img className="aspect-square object-cover cursor-pointer" src={`https://1023c07-prosport.s3.amazonaws.com/${favorito.espacioId.fotos[2]}`} alt=""
                                 />
                             )}
