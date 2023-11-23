@@ -21,7 +21,7 @@ export default function FormReserva({
                         Fecha de inicio de reserva:
                     </label>
                     <DatePicker
-                        value={fechaReserva}
+                        value={fechaReserva.toString().split('T')[0]}
                         onChange={(date) => setFechaReserva(date)}
                         renderInput={(props) => (
                             <input

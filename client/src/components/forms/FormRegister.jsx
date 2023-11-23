@@ -134,7 +134,7 @@ export default function FormRegistro() {
               </div>
               <div>
                 <label className="text-[#8AB0A6] block mb-2 text-sm text-base dark:text-white">Domicilio</label>
-                <input type="text" value={domicilio} onChange={(e => setFechaNacimiento(e.target.value))} className="bg-[#8AB0A6] bg-opacity-0 border-b-2 border-[#8AB0A6] text-[#8AB0A6] sm:text-sm block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=""  required/>
+                <input type="text" value={domicilio} onChange={(e => setDomicilio(e.target.value))} className="bg-[#8AB0A6] bg-opacity-0 border-b-2 border-[#8AB0A6] text-[#8AB0A6] sm:text-sm block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=""  required/>
               </div>
               <div>
                 <label className="text-[#8AB0A6] block mb-2 text-sm text-base dark:text-white">Teléfono</label>

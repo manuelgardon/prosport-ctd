@@ -50,6 +50,8 @@ export default function ListaReservas() {
                                 <div className='py-3 pr-3 grow'>
                                     <h2 className='text-xl'>{reserva.espacioId?.nombre}
                                     </h2>
+                                    <h2 className='text-xl'>{reserva.espacioId?.nombre}
+                                    </h2>
                                     <div className='flex gap-2 items-center border-t border-gray-300 mt-2 py-2'>
                                         <IconClockStart /> {reserva?.horaInicio} <span> &rarr;</span>
                                         <IconClockEnd /> {reserva?.horaFin}
@@ -58,12 +60,12 @@ export default function ListaReservas() {
                                         <IconMoney />
                                         Precio total: ${reserva?.precio}
                                     </div>
-                                    <p>{reserva?.fechaReserva}</p>
+                                    <p>{reserva.fechaReserva.toString().split('T')[0]}</p>
                                 </div>
                             </article>
                         </Link>
                     ))}
-                </section>
+            </section>
             )}
         </section>
     );
