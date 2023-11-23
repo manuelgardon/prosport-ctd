@@ -59,16 +59,16 @@ export default function Header() {
                         <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 justify-between items-center">
                                 <li>
-                                    <button className=""><Link to={'/account/espacios'}>Mis Espacios</Link></button>
+                                    <button className="text-[#83F3C8] border border-[#83F3C8] p-2 rounded-lg mr-4 hover:bg-black"><Link to={'/account/espacios'}>Mis Espacios</Link></button>
                                 </li>
                                 <li>
-                                    <button><Link to={'account/reservas'}>Mis reservas</Link></button>
+                                    <button className='text-[#83F3C8] border border-[#83F3C8] p-2 rounded-lg mr-4 hover:bg-black'><Link to={'account/reservas'}>Mis reservas</Link></button>
                                 </li>
                                 <li>
-                                    <button><Link to={'account/favoritos'}>Mis favoritos</Link></button>
+                                    <button className='text-[#83F3C8] border border-[#83F3C8] p-2 rounded-lg mr-4 hover:bg-black'><Link to={'account/favoritos'}>Mis favoritos</Link></button>
                                 </li>
                                 <li>
-                                    <button className="" onClick={logOut}>Cerrar Sesión</button>
+                                    <button className="text-[#83F3C8] border border-[#83F3C8] p-2 rounded-lg mr-4 hover:bg-black" onClick={logOut}>Cerrar Sesión</button>
                                 </li>
                             </ul>
                             <div>
