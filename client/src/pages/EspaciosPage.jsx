@@ -76,12 +76,17 @@ export default function EspaciosPage() {
     }
 
     return (
-        <section className='mt-[500px]'>
-            <h1 className="text-4xl text-white">Espacios</h1>
-            <Link to={'/account/espacios/new'} className="relative -right-[580px] hover:text-primary text-white">
-                CREAR ESPACIO
-            </Link>
-            <hr className="mt-4 mb-4" />
+        <section className='mt-[120px] w-screen'>
+            <div className='flex flex-col items-center'>
+
+                <h1 className="text-4xl text-[#A8F2DE]">Mis Espacios</h1>
+                <button className='mt-4 text-[#83F3C8] border border-[#83F3C8] p-2 rounded-lg mr-4 hover:bg-black'>
+                    <Link to={'/account/espacios/new'} className="">
+                        CREAR ESPACIO
+                    </Link>
+                </button>
+            </div>
+            <hr className="mt-4 mb-4 border-[#83F3C8]" />
             {espacios.length > 0 && espacios.map(espacio => (
                 <article key={espacio._id} className='text-white'>
                     <div className="flex w-32 h-32 bg-gray-300 grow shrink-0">
