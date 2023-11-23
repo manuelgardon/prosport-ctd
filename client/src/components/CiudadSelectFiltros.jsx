@@ -39,7 +39,7 @@ export default function CiudadSelectIndex({ onChange }) {
                     />
                     <IconCursorFill />
                     </div>
-                    <div className="w-80 mt-2 bg-[#131315] border rounded z-10 text-[#D08023] absolute top-12">
+                    <div className="w-80 mt-2 bg-[#131315] border rounded z-10 text-[#D08023] absolute top-12 border-none">
                         {loading && <div className="p-2">Cargando...</div>}
                         {suggestions.map((suggestion) => (
                             <div
