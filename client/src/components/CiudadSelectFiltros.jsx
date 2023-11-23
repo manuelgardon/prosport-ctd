@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import { useState } from 'react'
+import IconSearch, { IconCursorFill } from './icons'
 export default function CiudadSelectIndex({ onChange }) {
 
     const [ciudad, setCiudad] = useState('')
@@ -20,19 +21,25 @@ export default function CiudadSelectIndex({ onChange }) {
         onChange(ciudad)
     }
 
-    return (
+    return (<div className='w-screen'>
+
         <PlacesAutocomplete
             value={ciudad} onChange={handleChangeCiudad} onSelect={handleSelectCiudad}
         >
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                <div className="relative text-black">
-                    <input
+                <div className="text-black w-full flex flex-col items-center relative">
+                    <div className='relative'>
+                    <IconSearch />
+
+                    <input className='w-[500px] mb-2 my-1 py-2 px-12 rounded-2xl bg-[#131315] h-12 border-[#D08023] border-2 text-[#D08023]'
                         {...getInputProps({
                             placeholder: 'Selecciona la ciudad de tu espacio',
-                            className: 'w-full mb-2 border my-1 py-2 px-3 rounded-2xl text-blue-400',
+                            
                         })}
                     />
-                    <div className="absolute w-full mt-2 bg-white border rounded z-10">
+                    <IconCursorFill />
+                    </div>
+                    <div className="w-80 mt-2 bg-[#131315] border rounded z-10 text-[#D08023] absolute top-12">
                         {loading && <div className="p-2">Cargando...</div>}
                         {suggestions.map((suggestion) => (
                             <div
@@ -47,5 +54,6 @@ export default function CiudadSelectIndex({ onChange }) {
                 </div>
             )}
         </PlacesAutocomplete>
+    </div>
     );
 }
