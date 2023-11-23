@@ -62,27 +62,33 @@ export default function Filters({ onChange, cargarEspacios }) {
 
             </div>
             <section className="flex gap-3 justify-center items-center sm:relative w-full mb-10">
-                <div className="left-0 mt-2 bg-[#202222] p-4 rounded-lg 
-                flex w-[500px] justify-center items-center gap-3">
-                    <label className="text-white mb-2">Rango de precios</label>
+                <div className="left-0 mt-2 bg-[#223331] p-4 rounded-lg 
+                flex w-[500px] justify-around items-center gap-3 h-[8em]">
+                    <div className="flex flex-col w-40 items-center">
+
+                    <label className="text-[#AAF0D5] mb-3">Rango de precios</label>
                     <Slider
                         range
                         min={0}
                         max={1000}
                         value={[precioMinimo, precioMaximo]}
                         onChange={handleChangeRangoPrecio}
-                        className="mb-2"
+                        className="mb-1"
                     />
-                    <div className="text-center mt-4 text-white">
+                    <div className="text-center mt-4 text-[#AAF0D5]">
                         Precio: {precioMinimo} - {precioMaximo}
                     </div>
+                    </div>
+                    <div className="flex flex-col">
+
                     <button
                         onClick={handleAceptar}
-                        className="bg-green-500 p-2 text-white rounded-lg hover:bg-green-700 mt-4"
+                        className="bg-green-500 p-2 text-white rounded-lg hover:bg-green-700 mt-4 w-20"
                     >
                         Aceptar
                     </button>
-                    <button onClick={reestablecerPrecio} className="bg-red-500 p-2 text-white rounded-lg hover:bg-red-700 mt-4">Quitar</button>
+                    <button onClick={reestablecerPrecio} className="bg-red-500 p-2 text-white rounded-lg hover:bg-red-700 mt-4 w-20">Quitar</button>
+                    </div>
                 </div>
 
                 {/* ------------------- Filtros por categoria --------------------- */}
