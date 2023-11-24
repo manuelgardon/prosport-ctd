@@ -71,36 +71,44 @@ export default function EspacioPage() {
     }
     return (
 
-        <section className="mt-[90px] relative mx-auto my-auto">
-            <GaleriaEspacio espacio={espacio} />
-            <CompartirEspacio espacio={espacio} />
-            <section className="flex justify-between px-10 mt-10">
-                <article className="text-white">
-                    <h2>{espacio.nombre}</h2>
-                    <p>{espacio.descripcion}</p>
-                    <ServiciosRender caracteristicas={espacio.caracteristicas} />
-                </article>
-                <section className='flex flex-col items-center gap-5'>
-                    <div className="flex items-center gap-3">
-                        <StarRating
-                            rating={promedio}
-                            starRatedColor="#17b289"
-                            numberOfStars={1}
-                            isInteractive={false}
-                        />
-                        <h3 className="text-3xl text-white font-bold">{esEntero(promedio)}</h3>
+        <section className="m-[90px]">
+            <section className='flex flex-col gap-5'>
+                <section className='flex items-center'>
+                    <div className='flex gap-2'>
+                        <h2 className="text-xl text-white font-bold">ESPACIO: </h2>
+                        <h2 className="text-xl text-white font-bold">{espacio.nombre}</h2>
                     </div>
-                    <div>
-                        {cantidadCalificaciones === 1 && <p className="text-white text-xl">Calificado por {cantidadCalificaciones} usuario</p>}
-                        {cantidadCalificaciones > 1 && <p className="text-white text-xl">Calificado por {cantidadCalificaciones} usuarios</p>}
-                        {cantidadCalificaciones === 0 && <p className="text-white text-xl">Sin calificaciones</p>}
+                    <div className="flex items-center gap-3 m-[20px]">
+                        <div className="flex items-center gap-5">
+                            <StarRating
+                                rating={promedio}
+                                starRatedColor="#17b289"
+                                numberOfStars={1}
+                                isInteractive={false}
+                            />
+                            <h3 className="text-xl text-white font-bold">{esEntero(promedio)}</h3>
+                        </div>
+                        <div>
+                            {cantidadCalificaciones === 1 && <p className="text-white text-xl">Calificado por {cantidadCalificaciones} usuario</p>}
+                            {cantidadCalificaciones > 1 && <p className="text-white text-xl">Calificado por {cantidadCalificaciones} usuarios</p>}
+                            {cantidadCalificaciones === 0 && <p className="text-white text-xl">Sin calificaciones</p>}
+                        </div>
                     </div>
-                    <Reserva precio={espacio.precio} fechasDisponibles={fechasDisponibles} />
                 </section>
-            </section>
-            <section>
+                <GaleriaEspacio espacio={espacio} />
+                <CompartirEspacio espacio={espacio} />
+                <section className="flex content-start place-content-around">
+                    <article className="text-white">   
+                        <p>{espacio.descripcion}</p>
+                        <ServiciosRender caracteristicas={espacio.caracteristicas} />
+                    </article>
+                        <Reserva precio={espacio.precio} fechasDisponibles={fechasDisponibles} />
+                </section>
+                
+                <section>
                 <Calificacion espacioId={id} obtenerCalificacion={obtenerCalificacion}
                     obtenerPromedio={obtenerPromedio} />
+                </section>
             </section>
         </section>
     )

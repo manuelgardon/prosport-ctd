@@ -14,8 +14,8 @@ export default function FormReserva({
 }) {
     const fechaMaxima = diasDisponibles ? new Date(Math.max(...diasDisponibles.map(date => new Date(date)))) : new Date();
     return (
-        <section className="mt-10">
-            <form className="w-full max-w-sm mx-auto bg-opacity-50 backdrop-blur-lg bg-[#223331] px-4 py-4 rounded-lg" onSubmit={handleReserva}>
+        <section className="">
+            <form className="w-full max-w-sm mx-auto bg-opacity-50 backdrop-blur-lg bg-[#E1E1E1] px-4 py-4 rounded-lg" onSubmit={handleReserva}>
                 <div className="mb-4">
                     <label htmlFor="startDate" className="block text-[#AAF0D5] text-sm font-bold mb-2">
                         Fecha de inicio de reserva:
