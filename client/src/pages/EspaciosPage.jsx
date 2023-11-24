@@ -76,8 +76,8 @@ export default function EspaciosPage() {
     }
 
     return (
-        <section className='mt-[120px] w-screen'>
-            <div className='flex flex-col items-center'>
+        <section className='mt-[120px] w-screen h-screen'>
+            <div className='flex flex-col items-center justify-center'>
 
                 <h1 className="text-4xl text-[#A8F2DE]">Mis Espacios</h1>
                 <button className='mt-4 text-[#83F3C8] border border-[#83F3C8] p-2 rounded-lg mr-4 hover:bg-black'>
@@ -87,24 +87,29 @@ export default function EspaciosPage() {
                 </button>
             </div>
             <hr className="mt-4 mb-4 border-[#83F3C8]" />
+            <div className='flex'>
+                
             {espacios.length > 0 && espacios.map(espacio => (
-                <article key={espacio._id} className='text-white'>
+                <article key={espacio._id} className="border-[#83F3C8] border-2 m-4">
                     <div className="flex w-32 h-32 bg-gray-300 grow shrink-0">
                         {espacio.fotos.length > 0 && (
-                            <img className="w-full" src={`https://1023c07-prosport.s3.amazonaws.com/${espacio?.fotos[0]}`} alt={espacio.nombre} />
+                            <img className="" src={`https://1023c07-prosport.s3.amazonaws.com/${espacio?.fotos[0]}`} alt={espacio.nombre} />
                         )}
                     </div>
-                    <div className="grow-0 shrink text-white">
-                        <h2 className="text-xl">{espacio.nombre}</h2>
-                        <p><small>{espacio.deporte}</small></p>
-                        <Link to={'/account/espacios/' + espacio._id} className="relative -right-[580px] hover:text-primary">
+                    <div className="grow-0 shrink text-white flex flex-col justify-center items-center">
+                        <h2 className="text-2xl text-[#A8F2DE]">{espacio.nombre}</h2>
+                        <p className='text-xl'><small>{espacio.deporte}</small></p>
+                        <button className='mt-4 text-[#83F3C8] border border-[#83F3C8] p-2 rounded-lg hover:bg-black'>
+
+                        <Link to={'/account/espacios/' + espacio._id} className="hover:text-primary">
                             EDITAR
                         </Link>
-                    </div>
-                    <div className="grow-0 shrink text-white">
-                        <button onClick={() => handleDelete(espacio._id)}>
+                        </button>
+                        <button onClick={() => handleDelete(espacio._id)} className='m-4 text-[#83F3C8] border border-[#83F3C8] p-2 rounded-lg hover:bg-black'>
                             ELIMINAR
                         </button>
+                    </div>
+                    <div className="grow-0 shrink text-white">
                     </div>
                 </article>
             ))}
@@ -119,6 +124,7 @@ export default function EspaciosPage() {
                     </div>
                 </div>
             )}
+            </div>
         </section>
     )
 
