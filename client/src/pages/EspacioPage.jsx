@@ -97,8 +97,8 @@ export default function EspacioPage() {
                 </section>
                 <GaleriaEspacio espacio={espacio} />
                 <CompartirEspacio espacio={espacio} />
-                <section className="flex content-start place-content-around">
-                    <article className="text-white">   
+                <section className="flex place-content-around">
+                    <article className="text-white p-9">   
                         <p>{espacio.descripcion}</p>
                         <ServiciosRender caracteristicas={espacio.caracteristicas} />
                     </article>
