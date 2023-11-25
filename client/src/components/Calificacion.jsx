@@ -191,7 +191,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
                             numberOfStars={5}
                             isInteractive={false}
                         />
-                        <p>incia sesion y reserva para calificar este espacio</p>
+                        <p className='text-[#FF9B27] my-2'>Incia sesion y reserva para calificar este espacio</p>
                         <div className='mt-4'>
                             <label className='block text-gray-700 font-semibold'>
                                 Deja tu comentario:
@@ -204,7 +204,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
                                 rows='3'
                                 disabled={true}
                             />
-                            <button className='bg-green-500 text-white p-2 rounded-md mt-2 w-full transition-colors duration-300 ease-in-out hover:bg-green-600' onClick={() => publicarCalificacion()}>Publicar</button>
+                            <button className='w-60 bg-green-500 text-white p-2 rounded-md mt-2  transition-colors duration-300 ease-in-out hover:bg-green-600' onClick={() => publicarCalificacion()}>Publicar</button>
                         </div>
                     </div>
                 )}

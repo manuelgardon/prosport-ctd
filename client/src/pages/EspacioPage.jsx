@@ -95,15 +95,19 @@ export default function EspacioPage() {
                         </div>
                     </div>
                 </section>
-                <GaleriaEspacio espacio={espacio} />
-                <CompartirEspacio espacio={espacio} />
-                <section className="flex place-content-around">
+                <section className="flex">
+                    <div>
+                        <GaleriaEspacio espacio={espacio} />
+                        <CompartirEspacio espacio={espacio} />
+                    </div>
+                    <Reserva precio={espacio.precio} fechasDisponibles={fechasDisponibles} />
+                </section>
+
                     <article className="text-white p-9">   
                         <p>{espacio.descripcion}</p>
                         <ServiciosRender caracteristicas={espacio.caracteristicas} />
                     </article>
-                        <Reserva precio={espacio.precio} fechasDisponibles={fechasDisponibles} />
-                </section>
+
                 
                 <section>
                 <Calificacion espacioId={id} obtenerCalificacion={obtenerCalificacion}

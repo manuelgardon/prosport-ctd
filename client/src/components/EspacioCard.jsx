@@ -40,7 +40,7 @@ export default function EspacioCard({ espacio, agregarFavorito, eliminarFavorito
                 </Link>
                 <div className='absolute top-5 right-5'>
                     <button onClick={handleClick}>
-                        <FontAwesomeIcon icon={esFavorito ? heartSolid : heartNormal} size='2x' className={esFavorito ? 'text-[#17B289]' : ''} />
+                        <FontAwesomeIcon icon={esFavorito ? heartSolid : heartNormal} size='2x' className={esFavorito ? 'text-[#FF9B27]' : ''} />
                     </button>
                 </div>
             </li>
