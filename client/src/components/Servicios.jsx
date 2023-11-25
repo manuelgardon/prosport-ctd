@@ -24,9 +24,9 @@ export default function Servicios ({ selected, onChange }) {
 
   return (
     <section>
-      <h2 className="text-2xl mt-4">Servicios</h2>
+      <h2 className="text-3xl text-[#17B289] font-bold mt-4">SERVICIOS</h2>
       <p>
-        <small className="text-gray-500">Selecciona los servicios que ofrece tu espacio</small>
+        <small className="text-xl text-[#E1E1E1] mt-4">Selecciona los servicios que ofrece tu espacio</small>
       </p>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 mt-3">
         {serviciosData.map((servicio) => (

@@ -12,38 +12,28 @@ export default function FormEspacio({ nombre, deporte, fotosAgregadas, descripci
     return (
         <div className="flex justify-center grow mt-[60px] py-10 p-6 w-full">
             <form onSubmit={addNewEspacio} className=' p-10 rounded-2xl w-[80%]'>
-                <h2 className="text-2xl mt-4">Nombre</h2>
-                <p><small className="text-gray-500">Nombre del club</small></p>
-                <input type="text" placeholder="Nombre, ej: Cancha ProSport"
+                <h2 className="text-[#8AB0A6] text-2xl font-bold mb-2">Nombre:</h2>
+          
+                <input type="text" placeholder="Ingresá el nombre de tu espacio"
                     value={nombre}
                     onChange={e => setNombre(e.target.value)}
-                    className="w-full mb-2 border my-1 py-2 px-3 rounded-2xl"
+                    className='mb-10 bg-[#8AB0A6] bg-opacity-0 border-b-2 border-[#8AB0A6] text-[#8AB0A6] sm:text-sm block w-full'   
                     required
                 />
-                <h2 className="text-2xl mt-4">Deporte</h2>
-                <p>
-                    <small className="text-gray-500">
-                        El deporte que se realizara en el club
-                    </small>
-                </p>
+                <h2 className="text-[#8AB0A6] text-2xl font-bold mb-2">Deporte:</h2>
                 <select
                     value={deporte}
                     onChange={e => setDeporte(e.target.value)}
-                    className="w-full mb-2 border my-1 py-2 px-3 rounded-2xl text-gray-400"
+                    className="mb-10 bg-[#8AB0A6] bg-opacity-0 border-b-2 border-[#8AB0A6] text-[#8AB0A6] sm:text-sm block w-full"
                     required
                 >
-                    <option value="">Selecciona un deporte</option>
+                    <option value="">Seleccioná un deporte</option>
                     <option value="Futbol">Futbol</option>
                     <option value="Basquet">Basquet</option>
                     <option value="Voleibol">Voleibol</option>
                     <option value="Tenis">Tenis</option>
                 </select>
-                <h2 className="text-2xl mt-4">Ciudad</h2>
-                <p>
-                    <small className="text-gray-500">
-                        La ciudad donde se encuentra el club
-                    </small>
-                </p>
+                <h2 className="text-[#8AB0A6] text-2xl font-bold mb-2">Ciudad</h2>
                 <div className='mb-10'>
                     <CiudadSelect ciudad={ciudad} onChange={setCiudad} />
                 </div>
