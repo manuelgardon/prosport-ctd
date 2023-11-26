@@ -12,7 +12,7 @@ export default function FormEspacio({ nombre, deporte, fotosAgregadas, descripci
     return (
         <div className="flex justify-center grow mt-[60px] py-10 p-6 w-full">
             <form onSubmit={addNewEspacio} className=' p-10 rounded-2xl w-[80%]'>
-                <section className='flex'>
+                <section className='flex '>
                         <div className='flex-col w-[50%]'>
                         <h2 className="text-2xl text-[#17B289] font-bold mb-10">NOMBRE:</h2>
                 

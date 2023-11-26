@@ -19,6 +19,7 @@ export default function Filters({ onChange, cargarEspacios }) {
         setCategoriaSeleccionada(deporte)
         cargarEspacios()
     }
+    
     function reestablecerPrecio() {
         onChange((prevState) => ({
             ...prevState,
@@ -49,7 +50,6 @@ export default function Filters({ onChange, cargarEspacios }) {
     }
 
     return (
-
         <section className="flex flex-col gap-3 text-black justify-center items-center sm:relative w-full mb-10" >
             <div>
                 { /*<button
@@ -62,72 +62,34 @@ export default function Filters({ onChange, cargarEspacios }) {
 
             </div>
             <section className="flex gap-3 justify-center items-center sm:relative w-full mb-10">
-                <div className="left-0 mt-2 bg-[#223331] p-4 rounded-lg 
-                flex w-[500px] justify-around items-center gap-3 h-[8em]">
+                <div className="left-0 mt-2 bg-[#223331] p-4 rounded-lg flex w-[500px] justify-around items-center gap-3 h-[8em]">
                     <div className="flex flex-col w-40 items-center">
-
-                    <label className="text-[#AAF0D5] mb-3">Rango de precios</label>
-                    <Slider
-                        range
-                        min={0}
-                        max={1000}
-                        value={[precioMinimo, precioMaximo]}
-                        onChange={handleChangeRangoPrecio}
-                        className="mb-1"
-                    />
-                    <div className="text-center mt-4 text-[#AAF0D5]">
-                        Precio: {precioMinimo} - {precioMaximo}
+                        <label className="text-[#AAF0D5] mb-3">Rango de precios</label>
+                            <Slider
+                                range
+                                min={0}
+                                max={1000}
+                                value={[precioMinimo, precioMaximo]}
+                                onChange={handleChangeRangoPrecio}
+                                className="mb-1"/>
+                        <div className="text-center mt-4 text-[#AAF0D5]">Precio: {precioMinimo} - {precioMaximo}</div>
                     </div>
-                    </div>
-                    <div className="flex flex-col">
-
-                    <button
-                        onClick={handleAceptar}
-                        className="bg-green-500 p-2 text-white rounded-lg hover:bg-green-700 mt-4 w-20"
-                    >
-                        Aceptar
-                    </button>
-                    <button onClick={reestablecerPrecio} className="bg-red-500 p-2 text-white rounded-lg hover:bg-red-700 mt-4 w-20">Quitar</button>
+                    <div className="flex gap-2">
+                        <button onClick={handleAceptar} className="bg-green-500 p-2 text-white rounded-lg hover:bg-green-700 mt-4 w-20">Aceptar</button>
+                        <button onClick={reestablecerPrecio} className="bg-[#FF9B27] p-2 text-white rounded-lg hover:bg-red-700 mt-4 w-20">Quitar</button>
                     </div>
                 </div>
 
                 {/* ------------------- Filtros por categoria --------------------- */}
 
-                <button
-                    onClick={() => handleChangeCategoria('All')}
-                    className={`block p-2 my-2 ${categoriaSeleccionada === 'All' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl`}
-                >
-                    <IconBxGridSmall />
-                    Todas
-                </button>
-                <button
-                    onClick={() => handleChangeCategoria('Futbol')}
-                    className={`block p-2 my-2 ${categoriaSeleccionada === 'Futbol' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl`}
-                >
-                    <IconFootball />
-                    Futbol
-                </button>
-                <button
-                    onClick={() => handleChangeCategoria('Basquet')}
-                    className={`block p-2 my-2 ${categoriaSeleccionada === 'Basquet' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl`}
-                >
-                    <IconBasketball />
-                    Basket
-                </button>
-                <button
-                    onClick={() => handleChangeCategoria('Voleibol')}
-                    className={`block p-2 my-2 ${categoriaSeleccionada === 'Voleibol' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl`}
-                >
-                    <IconVolleyball />
-                    Voleibol
-                </button>
-                <button
-                    onClick={() => handleChangeCategoria('Tenis')}
-                    className="inline-block p-2 my-2 bg-[#222B2A] text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"
-                >
-                    <IconBxTennisBall />
-                    Tenis
-                </button>
+                <button onClick={() => handleChangeCategoria('All')} className={`block p-2 my-2 {categoriaSeleccionada === 'All' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl`}><IconBxGridSmall />Todas</button>
+
+                <button onClick={() => handleChangeCategoria('Futbol')} className={`block p-2 m {categoriaSeleccionada === 'Futbol' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl`}><IconFootball />Futbol</button>
+                <button onClick={() => handleChangeCategoria('Basquet')} className={`block p-2 my-2 {categoriaSeleccionada === 'Basquet' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl`}><IconBasketball />Basket</button>
+
+                <button onClick={() => handleChangeCategoria('Voleibol')} className={`block p-2 my-2 ${categoriaSeleccionada === 'Voleibol' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl`}><IconVolleyball />Voleibol</button>
+
+                <button onClick={() => handleChangeCategoria('Tenis')} className="inline-block p-2 my-2 bg-[#222B2A]text-[#17B289] font-medium hover:bg-[#3d524f] rounded-3xl"><IconBxTennisBall />Tenis</button>
 
             </section>
         </section>
