@@ -10,7 +10,7 @@ export const UploadIcon = () => {
 
 export function IconSearch() {
   return (
-    <svg viewBox="0 0 788.5 1000" fill="currentColor" className="w-9 h-9 bg-[#D08023] text-black rounded-full p-1 absolute mt-2.5 ml-1">
+    <svg viewBox="0 0 788.5 1000" fill="currentColor" className="w-8 h-8 bg-[#D08023] text-black rounded-full p-1 absolute mt-2.5 ml-1">
     <path d="M772 772c20 22.667 22 43.333 6 62l-46 46c-24 21.333-46.667 21.333-68 0L474 690c-49.333 28-101.333 42-156 42-85.333 0-159.667-31.667-223-95S0 499.333 0 414s30-158.333 90-219 132.667-91 218-91 160 31.667 224 95 96 137.667 96 223c0 58.667-15.333 112.667-46 162l190 188M94 414c0 58.667 22.667 110.667 68 156s97.333 68 156 68 109-21 151-63 63-93 63-153c0-58.667-22.667-110.333-68-155s-97.333-67-156-67-109 21-151 63-63 92.333-63 151" /></svg>
   );
 }
@@ -20,7 +20,7 @@ export default IconSearch;
 
 export function IconCursorFill() {
   return (
-    <svg fill="currentColor" viewBox="0 0 16 16" className="w-9 h-9 bg-black text-[#D08023] rounded-full p-1 absolute border border-[#D08023] right-2 bottom-3">
+    <svg fill="currentColor" viewBox="0 0 16 16" className="w-8 h-8 bg-[#131315] text-[#D08023] rounded-full p-1 absolute border border-[#D08023] right-2 bottom-3">
     <path d="M14.082 2.182a.5.5 0 01.103.557L8.528 15.467a.5.5 0 01-.917-.007L5.57 10.694.803 8.652a.5.5 0 01-.006-.916l12.728-5.657a.5.5 0 01.556.103z" /></svg>
   );
 }
