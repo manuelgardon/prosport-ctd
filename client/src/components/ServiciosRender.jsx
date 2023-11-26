@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { IconParkingSquare, IconTruckMedical } from "./icons";
+import { IconParkingSquare, IconTruckMedical, IconPeople, IconBar } from "./icons";
 
 // este componente se renderiza en EspacioPage
 export default function ServiciosRender({ caracteristicas }){
@@ -7,8 +7,8 @@ export default function ServiciosRender({ caracteristicas }){
   const caracteristicasData = [
     { name: 'Estacionamiento', icon: <IconParkingSquare/> },
     { name: 'Atencion medica', icon: <IconTruckMedical/>},
-    { name: 'Servicio de alimentos y bebidas', icon: <IconTruckMedical/>    },
-    { name: 'Apto para reuniones y eventos', icon: <IconTruckMedical/>    },
+    { name: 'Servicio de alimentos y bebidas', icon: <IconBar/>    },
+    { name: 'Apto para reuniones y eventos', icon: <IconPeople/>    },
     { name: 'Servicio de arbitraje', icon: <IconTruckMedical/>  },
     { name: 'Vestuarios y duchas', icon: <IconTruckMedical/>   },
   ];

@@ -157,7 +157,7 @@ export default function FormRegistro() {
                 {registroHabilitado && (
                   <div>
                     {<div className="flex flex-col items-center justify-center">
-                      <button type="submit" className="font-normal m-[30px] tracking-widest text-xl w-60 h-35 text-[#59B9A0] bg-[#8AB0A6] bg-opacity-20 border border-[#59B9A0] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-700 dark:hover:bg-green-500 dark:focus:ring-primary-800">CREAR CUENTA</button>
+                      <button type="submit" className="font-normal m-[30px] tracking-widest text-xl w-60 h-35 text-[#59B9A0] bg-[#8AB0A6] bg-opacity-20 border border-[#59B9A0] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center">CREAR CUENTA</button>
                     </div>}
                   </div>
                 )}            

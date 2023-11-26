@@ -204,7 +204,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
                                 rows='3'
                                 disabled={true}
                             />
-                            <button className='w-60 bg-green-500 text-white p-2 rounded-md mt-2  transition-colors duration-300 ease-in-out hover:bg-green-600' onClick={() => publicarCalificacion()}>Publicar</button>
+                            <button className='w-60 bg-green-500 text-white p-2 rounded-md mt-2 transition-colors duration-300 ease-in-out hover:bg-green-600' onClick={() => publicarCalificacion()}>Publicar</button>
                         </div>
                     </div>
                 )}
