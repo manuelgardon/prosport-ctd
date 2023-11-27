@@ -12,14 +12,14 @@ function EspacioFormPage() {
     const [caracteristicas, setCaracterisitcas] = useState([])
     const [fotosAgregadas, setFotosAgregadas] = useState([])
     const [cantidadDeParticipantes, setCantidadDeParticipantes] = useState(1)
-    const [diasDisponibles, setDiasDisponibles] = useState({ startDate: new Date(), endDate: new Date()});
+    const [diasDisponibles, setDiasDisponibles] = useState({ startDate: new Date(), endDate: new Date() });
     const [precio, setPrecio] = useState(100)
     const [redirect, setRedirect] = useState(false)
     const { id } = useParams()
     const location = useLocation()
     const token = Cookies.get('token')
 
-    
+
 
     useEffect(() => {
         if (!id) return
@@ -34,21 +34,45 @@ function EspacioFormPage() {
                 setFotosAgregadas(data.fotos)
                 setCantidadDeParticipantes(data.cantidadDeParticipantes)
                 setDiasDisponibles({
-                    startDate : new Date(data.diasDisponibles.startDate),
-                    endDate: new Date(data.diasDisponibles.endDate)})
+                    startDate: new Date(data.diasDisponibles.startDate),
+                    endDate: new Date(data.diasDisponibles.endDate)
+                })
                 setPrecio(data.precio)
             })
     }, [id])
 
 
-    
+
     async function addNewEspacio(e) {
         e.preventDefault()
         const { startDate, endDate } = diasDisponibles;
         const datesArray = getDatesArray(startDate, endDate);
         if (!id) {
             if (token) {
-                await axios.post('http://localhost:1234/api/espacios', {
+                try {
+                    const response = await axios.post('http://localhost:1234/api/espacios', {
+                        deporte,
+                        nombre,
+                        descripcion,
+                        ciudad,
+                        caracteristicas,
+                        fotosAgregadas,
+                        cantidadDeParticipantes,
+                        diasDisponibles: datesArray.map(date => date.toISOString()),
+                        precio
+                    }, { withCredentials: true });
+                    setRedirect(true);
+                } catch (error) {
+                    if (error.response.status === 400) {
+                        alert(error.response.data.mensaje)
+                    }
+                    console.error('Error en la solicitud:', error);
+                }
+            }
+        } else {
+            try {
+                const response = await axios.put('http://localhost:1234/api/espacios', {
+                    id,
                     deporte,
                     nombre,
                     descripcion,
@@ -60,21 +84,12 @@ function EspacioFormPage() {
                     precio
                 }, { withCredentials: true })
                 setRedirect(true)
+            } catch (error) {
+                if (error.response.status === 400) {
+                    alert(error.response.data.mensaje)
+                }
+                console.error('Error en la solicitud:', error)
             }
-        } else {
-            await axios.put('http://localhost:1234/api/espacios', {
-                id,
-                deporte,
-                nombre,
-                descripcion,
-                ciudad,
-                caracteristicas,
-                fotosAgregadas,
-                cantidadDeParticipantes,
-                diasDisponibles: datesArray.map(date => date.toISOString()),
-                precio
-            }, { withCredentials: true })
-            setRedirect(true)
         }
     }
 
@@ -82,11 +97,11 @@ function EspacioFormPage() {
         const datesArray = [];
         let currentDate = startDate;
         while (currentDate <= endDate) {
-          datesArray.push(new Date(currentDate));
-          currentDate.setDate(currentDate.getDate() + 1);
+            datesArray.push(new Date(currentDate));
+            currentDate.setDate(currentDate.getDate() + 1);
         }
         return datesArray;
-      }
+    }
 
     if (!token && location.pathname === `/account/espacios/${id}`) {
         return <Navigate to={'/'} />

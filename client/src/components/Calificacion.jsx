@@ -21,34 +21,70 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
     const usuarioId = user?._id
     const token = Cookies.get('token')
 
-    useEffect(() => {
-        async function obtenerCalificaciones() {
-            try {
-                const response = await axios.get(`http://localhost:1234/api/${espacioId}/calificaciones`)
-                const data = response.data
-                setPromedio(data.promedio)
-                setCalificaciones(data.calificaciones)
-                // con esto definimos si no hay calificaciones en el array y lo pasa a false
-                setVacio(data.calificaciones.length === 0)
-                // pasamos el promedio mediante la funcion del padre 
-                obtenerPromedio(data.promedio)
-                const calificacionDelUsuario = data.calificaciones.find(
-                    (calificacion) => calificacion.usuarioId === usuarioId
-                );
 
-                if (calificacionDelUsuario) {
-                    await obtenerCalificacion(data.calificacion)
-                    setCalificacionInicial(calificacionDelUsuario.calificacion)
-                    setComentarioInicial(calificacionDelUsuario.mensaje || '')
-                    setCalificacion(calificacionDelUsuario.calificacion)
-                    setComentario(calificacionDelUsuario.mensaje || '')
-                }
-            } catch (error) {
-                console.error('Error al obtener las calificaciones')
+    async function obtenerCalificaciones() {
+        try {
+            const response = await axios.get(`http://localhost:1234/api/${espacioId}/calificaciones`)
+            const data = response.data
+            console.log(data)
+            setPromedio(data.promedio)
+            setCalificaciones(data.calificaciones)
+            console.log(data)
+            // con esto definimos si no hay calificaciones en el array y lo pasa a false
+            setVacio(data.calificaciones.length === 0)
+            // pasamos el promedio mediante la funcion del padre 
+            obtenerPromedio(data.promedio)
+            const calificacionDelUsuario = data.calificaciones.find(
+                (calificacion) => calificacion.usuarioId === usuarioId
+            );
+
+            if (calificacionDelUsuario) {
+                await obtenerCalificacion(data.calificacion)
+                setCalificacionInicial(calificacionDelUsuario.calificacion)
+                setComentarioInicial(calificacionDelUsuario.mensaje || '')
+                setCalificacion(calificacionDelUsuario.calificacion)
+                setComentario(calificacionDelUsuario.mensaje || '')
             }
+        } catch (error) {
+            console.error('Error al obtener las calificaciones')
         }
+    }
+
+    async function eliminarCalificacion(calificacion) {
+        try {
+            const response = await axios.delete(
+                `http://localhost:1234/api/calificaciones/${calificacion._id}`,
+                { withCredentials: true }
+            )
+            if (response.status === 200) {
+                Swal.fire({
+
+                    title:"Se elimino la calificacion con exito",
+                    icon: "success",
+                    background:"#212121",
+                    backdrop:true,
+                    color: "#00FF9D",
+                    allowOutsideClick:false,
+                    allowEscapeKey:true,
+                    allowEnterKey:true,
+                    confirmButtonText: "Aceptar",
+                    confirmButtonColor: "#00FF9D",
+                    buttonsStyling: false,
+                    customClass:{
+                        popup:"swal-popu",
+                        confirmButton:"swal"
+                    },
+                    });
+                window.location.reload()
+            }
+        } catch (error) {
+            console.error('Error al eliminar la calificacion')
+        }
+    }
+
+    useEffect(() => {
         obtenerCalificaciones()
-    }, [espacioId, usuarioId, obtenerPromedio, obtenerCalificacion])
+    }, [])
 
 
     async function handleCalificacion(newCalificacion) {
@@ -157,30 +193,29 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
 
     return (
         <div className='mt-10 border-t-2 p-6'>
-            <section className=''>
-            <label className='block text-[#E1E1E1] my-3'>CALIFICÁ EL ESPACIO</label>
-                {token ? (    
-                    <div className='w-full'>
-                        <div className='flex items-center gap-2 m-[20px]'>
-                            <StarRating
-                                rating={calificacion}
-                                starRatedColor="#FCD717"
-                                starHoverColor="#17b289"
-                                changeRating={(newCalificacion) => handleCalificacion(newCalificacion)}
-                                numberOfStars={5}
-                            />
-                            <h3 className='font-bold text-3xl text-[#17b289]'>{calificacion}</h3>
-                        </div>
+            <section className='flex items-center gap-5'>
+                <h3 className='font-bold text-4xl'>{calificacion}</h3>
+                {token ? (
+                    <div>
+                        <StarRating
+                            rating={calificacion}
+                            starRatedColor="#17b289"
+                            starHoverColor="#17b289"
+                            changeRating={(newCalificacion) => handleCalificacion(newCalificacion)}
+                            numberOfStars={5}
+                        />
                         <div className='mt-4'>
-                         
+                            <label className='block text-gray-700 font-semibold'>
+                                Deja tu comentario:
+                            </label>
                             <textarea
                                 value={comentario}
                                 onChange={(e) => setComentario(e.target.value)}
                                 placeholder='Escribe tu comentario aquí...'
-                                className='p-2 border rounded-md w-full'
+                                className='mt-1 p-2 border rounded-md w-full'
                                 rows='3'
                             />
-                            <button className='justify-center w-60 h-35 bg-green-500 text-white p-2 rounded-md mt-3 transition-colors duration-300 ease-in-out hover:bg-green-600' onClick={() => publicarCalificacion()}>Publicar</button>
+                            <button className='bg-green-500 text-white p-2 rounded-md mt-2 w-full transition-colors duration-300 ease-in-out hover:bg-green-600' onClick={() => publicarCalificacion()}>Publicar</button>
                         </div>
                     </div>
                 ) : (
@@ -191,7 +226,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
                             numberOfStars={5}
                             isInteractive={false}
                         />
-                        <p className='text-[#FF9B27] my-2'>Incia sesion y reserva para calificar este espacio</p>
+                        <p>incia sesion y reserva para calificar este espacio</p>
                         <div className='mt-4'>
                             <label className='block text-gray-700 font-semibold'>
                                 Deja tu comentario:
@@ -204,12 +239,12 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
                                 rows='3'
                                 disabled={true}
                             />
-                            <button className='w-60 bg-green-500 text-white p-2 rounded-md mt-2 transition-colors duration-300 ease-in-out hover:bg-green-600' onClick={() => publicarCalificacion()}>Publicar</button>
+                            <button className='bg-green-500 text-white p-2 rounded-md mt-2 w-full transition-colors duration-300 ease-in-out hover:bg-green-600' onClick={() => publicarCalificacion()}>Publicar</button>
                         </div>
                     </div>
                 )}
             </section>
-            <ListaCalificaciones vacio={vacio} calificaciones={calificaciones} />
+            <ListaCalificaciones vacio={vacio} calificaciones={calificaciones} eliminarCalificacion={eliminarCalificacion()} />
         </div>
     )
 }

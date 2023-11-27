@@ -62,20 +62,27 @@ const crear = async (req, res) => {
     precio
   } = req.body;
 
-    const usuarioData = req.usuarioData
-    const espacio = await Espacio.create({
-      propietario: usuarioData.id,
-      deporte,
-      nombre,
-      descripcion,
-      ciudad,
-      caracteristicas,
-      fotos: fotosAgregadas,
-      cantidadDeParticipantes,
-      diasDisponibles,
-      precio
-    })
-    res.json(espacio)
+  const usuarioData = req.usuarioData
+  const espacioExistente = await Espacio.findOne({ nombre })
+
+  if (espacioExistente) {
+    return res.status(400).json({ mensaje: 'El espacio con este nombre ya existe' });
+  }
+
+  const espacio = await Espacio.create({
+    propietario: usuarioData.id,
+    deporte,
+    nombre,
+    descripcion,
+    ciudad,
+    caracteristicas,
+    fotos: fotosAgregadas,
+    cantidadDeParticipantes,
+    diasDisponibles,
+    precio
+  })
+
+  res.json(espacio)
 }
 // Actualizar un espacio por su ID
 const actualizar = async (req, res) => {
@@ -95,6 +102,10 @@ const actualizar = async (req, res) => {
 
   const espacio = await Espacio.findById(id)
   const usuarioData = req.usuarioData
+  const espacioExistente = await Espacio.findOne({ nombre })
+  if (espacioExistente) {
+    return res.status(400).json({ mensaje: 'El espacio con este nombre ya existe' });
+  }
     if (usuarioData.id === espacio.propietario.toString()) {
       espacio.set({
         deporte,
