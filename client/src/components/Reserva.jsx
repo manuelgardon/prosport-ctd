@@ -233,7 +233,7 @@ export default function Reserva({ precio }) {
     }
 
     return (
-        <FormReserva fechaReserva={fechaReserva} horaInicio={horaInicio} handleChangeHoraInicio={handleChangeHoraInicio} horaFin={horaFin} handleChangeHoraFin={handleChangeHoraFin} precioTotal={precioTotal} handleReserva={handleReserva} setFechaReserva={setFechaReserva}/>
+        <FormReserva diasDisponibles ={diasDisponibles} fechaReserva={fechaReserva} horaInicio={horaInicio} handleChangeHoraInicio={handleChangeHoraInicio} horaFin={horaFin} handleChangeHoraFin={handleChangeHoraFin} precioTotal={precioTotal} handleReserva={handleReserva} setFechaReserva={setFechaReserva}/>
     );
 }
 

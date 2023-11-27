@@ -34,8 +34,8 @@ function EspacioFormPage() {
                 setFotosAgregadas(data.fotos)
                 setCantidadDeParticipantes(data.cantidadDeParticipantes)
                 setDiasDisponibles({
-                    startDate: new Date(data.diasDisponibles.startDate),
-                    endDate: new Date(data.diasDisponibles.endDate)
+                    startDate : new Date(data.diasDisponibles.startDate),
+                    endDate: new Date(data.diasDisponibles.endDate),
                 })
                 setPrecio(data.precio)
             })
