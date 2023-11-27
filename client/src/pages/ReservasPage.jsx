@@ -32,35 +32,32 @@ export default function ListaReservas() {
     }
 
     return (
-        <section className='my-[200px] px-10'>
-            <h2>Lista de Reservas</h2>
+        <section className='mt-[60px] py-10 p-6 w-full'>
+            <h2 className='text-2xl text-[#17B289] font-bold mb-10'>Lista de Reservas</h2>
             {reservas.length === 0 ? (
-                <p>No hay reservas disponibles.</p>
+                <p className='text-xl text-[#E1E1E1] mb-10'>No hay reservas disponibles.</p>
             ) : (
                 <section>
                     {reservas.map((reserva) => (
                         <Link to={`/account/reservas/${reserva?._id}`} key={reserva?._id}>
-                            <article className='flex gap-4 bg-gray-400 rounded-2xl overflow-hidden font-medium'>
+                            <article className='flex gap-4 bg-[#8AB0A6] bg-opacity-20 rounded-2xl overflow-hidden font-medium mb-10'>
                                 <div className='w-48'>
                                     {reserva.espacioId?.fotos[0] && (
                                         <img src={`https://1023c07-prosport.s3.amazonaws.com/${reserva.espacioId.fotos[0]}`}
                                             className='object-cover' />
                                     )}
                                 </div>
-                                <div className='py-3 pr-3 grow'>
-                                    <h2 className='text-xl'>{reserva.espacioId?.nombre}
-                                    </h2>
-                                    <h2 className='text-xl'>{reserva.espacioId?.nombre}
-                                    </h2>
-                                    <div className='flex gap-2 items-center border-t border-gray-300 mt-2 py-2'>
+                                <div className='py-3 pr-3 grow text-[#E1E1E1]'>
+                                    <h2 className='text-xl '>{reserva.espacioId?.nombre}</h2>
+                                    <div className='flex gap-2 items-center border-t border-gray-300 mt-5 py-5'>
                                         <IconClockStart /> {reserva?.horaInicio} <span> &rarr;</span>
                                         <IconClockEnd /> {reserva?.horaFin}
                                     </div>
                                     <div className='flex gap-2'>
                                         <IconMoney />
-                                        Precio total: ${reserva?.precio}
+                                        <p>Precio total: ${reserva?.precio}</p>
                                     </div>
-                                    <p>{reserva.fechaReserva.toString().split('T')[0]}</p>
+                                    <p className='py-3 text-[#FF9B27]'>{reserva.fechaReserva.toString().split('T')[0]}</p>
                                 </div>
                             </article>
                         </Link>

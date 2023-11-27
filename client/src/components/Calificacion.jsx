@@ -157,29 +157,30 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
 
     return (
         <div className='mt-10 border-t-2 p-6'>
-            <section className='flex items-center gap-5'>
-                <h3 className='font-bold text-4xl'>{calificacion}</h3>
-                {token ? (
-                    <div>
-                        <StarRating
-                            rating={calificacion}
-                            starRatedColor="#17b289"
-                            starHoverColor="#17b289"
-                            changeRating={(newCalificacion) => handleCalificacion(newCalificacion)}
-                            numberOfStars={5}
-                        />
+            <section className=''>
+            <label className='block text-[#E1E1E1] my-3'>CALIFICÁ EL ESPACIO</label>
+                {token ? (    
+                    <div className='w-full'>
+                        <div className='flex items-center gap-2 m-[20px]'>
+                            <StarRating
+                                rating={calificacion}
+                                starRatedColor="#FCD717"
+                                starHoverColor="#17b289"
+                                changeRating={(newCalificacion) => handleCalificacion(newCalificacion)}
+                                numberOfStars={5}
+                            />
+                            <h3 className='font-bold text-3xl text-[#17b289]'>{calificacion}</h3>
+                        </div>
                         <div className='mt-4'>
-                            <label className='block text-gray-700 font-semibold'>
-                                Deja tu comentario:
-                            </label>
+                         
                             <textarea
                                 value={comentario}
                                 onChange={(e) => setComentario(e.target.value)}
                                 placeholder='Escribe tu comentario aquí...'
-                                className='mt-1 p-2 border rounded-md w-full'
+                                className='p-2 border rounded-md w-full'
                                 rows='3'
                             />
-                            <button className='bg-green-500 text-white p-2 rounded-md mt-2 w-full transition-colors duration-300 ease-in-out hover:bg-green-600' onClick={() => publicarCalificacion()}>Publicar</button>
+                            <button className='justify-center w-60 h-35 bg-green-500 text-white p-2 rounded-md mt-3 transition-colors duration-300 ease-in-out hover:bg-green-600' onClick={() => publicarCalificacion()}>Publicar</button>
                         </div>
                     </div>
                 ) : (
@@ -190,7 +191,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
                             numberOfStars={5}
                             isInteractive={false}
                         />
-                        <p>incia sesion y reserva para calificar este espacio</p>
+                        <p className='text-[#FF9B27] my-2'>Incia sesion y reserva para calificar este espacio</p>
                         <div className='mt-4'>
                             <label className='block text-gray-700 font-semibold'>
                                 Deja tu comentario:
@@ -203,7 +204,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
                                 rows='3'
                                 disabled={true}
                             />
-                            <button className='bg-green-500 text-white p-2 rounded-md mt-2 w-full transition-colors duration-300 ease-in-out hover:bg-green-600' onClick={() => publicarCalificacion()}>Publicar</button>
+                            <button className='w-60 bg-green-500 text-white p-2 rounded-md mt-2 transition-colors duration-300 ease-in-out hover:bg-green-600' onClick={() => publicarCalificacion()}>Publicar</button>
                         </div>
                     </div>
                 )}

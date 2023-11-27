@@ -9,7 +9,7 @@ export default function GaleriaEspacio({ espacio }) {
             <section>
                 <article>
                     <h2>Galeria de fotos de {espacio.nombre}</h2>
-                    <button onClick={() => setRenderFotos(false)}>Cerrrar galeria</button>
+                    <button onClick={() => setRenderFotos(false)}>Cerrar galeria</button>
                 </article>
                 {espacio.fotos.length > 0 && espacio.fotos.map((foto, index) => (
                     <article key={index}>
@@ -42,7 +42,7 @@ export default function GaleriaEspacio({ espacio }) {
                     </div>
                 </div>
                 <button className="bg-white rounded-2xl border-black shadow-md shadow-gray-600 absolute bottom-2 right-2 py-2 px-4 flex gap-2 font-medium" onClick={() => setRenderFotos(true)}>
-                    Show more photos
+                    Mostrar más fotos
                 </button>
             </section>
         </div>

@@ -59,16 +59,19 @@ export default function Header() {
                         <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 justify-between items-center">
                                 <li>
-                                    <button className=""><Link to={'/account/espacios'}>Mis Espacios</Link></button>
+                                    <button className="text-[#A8F2DE] font-semibold text-xl hover:font-bold font-l rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none hover:underline"><Link to={'/'}>Home</Link></button>
                                 </li>
                                 <li>
-                                    <button><Link to={'account/reservas'}>Mis reservas</Link></button>
+                                    <button className="text-[#A8F2DE] font-semibold text-xl hover:font-bold font-l rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none hover:underline"><Link to={'/account/espacios'}>Mis Espacios</Link></button>
                                 </li>
                                 <li>
-                                    <button><Link to={'account/favoritos'}>Mis favoritos</Link></button>
+                                    <button className='text-[#A8F2DE] font-semibold text-xl hover:font-bold font-l rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none hover:underline'><Link to={'account/reservas'}>Mis reservas</Link></button>
                                 </li>
                                 <li>
-                                    <button className="" onClick={logOut}>Cerrar Sesión</button>
+                                    <button className='text-[#A8F2DE] font-semibold text-xl hover:font-bold font-l rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none hover:underline'><Link to={'account/favoritos'}>Mis favoritos</Link></button>
+                                </li>
+                                <li>
+                                    <button className="text-[#A8F2DE] font-semibold text-xl hover:font-bold font-l rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none hover:underline" onClick={logOut}>Cerrar Sesión</button>
                                 </li>
                             </ul>
                             <div>
@@ -83,10 +86,10 @@ export default function Header() {
                     ) :
                         (
                             <div className="flex items-center lg:order-2">
-                                <Link to={'/login'} className="text-[#A8F2DE] font-semibold text-xl dark:text-white hover:font-bold font-l rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in
-                                </Link>
-                                <Link to={'/register'} className="text-[#A8F2DE] font-semibold text-xl dark:text-white hover:font-bold font-l rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Sign In
-                                </Link>
+                                <Link to={'/login'} className="text-[#A8F2DE] font-semibold text-xl hover:font-bold font-l rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none hover:underline">Iniciar sesión</Link>
+
+                                <Link to={'/register'} className="text-[#A8F2DE] font-semibold text-xl hover:font-bold font-l rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none hover:underline">Crear cuenta</Link>
+
                                 <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-[#17B289] dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
                                     <span className="sr-only">Open main menu</span>
                                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>

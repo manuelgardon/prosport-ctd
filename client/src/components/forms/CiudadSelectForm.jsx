@@ -32,11 +32,11 @@ export default function CiudadSelect({ ciudad, onChange }) {
                 <div className="relative text-black">
                     <input
                         {...getInputProps({
-                            placeholder: 'Selecciona la ciudad de tu espacio',
-                            className: 'w-full mb-2 border my-1 py-2 px-3 rounded-2xl text-black',
+                            placeholder: 'Ingresá la ciudad dónde se encuentra tu espacio',
+                            className: 'mb-10 bg-[#8AB0A6] bg-opacity-0 border-b-2 border-[#8AB0A6] text-[#8AB0A6] w-full',
                         })}
                     />
-                    <div className="absolute w-full mt-2 bg-white border rounded z-10">
+                    <div className="">
                         {loading && <div className="p-2">Cargando...</div>}
                         {suggestions.map((suggestion) => (
                             <div

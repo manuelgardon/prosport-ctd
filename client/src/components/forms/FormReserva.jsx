@@ -27,11 +27,11 @@ export default function FormReserva({
     };
 
     return (
-        <section className="mt-10">
-            <form className="w-full max-w-sm mx-auto bg-opacity-50 backdrop-blur-lg bg-[#223331] px-4 py-4 rounded-lg" onSubmit={handleReserva}>
+        <section className="">
+            <form className="flex flex-col place-content-center w-[400px] bg-opacity-70 backdrop-blur-lg bg-[#525252] px-4 py-4 rounded-lg" onSubmit={handleReserva}>
                 <div className="mb-4">
-                    <label htmlFor="startDate" className="block text-[#AAF0D5] text-sm font-bold mb-2">
-                        Fecha de inicio de reserva:
+                    <label htmlFor="startDate" className="block text-[#E1E1E1] text-xl mb-3">
+                        Fecha de inicio:
                     </label>
                      <DatePicker
                         value={new Date(fechaReserva)}
@@ -54,8 +54,8 @@ export default function FormReserva({
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="startTime" className="block text-[#AAF0D5] text-sm font-bold mb-2">
-                        Hora de inicio de reserva:
+                    <label htmlFor="startTime" className="block text-[#E1E1E1] text-xl mb-3">
+                        Hora de inicio:
                     </label>
                     <TimePicker
                         value={horaInicio}
@@ -72,8 +72,8 @@ export default function FormReserva({
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="endTime" className="block text-[#AAF0D5] text-sm font-bold mb-2">
-                        Hora de finalización de reserva:
+                    <label htmlFor="endTime" className="block text-[#E1E1E1] text-xl mb-3">
+                        Hora de fin:
                     </label>
                     <TimePicker
                         value={horaFin}
@@ -81,7 +81,7 @@ export default function FormReserva({
                         renderInput={(props) => (
                             <input
                                 {...props.inputProps}
-                                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-primary-600"
+                                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-primary-100"
                             />
                         )}
                         ampm={false}
@@ -90,19 +90,13 @@ export default function FormReserva({
                 </div>
                 {precioTotal && (
                     <div className="mb-4">
-                        <label htmlFor="precioTotal" className="block text-[#AAF0D5] text-sm font-bold mb-2">
+                        <label htmlFor="precioTotal" className="block text-[#E1E1E1] text-xl mb-3">
                             Precio Total:
                         </label>
-                        <p>${precioTotal}</p>
+                        <p className="text-xl text-[#FF9B27]">${precioTotal}</p>
                     </div>
                 )}
-
-                <button
-                    type="submit"
-                    className="w-full hover:bg-[#17B289] hover:bg-opacity-5 text-[#17B289] font-bold py-2 px-4 rounded border border-[#17B289] "
-                >
-                    Reservar
-                </button>
+                <button type="submit" className="bg-green-500 text-white p-2 rounded-md mt-2 w-full transition-colors duration-300 ease-in-out hover:bg-green-600">Reservar</button>
             </form>
         </section>
     );
