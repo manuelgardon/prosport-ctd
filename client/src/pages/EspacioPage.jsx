@@ -17,8 +17,7 @@ export default function EspacioPage() {
     const [promedio, setPromedio] = useState(0)
     const [fechasDisponibles, setFechasDisponibles] = useState([]);
     const { id } = useParams()
-
-
+    
     /* Funciones para obtener la informacion del componente hijo Calificacion */
     function obtenerCalificacion(calificacion) {
         setCalificacion(calificacion)
@@ -96,6 +95,7 @@ export default function EspacioPage() {
                         {cantidadCalificaciones === 0 && <p className="text-white text-xl">Sin calificaciones</p>}
                     </div>
                     <Reserva precio={espacio.precio} fechasDisponibles={fechasDisponibles} />
+
                 </section>
             </section>
             <section>

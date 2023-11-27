@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { DatePicker, TimePicker } from "@mui/x-date-pickers";
-
+import TextField from '@mui/material/TextField';
 export default function FormReserva({
     fechaReserva,
     horaInicio,
@@ -13,6 +13,19 @@ export default function FormReserva({
     diasDisponibles,
 }) {
     const fechaMaxima = diasDisponibles ? new Date(Math.max(...diasDisponibles.map(date => new Date(date)))) : new Date();
+
+    const highlightDates = (date) => {
+        const formattedDate = date.toISOString().split('T')[0];
+        
+        if (diasDisponibles && diasDisponibles.includes(formattedDate)) {
+            return 'highlight-available';
+        } else if (formattedDate === fechaReserva) {
+            return 'highlight-reserved';
+        } else {
+            return null;
+        }
+    };
+
     return (
         <section className="mt-10">
             <form className="w-full max-w-sm mx-auto bg-opacity-50 backdrop-blur-lg bg-[#223331] px-4 py-4 rounded-lg" onSubmit={handleReserva}>
@@ -20,22 +33,24 @@ export default function FormReserva({
                     <label htmlFor="startDate" className="block text-[#AAF0D5] text-sm font-bold mb-2">
                         Fecha de inicio de reserva:
                     </label>
-                    <DatePicker
-                        value={fechaReserva.toString().split('T')[0]}
+                     <DatePicker
+                        value={new Date(fechaReserva)}
                         onChange={(date) => setFechaReserva(date)}
-                        renderInput={(props) => (
-                            <input
-                                {...props.inputProps}
-                                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-primary-600"
+                        renderInput={(startProps) => (
+                            <TextField
+                                {...startProps}
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                className="w-full px-3 py-2"
                             />
                         )}
                         format="dd/MM/yyyy"
-                        dateConstraints={{
-                            start: new Date(),
-                            end: fechaMaxima,
-                        }}
-
-                    />
+                        inputFormat="dd/MM/yyyy"
+                        minDate={new Date()}
+                        maxDate={fechaMaxima}
+                        shouldDisableDate={highlightDates}
+                    />  
                 </div>
 
                 <div className="mb-4">
