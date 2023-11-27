@@ -197,11 +197,11 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
             ) : (
                 <h2 className="font-bold text-4xl mb-10">No hay espacios disponibles que coincidan con los filtros seleccionados.</h2>
             )}
-            <div>
+            <div className='py-10'>
                 {/* aqui creamos una array de un objeto nuevo iterable con la propiedad length la cual nos inidca la cantidad de paginas que van a ser necesarias para representar la cantidad de espacios por pagina */}
                 {Array.from({ length: Math.ceil(totalEspacios / espaciosPorPagina) }, (_, index) => (
                     <button key={index} className={
-                        "mx-1 px-4 py-2 rounded-md bg-green-500 text-white font-bold " +
+                        "mx-10 px-14 py-2 rounded-md bg-green-500 text-white" +
                         (pagina === index + 1 ? "bg-green-700" : "")
                     } onClick={() => cambiarPagina(index + 1)}>
                         Página {index + 1}

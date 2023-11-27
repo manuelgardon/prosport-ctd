@@ -15,7 +15,7 @@ const Politicas = ({ onAceptarPoliticas }) => {
   };
 
   return (
-    <div>
+    <div className='grow my-[200px]'>
       <h2 className="text-xl bg-[#17B289] space-y-4 md:space-y-6 sm:p-2 text-center">POLITICAS DE USO</h2>
       <p className="text-[#E1E1E1] text-sm">Debes aceptar nuestras políticas de uso para crear una cuenta</p>
       <label className='flex'>

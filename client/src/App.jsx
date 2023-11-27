@@ -17,6 +17,7 @@ import FavoritosPage from './pages/FavoritosPage'
 import ListaReservas from './pages/ReservasPage'
 import jQuery from 'jquery';
 import swal from 'sweetalert2';
+import Politicas from './components/Politicas'
 
 window.$ = jQuery;
 
@@ -43,6 +44,7 @@ function App() {
               <Route path='/account/reservas/:id' element={<ReservaPage />}></Route>
               <Route path='/account/reservas' element={<ListaReservas />}></Route>
               <Route path='/account/favoritos' element={<FavoritosPage />}></Route>
+              <Route path='/politicas' element={<Politicas />}></Route>
             </Route>
           </Routes>
           <Footer />

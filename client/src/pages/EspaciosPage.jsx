@@ -79,8 +79,8 @@ export default function EspaciosPage() {
         <section className='mt-[120px] w-screen h-screen'>
             <div className='flex flex-col items-center justify-center'>
 
-                <h1 className="text-4xl text-[#A8F2DE]">Mis Espacios</h1>
-                <button className='mt-4 text-[#83F3C8] border border-[#83F3C8] p-2 rounded-lg mr-4 hover:bg-black'>
+                <h1 className="text-2xl text-[#E1E1E1]">Mis Espacios</h1>
+                <button className='font-normal m-[30px] tracking-widest w-60 h-35 text-[#59B9A0] bg-[#8AB0A6] bg-opacity-20 border border-[#59B9A0] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center'>
                     <Link to={'/account/espacios/new'} className="">
                         CREAR ESPACIO
                     </Link>
@@ -99,13 +99,12 @@ export default function EspaciosPage() {
                     <div className="grow-0 shrink text-white flex flex-col justify-center items-center">
                         <h2 className="text-2xl text-[#A8F2DE]">{espacio.nombre}</h2>
                         <p className='text-xl'><small>{espacio.deporte}</small></p>
-                        <button className='mt-4 text-[#83F3C8] border border-[#83F3C8] p-2 rounded-lg hover:bg-black'>
-
-                        <Link to={'/account/espacios/' + espacio._id} className="hover:text-primary">
+                        <button className='bg-green-500 p-2 text-white rounded-lg hover:bg-green-700 mt-4 w-50'>
+                        <Link to={'/account/espacios/' + espacio._id}>
                             EDITAR
                         </Link>
                         </button>
-                        <button onClick={() => handleDelete(espacio._id)} className='m-4 text-[#83F3C8] border border-[#83F3C8] p-2 rounded-lg hover:bg-black'>
+                        <button onClick={() => handleDelete(espacio._id)} className='bg-[#FF9B27] p-2 text-white rounded-lg hover:bg-[#D08124] mt-4 w-30'>
                             ELIMINAR
                         </button>
                     </div>
