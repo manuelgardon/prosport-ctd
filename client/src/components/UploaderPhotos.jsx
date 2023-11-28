@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import axios from "axios"
 import { UploadIcon } from "./icons"
+import { FaRegTrashAlt } from "react-icons/fa"
+import { FaRegHeart } from "react-icons/fa"
+import { FaHeart } from "react-icons/fa"
 
 export default function UploaderPhotos({ fotosAgregadas, onChange }) {
 
@@ -29,6 +32,18 @@ export default function UploaderPhotos({ fotosAgregadas, onChange }) {
         });
     }
 
+    function eliminarFoto(archivo, event) {
+        event.preventDefault();
+        onChange([...fotosAgregadas.filter(foto => foto !== archivo)])
+    }
+
+    function seleccionarPrincipal(archivo, event) {
+        event.preventDefault();
+        const fotosNoSeleccionadas = fotosAgregadas.filter(foto => foto !== archivo)
+        const nuevasFotos = ([archivo, ...fotosNoSeleccionadas])
+        onChange(nuevasFotos)
+    }
+
     return (
         <>
             <div className="flex gap-2">
@@ -36,6 +51,12 @@ export default function UploaderPhotos({ fotosAgregadas, onChange }) {
                     {fotosAgregadas.length > 0 && fotosAgregadas.map(link => (
                         <div className="h-32 flex relative" key={link}>
                             <img className='w-full rounded-2xl' src={`https://1023c07-prosport.s3.amazonaws.com/${link}`} alt="" />
+                            <button className="absolute top-2 right-2" onClick={(e) => eliminarFoto(link, e)}>
+                                <FaRegTrashAlt />
+                            </button>
+                            <button className="absolute bottom-2 right-2" onClick={(e) => seleccionarPrincipal(link, e)}>
+                                {link === fotosAgregadas[0] ? <FaHeart/> : <FaRegHeart/>}
+                            </button>
                         </div>
                     )
                     )}
