@@ -93,11 +93,14 @@ export default function EspacioPage() {
                             {cantidadCalificaciones === 0 && <p className="text-white text-xl">Sin calificaciones</p>}
                         </div>
                     </div>
+                    <div className="flex items-center text-white ml-auto pr-4">
+                        <h1 className="text-lg p-3">Compartir</h1>
+                        <CompartirEspacio espacio={espacio} /> 
+                    </div>
                 </section>
                 <section className="flex">
                     <div>
                         <GaleriaEspacio espacio={espacio} />
-                        <CompartirEspacio espacio={espacio} />
                     </div>
                     <div className="p-2">
                         <Reserva precio={espacio.precio} fechasDisponibles={fechasDisponibles} />
