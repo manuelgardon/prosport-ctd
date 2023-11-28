@@ -99,14 +99,17 @@ export default function EspacioPage() {
                         <GaleriaEspacio espacio={espacio} />
                         <CompartirEspacio espacio={espacio} />
                     </div>
-                    <Reserva precio={espacio.precio} fechasDisponibles={fechasDisponibles} />
+                    <div className="p-2">
+                        <Reserva precio={espacio.precio} fechasDisponibles={fechasDisponibles} />
+                        <ServiciosRender caracteristicas={espacio.caracteristicas} />
+                    </div>
 
                 </section>
 
-                    <article className="text-white p-9">   
+                    {/*<article className="text-white p-9">   
                         <p>{espacio.descripcion}</p>
                         <ServiciosRender caracteristicas={espacio.caracteristicas} />
-                    </article>
+                    </article> */ }
 
                 
                 <section>

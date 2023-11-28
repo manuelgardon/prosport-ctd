@@ -15,15 +15,21 @@ export default function ServiciosRender({ caracteristicas }){
 
   return (
     <div className="caracteristicas-container">
-      <h3>Características:</h3>
+      <h3 className=" text-white pt-3">Características:</h3>
       <ul>
         {caracteristicas.map((caracteristica, index) => {
           const caracteristicaData = caracteristicasData.find((data) => data.name === caracteristica);
           if (caracteristicaData) {
             return (
-              <li key={index}>
-                {caracteristicaData.icon} {caracteristicaData.name}
+              <li className="flex flex-wrap -mx-4 items-center m-3 pl-4 text-white" key={index}>
+                <li className="pr-2">
+                {caracteristicaData.icon}
+                </li>
+                <li>
+                {caracteristicaData.name}
+                </li>
               </li>
+              
             );
           }
         })}
