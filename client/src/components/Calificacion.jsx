@@ -50,7 +50,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
         }
     }
 
-    async function eliminarCalificacion(calificacion) {
+    /*async function eliminarCalificacion(calificacion) {
         try {
             const response = await axios.delete(
                 `http://localhost:1234/api/calificaciones/${calificacion._id}`,
@@ -80,7 +80,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
         } catch (error) {
             console.error('Error al eliminar la calificacion')
         }
-    }
+    }*/
 
     useEffect(() => {
         obtenerCalificaciones()
@@ -244,7 +244,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
                     </div>
                 )}
             </section>
-            <ListaCalificaciones vacio={vacio} calificaciones={calificaciones} eliminarCalificacion={eliminarCalificacion()} />
+            <ListaCalificaciones vacio={vacio} calificaciones={calificaciones}/>
         </div>
     )
 }
