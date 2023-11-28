@@ -1,42 +1,71 @@
 /* eslint-disable react/prop-types */
 import axios from "axios"
 import { UploadIcon } from "./icons"
+import { FaRegTrashAlt } from "react-icons/fa"
+import { FaRegHeart } from "react-icons/fa"
+import { FaHeart } from "react-icons/fa"
 
-export function UploaderPhotos({fotosAgregadas, onChange}) {
+export default function UploaderPhotos({ fotosAgregadas, onChange }) {
 
     function uploadPhoto(event) {
         const files = event.target.files
         const data = new FormData()
+    
         for (let i = 0; i < files.length; i++) {
-            data.append('fotos ', files[i])
+            data.append('fotos', files[i])
         }
-        axios.post('http://localhost:1234/upload', data, {
-            headers: { 'Content-Type':'multipart/form-data' }
+    
+        const fileNames = Array.from(files).map(file => file.name)
+    
+        axios.post('http://localhost:1234/uploads', data, {
+            headers: { 'Content-Type': 'multipart/form-data' }
         }).then(response => {
-            const { data: fileNames } = response
-            onChange(prev => {
-                return [...prev, ...fileNames]
-            })
-        })
-    } 
+            console.log(response)
+            const { data: { success } } = response
+            if (success) {
+                onChange(prev => [...prev, ...fileNames])
+            } else {
+                console.error('Error al cargar las fotos', response.data)
+            }
+        }).catch(error => {
+            console.error('Error al subir las imagenes:', error)
+        });
+    }
 
+    function eliminarFoto(archivo, event) {
+        event.preventDefault();
+        onChange([...fotosAgregadas.filter(foto => foto !== archivo)])
+    }
+
+    function seleccionarPrincipal(archivo, event) {
+        event.preventDefault();
+        const fotosNoSeleccionadas = fotosAgregadas.filter(foto => foto !== archivo)
+        const nuevasFotos = ([archivo, ...fotosNoSeleccionadas])
+        onChange(nuevasFotos)
+    }
 
     return (
         <>
             <div className="flex gap-2">
-            </div>
-            <div className=" mt-3 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6 ">
-                {fotosAgregadas.length > 0 && fotosAgregadas.map(link => (
-                    <div className="h-32 flex relative" key={link}>
-                        <img className='w-full rounded-2xl' src={'http://localhost:1234/uploads/' + link} alt="" />
-                    </div>
-                )
-                )}
-                <label className=" flex justify-center items-center gap-4 border bg-transparent rounded-2xl p-6 text-gray-900 font-semibold cursor-pointer">
-                    <input type="file" multiple className="hidden" onChange={uploadPhoto} />
-                    <UploadIcon />
-                    Agrega fotos del espacio
-                </label>
+                <div className=" ">
+                    {fotosAgregadas.length > 0 && fotosAgregadas.map(foto => (
+                        <div className="h-32 flex relative" key={foto}>
+                            <img className='w-full rounded-2xl' src={`https://1023c07-prosport.s3.amazonaws.com/${foto}`} alt="" />
+                            <button className="absolute top-2 right-2" onClick={(e) => eliminarFoto(foto, e)}>
+                                <FaRegTrashAlt />
+                            </button>
+                            <button className="absolute bottom-2 right-2" onClick={(e) => seleccionarPrincipal(foto, e)}>
+                                {foto === fotosAgregadas[0] ? <FaHeart/> : <FaRegHeart/>}
+                            </button>
+                        </div>
+                    )
+                    )}
+                    <label className="w-90 flex justify-center items-center gap-4 border bg-transparent rounded-2xl p-6 text-white font-semibold cursor-pointer">
+                        <input type="file" multiple className="hidden" onChange={uploadPhoto} />
+                        <UploadIcon />
+                        Agrega fotos del espacio
+                    </label>
+                </div>
             </div>
         </>
     )

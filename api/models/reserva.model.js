@@ -1,20 +1,25 @@
 const mongoose = require('mongoose');
 
 const reservaSchema = new mongoose.Schema({
-  usuario: {
+  usuarioId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Usuario',
-    required: true
+    required: true,
+    ref: 'Usuario'
   },
-  centroDeportivo: {
+  espacioId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'CentroDeportivo',
-    required: true
+    required: true,
+    ref: 'Espacio'
   },
-  fechaReserva: {
-    type: Date,
-    required: true
-  }
+  fechaReserva: { type: Date, required: true },
+  horaInicio: { type: String, required: true },
+  horaFin: { type: String, required: true },
+  precio: {type: Number, required: true},
+  
+  reservaId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Espacio',
+  },
 });
 
 const Reserva = mongoose.model('Reserva', reservaSchema);

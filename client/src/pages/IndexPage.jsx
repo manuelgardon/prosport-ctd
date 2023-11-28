@@ -1,34 +1,44 @@
-import { useEffect, useState } from "react"
-import axios from "axios"
+import Espacios from "../components/Espacios"
+import { useState } from "react"
+import CiudadSelectIndex from "../components/CiudadSelectFiltros"
 
 export default function IndexPage() {
 
-    const [espacios, setEspacios] = useState([])
+  const [espacios, setEspacios] = useState([])
+  const [filtros, setFiltros] = useState({
+    deporte: 'All',
+    precio: 'All',
+    precioMinimo: 0,
+    precioMaximo: 1000,
+    ciudad: ''
+  })
 
-    useEffect(() => {
-        axios.get('http://localhost:1234/api/espacios').then((response) => {
-            setEspacios(response.data)
-        })
-    }, [])
+  const filterEspacios = (espacios) => {
+    return espacios.filter((espacio) => {
+      return (
+        (filtros.precio === 'All' ||
+          (espacio.precio >= filtros.precioMinimo &&
+            espacio.precio <= filtros.precioMaximo)) &&
+        (filtros.deporte === 'All' || espacio.deporte === filtros.deporte) &&
+        (filtros.ciudad === '' || espacio.ciudad === filtros.ciudad)
+      )
+    })
+  }
+
+  const filteredEspacios = filterEspacios(espacios)
 
 
-    return (
+  return (
+    <main className="text-white w-[100%] flex flex-col justify-center items-center px-10 py-[80px] lg:py-[145px] grow ">
+      <section className="flex flex-col lg:flex-row justify-between w-full lg:w-[900px] text-centergap-10 my-[120px]">
+        <aside className="flex flex-col justify-center items-start gap-5">
+          <h1 className="text-4xl font-bold">Pro-Sport</h1>
+          <h2 className="text-xl lg:text-2xl font-bold">Espacios para practicar tus deportes favoritos y realizar tu reserva online.</h2>
+        </aside>
+      </section>
+      <CiudadSelectIndex onChange={(ciudad) => setFiltros((prevFiltros) => ({ ...prevFiltros, ciudad }))} />
+      <Espacios changeFilters={setFiltros} espacios={filteredEspacios} setEspacios={setEspacios} filtros={filtros} setFiltros={setFiltros} />
+    </main>
 
-        <main className="dark:bg-[#18181B] dark:text-white w-900 flex justify-center items-center px-10 py-[100px] lg:py-[145px] grow">
-            <ul className="grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-center">
-                {espacios.length > 0 && espacios.slice(0, 10).map(espacio => (
-                    <li key={espacio._id}>
-                        <div className="rounded-2xl mb-2 flex">
-                            {espacio.fotos?.[0] && (
-                                <img className="rounded-2xl object-cover aspect-square" src={'http://localhost:1234/uploads/' + espacio.fotos[0]} alt="" />
-                            )}
-                        </div>
-                        <p className="bg-[#1D2223] text-[#17B289] text-2xl">{espacio.nombre}</p>
-                        <p className=" bg-[#1D2223] border-2 border-[#FF9B27] text-[#FF9B27] rounded-b">{espacio.deporte}</p>
-                    </li>
-                ))}
-            </ul>
-        </main>
-
-    )
+  )
 }

@@ -1,0 +1,15 @@
+{
+  "name": "pro-sport",
+  "version": "1.0.0",
+  "description": "ProSport es una plataforma de reservas para deportistas y espacios deportivos de élite. Conectamos pasión y rendimiento en un solo lugar.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-plugin-react": "^7.33.2"
+  }
+}
