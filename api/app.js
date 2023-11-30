@@ -36,6 +36,12 @@ app.use(
     origin: 'http://54.219.12.147:8085',
   })
 );
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://54.219.12.147:8085'); // o el dominio de tu frontend
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
 // Conexión a la base de datos
 mongoose.connect(process.env.MONGO_URL);
