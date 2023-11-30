@@ -31,7 +31,7 @@ export default function CompartirEspacio({ espacio }) {
                             <h3 className='py-2.5 font-semibold text-xl'>Compartir</h3>
                             <button onClick={handleCerrarVentana}><IoClose size={20} className='hover:text-green-300' /></button>
                         </div>
-                        <img src={'http://localhost:1234/uploads/' + espacio.fotos[0]} alt={espacio.nombre} className='w-[500px] h-auto rounded-xl' />
+                        <img src={'http://54.219.12.147:8085/uploads/' + espacio.fotos[0]} alt={espacio.nombre} className='w-[500px] h-auto rounded-xl' />
                         <CopiarLink url={url}/>
                         <Redes url={url} titulo={titulo}/>
                     </section>

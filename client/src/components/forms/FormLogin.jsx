@@ -20,7 +20,7 @@ const FormLogin = () => {
   async function handleLogin(e) {
     e.preventDefault()
     try {
-      const { data } = await axios.post('http://localhost:1234/login', {
+      const { data } = await axios.post('http://54.219.12.147:8085/login', {
         email,
         contrasenia
       }, { withCredentials: true })
