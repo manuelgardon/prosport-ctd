@@ -64,16 +64,53 @@ export default function EspaciosPage() {
     }
 
     async function handleConfirm(id) {
-        axios.delete(`http://localhost:1234/api/espacios/${id}`)
-            .then((response) => {
-                if (response.status === 200) {
-                    setEspacios(espacios.filter(espacio => espacio._id !== id));
-                } else {
-                    console.error('Error eliminando espacio')
-                }
-            })
-        setAlerta(false)
-    }
+        try {
+          const response = await axios.delete(`http://localhost:1234/api/espacios/${id}`);
+          if (response.status === 200) {
+            setEspacios(espacios.filter(espacio => espacio._id !== id));
+            setAlerta(false);
+            Swal.fire({
+                title:"Espacio eliminado correctamente",
+                icon: "success",
+                background:"#212121",
+                backdrop:true,
+                color: "#00FF9D",
+                allowOutsideClick:false,
+                allowEscapeKey:true,
+                allowEnterKey:true,
+                confirmButtonText: "Aceptar",
+                confirmButtonColor: "#00FF9D",
+                buttonsStyling: false,
+                customClass:{
+                    popup:"swal-popu",
+                    confirmButton:"swal"
+                },
+                });
+            window.location.reload()           
+          } else {
+            Swal.fire({
+                title:"Error eliminando espacio",
+                icon: "success",
+                background:"#212121",
+                backdrop:true,
+                color: "#00FF9D",
+                allowOutsideClick:false,
+                allowEscapeKey:true,
+                allowEnterKey:true,
+                confirmButtonText: "Aceptar",
+                confirmButtonColor: "#00FF9D",
+                buttonsStyling: false,
+                customClass:{
+                    popup:"swal-popu",
+                    confirmButton:"swal"
+                },
+                });
+            window.location.reload()  
+          }
+        } catch (error) {
+          console.error('Error eliminando espacio:', error);
+        }
+      }
 
     return (
         <section className='mt-[120px] w-screen h-screen'>
@@ -104,7 +141,7 @@ export default function EspaciosPage() {
                             EDITAR
                         </Link>
                         </button>
-                        <button onClick={() => handleDelete(espacio._id)} className='bg-[#FF9B27] p-2 text-white rounded-lg hover:bg-[#D08124] mt-4 w-30'>
+                        <button onClick={() => handleDelete(espacio._id)} className='bg-[#FF9B27] p-2 text-white rounded-lg hover:bg-[#D08124] mt-4 w-50'>
                             ELIMINAR
                         </button>
                     </div>
@@ -114,11 +151,15 @@ export default function EspaciosPage() {
             ))}
             {alerta && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-                    <div className="bg-white p-4 rounded-md">
-                        <h2 className="text-xl">¿Estás seguro de que deseas eliminar este espacio?</h2>
-                        <div className="flex justify-end">
-                            <button onClick={handleCancel}>CANCELAR</button>
-                            <button onClick={() => handleConfirm(espacioPorEliminar)}>CONFIRMAR</button>
+                    <div className="border border-[#00FF9D] bg-[#212121] p-4 rounded-md">
+                        <h2 className="text-xl text-[#00FF9D]">¿Estás seguro de que deseas eliminar este espacio?</h2>
+                        <div className="flex justify-between p-3">
+                            <div>
+                                <button className='bg-green-500 p-2 text-white rounded-lg hover:bg-green-700 mt-4 w-40' onClick={handleCancel}>CANCELAR</button>
+                            </div>
+                            <div>
+                                <button className='bg-[#FF9B27] p-2 text-white rounded-lg hover:bg-[#D08124] mt-4 w-40' onClick={() => handleConfirm(espacioPorEliminar)}>CONFIRMAR</button>
+                            </div>
                         </div>
                     </div>
                 </div>
