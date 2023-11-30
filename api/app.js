@@ -1,12 +1,12 @@
-const clubDeportivoController = require('./controllers/club.controller')
-const espacioController = require('./controllers/espacio.controller')
-const usuarioController = require('./controllers/usuario.controller')
-const reservaController = require('./controllers/reserva.controller')
-const favoritoController = require('./controllers/favorito.controller')
-const calificacionController = require('./controllers/calificacion.controller')
-const authMiddleware = require('./middlewares/auth.middleware')
-const Usuario = require('./models/usuario.model')
-const Reserva = require('./models/reserva.model')
+const clubDeportivoController = require('./controllers/club.controller.js')
+const espacioController = require('./controllers/espacio.controller.js')
+const usuarioController = require('./controllers/usuario.controller.js')
+const reservaController = require('./controllers/reserva.controller.js')
+const favoritoController = require('./controllers/favorito.controller.js')
+const calificacionController = require('./controllers/calificacion.controller.js')
+const authMiddleware = require('./middlewares/auth.middleware.js')
+const Usuario = require('./models/usuario.model.js')
+const Reserva = require('./models/reserva.model.js')
 
 // Funciones del controlador para manejar rutas CRUD
 const express = require('express');
