@@ -192,7 +192,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
     }
 
     return (
-        <div className='mt-10 border-t-2 p-6'>
+        <div className='mt-10 border-t-2 p-6 flex justify-center space-x-20 space-y-3'>
             <section className='flex items-center gap-5'>
                 <h3 className='font-bold text-4xl'>{calificacion}</h3>
                 {token ? (
@@ -220,13 +220,15 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
                     </div>
                 ) : (
                     <div>
-                        <StarRating
-                            starRatedColor="#17b289"
-                            starHoverColor="#17b289"
-                            numberOfStars={5}
-                            isInteractive={false}
-                        />
-                        <p>incia sesion y reserva para calificar este espacio</p>
+                        <div className="flex justify-center">
+                            <StarRating
+                                starRatedColor="#17b289"
+                                starHoverColor="#17b289"
+                                numberOfStars={5}
+                                isInteractive={false}
+                            />
+                        </div>
+                        <p className='text-white opacity-30'>Inicia sesion y reserva para calificar este espacio</p>
                         <div className='mt-4'>
                             <label className='block text-gray-700 font-semibold'>
                                 Deja tu comentario:

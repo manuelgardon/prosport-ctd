@@ -93,8 +93,8 @@ export default function EspacioPage() {
                             {cantidadCalificaciones === 0 && <p className="text-white text-xl">Sin calificaciones</p>}
                         </div>
                     </div>
-                    <div className="flex items-center text-white ml-auto pr-4">
-                        <h1 className="text-lg p-3">Compartir</h1>
+                    <div className="flex items-center text-white ml-auto pr-4 pt-8">
+                        <h1 className=" opacity-40 pr-4 ">Compartir espacio :</h1>
                         <CompartirEspacio espacio={espacio} /> 
                     </div>
                 </section>
@@ -108,11 +108,6 @@ export default function EspacioPage() {
                     </div>
 
                 </section>
-
-                    {/*<article className="text-white p-9">   
-                        <p>{espacio.descripcion}</p>
-                        <ServiciosRender caracteristicas={espacio.caracteristicas} />
-                    </article> */ }
 
                 
                 <section>
