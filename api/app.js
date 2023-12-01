@@ -33,12 +33,12 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(
   cors({
     credentials: true,
-    origin: 'http://1023c07-prosport.s3-website-us-east-1.amazonaws.com/',
+    origin: 'http://1023c07-prosport.s3-website-us-east-1.amazonaws.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   })
 );
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://1023c07-prosport.s3-website-us-east-1.amazonaws.com/'); // o el dominio de tu frontend
+app.use((_req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // o el dominio de tu frontend
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
