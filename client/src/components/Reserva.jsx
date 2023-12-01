@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { setHours, setMinutes, differenceInHours } from 'date-fns'
 import axios from 'axios'
@@ -7,7 +7,8 @@ import Cookies from 'js-cookie'
 import FormReserva from './forms/FormReserva'
 import Swal from 'sweetalert2'
 import "../utils/utilsCSS.css"
-
+import emailjs from 'emailjs-com'
+import { UserContext } from '../UserContext'
 // recibimos el valor del precio del espacio desde el componente EspacioPage
 export default function Reserva({ precio }) {
     
@@ -18,30 +19,33 @@ export default function Reserva({ precio }) {
     const [precioTotal, setPrecioTotal] = useState();
     const { id } = useParams()
     const token = Cookies.get('token')
-    const [diasDisponibles, setDiasDisponibles] = useState([]);
+    const [diasDisponibles, setDiasDisponibles] = useState([]); 
+    const [nombreEspacio, setNombreEspacio] = useState('')
+    const { user } = useContext(UserContext);
 
-    useEffect(() => {
-        async function obtenerReservaExistente() {
-          try {
-            const response = await axios.get(`http://localhost:1234/api/reservas?espacioId=${id}`);
-            setReservasExistente(response.data);
-          } catch (error) {
-            console.error('Error al obtener las reservas:', error);
-          }
-        }
-    
-        async function obtenerDiasDisponibles() {
-          try {
-            const response = await axios.get(`http://localhost:1234/api/espacios/${id}`);
-            setDiasDisponibles(response.data.diasDisponibles);
-          } catch (error) {
-            console.error('Error al obtener los días disponibles:', error);
-          }
-        }
-    
-        obtenerReservaExistente();
-        obtenerDiasDisponibles();
-      }, [id]);
+        useEffect(() => {
+            async function obtenerReservaExistente() {
+                try {
+                    const response = await axios.get(`http://localhost:1234/api/reservas?espacioId=${id}`);
+                    setReservasExistente(response.data);
+                } catch (error) {
+                    console.error('Error al obtener las reservas:', error);
+                }
+            }
+        
+            async function obtenerDiasDisponibles() {
+                try {
+                    const response = await axios.get(`http://localhost:1234/api/espacios/${id}`);
+                    setDiasDisponibles(response.data.diasDisponibles);
+                    setNombreEspacio(response.data.nombre);
+                    sendReservaEmail(user.email, user.nombre, user.apellido, response.data.nombre)
+                } catch (error) {
+                    console.error('Error al obtener los días disponibles:', error);
+                }
+            }
+            obtenerReservaExistente();
+            obtenerDiasDisponibles();
+        }, [id]); 
     
     function calcularPrecio() {
         const horaInicioDate = new Date(horaInicio);
@@ -68,6 +72,26 @@ export default function Reserva({ precio }) {
         calcularPrecio()
     }, [horaInicio, horaFin, precio])
 
+    emailjs.init("Blgi9VopKOYoDr-NN")
+    const sendReservaEmail = async (email, nombre, apellido, nombreEspacio) => {
+        // Envía el correo de bienvenida
+        const templateParams = {
+            to_email: email,
+            user_name: `${nombre} ${apellido}`, 
+            fecha_reserva: fechaReserva.toLocaleDateString(),
+            hora_inicio: horaInicio.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}),
+            hora_fin: horaFin.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}),
+            precioTotal: precioTotal,
+            nombre_espacio: nombreEspacio,
+        };
+
+        try {
+            const response = await emailjs.send('service_l6prbvb', 'template_gn2rruj', templateParams);
+            console.log('Correo electrónico de bienvenida enviado con éxito:', response);
+        } catch (error) {
+            console.error('Error al enviar el correo electrónico de bienvenida:', error);
+        }
+    }
 
     async function handleReserva(event) {
         event.preventDefault()
@@ -229,6 +253,10 @@ export default function Reserva({ precio }) {
                     confirmButton:"swal"
                 },
                 })
+        }
+        if (user) {
+            const { email, nombre, apellido } = user;
+            sendReservaEmail(email, nombre, apellido, nombreEspacio);
         }
     }
 

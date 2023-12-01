@@ -19,8 +19,6 @@ function EspacioFormPage() {
     const location = useLocation()
     const token = Cookies.get('token')
 
-    
-
     useEffect(() => {
         if (!id) return
         axios.get(`http://localhost:1234/api/espacios/${id}`)
@@ -33,12 +31,21 @@ function EspacioFormPage() {
                 setCaracterisitcas(data.caracteristicas)
                 setFotosAgregadas(data.fotos)
                 setCantidadDeParticipantes(data.cantidadDeParticipantes)
-                setDiasDisponibles({
-                    startDate : new Date(data.diasDisponibles.startDate),
-                    endDate: new Date(data.diasDisponibles.endDate),
-                })
+                const startDate = new Date(data.diasDisponibles.startDate);
+                const endDate = new Date(data.diasDisponibles.endDate);
+                if (!isNaN(startDate.getTime()) && !isNaN(endDate.getTime())) {
+                    setDiasDisponibles({
+                      startDate,
+                      endDate,
+                    });
+                  } else {
+                    console.error('Fechas almacenadas en formato inválido');
+                  }
                 setPrecio(data.precio)
             })
+            .catch((error) => {
+                console.error('Error al obtener el espacio:', error);
+            });
     }, [id])
 
 
@@ -47,6 +54,7 @@ function EspacioFormPage() {
         e.preventDefault()
         const { startDate, endDate } = diasDisponibles;
         const datesArray = getDatesArray(startDate, endDate);
+        try {
         if (!id) {
             if (token) {
                 await axios.post('http://localhost:1234/api/espacios', {
@@ -63,7 +71,7 @@ function EspacioFormPage() {
                 setRedirect(true)
             }
         } else {
-            await axios.put('http://localhost:1234/api/espacios', {
+            await axios.put(`http://localhost:1234/api/espacios`, {
                 id,
                 deporte,
                 nombre,
@@ -76,6 +84,8 @@ function EspacioFormPage() {
                 precio
             }, { withCredentials: true })
             setRedirect(true)
+        }}catch (error) {
+            console.error('Error al agregar/editar espacio:', error);
         }
     }
 
@@ -87,7 +97,7 @@ function EspacioFormPage() {
           currentDate.setDate(currentDate.getDate() + 1);
         }
         return datesArray;
-      }
+    }
 
     if (!token && location.pathname === `/account/espacios/${id}`) {
         return <Navigate to={'/'} />

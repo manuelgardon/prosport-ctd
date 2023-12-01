@@ -100,7 +100,7 @@ export default function EspaciosPage() {
                         <h2 className="text-2xl text-[#A8F2DE]">{espacio.nombre}</h2>
                         <p className='text-xl'><small>{espacio.deporte}</small></p>
                         <button className='bg-green-500 p-2 text-white rounded-lg hover:bg-green-700 mt-4 w-50'>
-                        <Link to={'/account/espacios/' + espacio._id}>
+                        <Link to={`/account/espacios/${espacio._id}`}>
                             EDITAR
                         </Link>
                         </button>
