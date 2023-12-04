@@ -37,6 +37,8 @@ export default function Reserva({ precio }) {
           try {
             const response = await axios.get(`http://54.219.12.147:8085/api/espacios/${id}`);
             setDiasDisponibles(response.data.diasDisponibles);
+            setNombreEspacio(response.data.nombre);
+            sendReservaEmail(user.email, user.nombre, user.apellido, response.data.nombre);
           } catch (error) {
             console.error('Error al obtener los días disponibles:', error);
           }

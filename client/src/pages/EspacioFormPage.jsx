@@ -56,11 +56,10 @@ function EspacioFormPage() {
         e.preventDefault()
         const { startDate, endDate } = diasDisponibles;
         const datesArray = getDatesArray(startDate, endDate);
-        try {
         if (!id) {
             if (token) {
                 try {
-                    const response = await axios.post('http://54.219.12.147:8085/api/espacios', {
+                     await axios.post('http://54.219.12.147:8085/api/espacios', {
                         deporte,
                         nombre,
                         descripcion,
@@ -81,7 +80,7 @@ function EspacioFormPage() {
             }
         } else {
             try {
-                const response = await axios.put('http://54.219.12.147:8085/api/espacios', {
+                await axios.put('http://54.219.12.147:8085/api/espacios', {
                     id,
                     deporte,
                     nombre,
