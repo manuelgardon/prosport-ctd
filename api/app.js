@@ -187,7 +187,7 @@ app.post('/login', async (req, res) => {
       // Creamos un token para el usuario usando su id y email para que se agregue a las cookies con estas propiedades
       jwt.sign({ email: user.email, id: user._id }, process.env.JWT_SECRET, (error, token) => {
         if (error) throw error;
-        res.cookie('token', token, { httpOnly: true, secure: false, sameSite: 'Strict' }).json(user);
+        res.cookie('token', token, { httpOnly: true, secure: false, sameSite: 'Lax' }).json(user);
       });
     } else {
       res.status(422).json('La contraseña no es valida');
