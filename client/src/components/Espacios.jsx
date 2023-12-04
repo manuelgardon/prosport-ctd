@@ -29,7 +29,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
         async function cargarEspacios() {
             try {
                 const response = await axios.get(
-                    `http://localhost:1234/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}&ciudad=${filtros.ciudad}`
+                    `http://54.219.12.147:8085/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}&ciudad=${filtros.ciudad}`
                 )
     
                 if (!response.data) {
@@ -46,7 +46,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
         async function cargarFavoritos() {
             // cargamos los favoritos de cada usuario
             try {
-                const responseFavoritos = await axios.get(`http://localhost:1234/api/user/favoritos`, { withCredentials: true })
+                const responseFavoritos = await axios.get(`http://54.219.12.147:8085/api/user/favoritos`, { withCredentials: true })
                 const favoritos = responseFavoritos.data.favoritos || []
                 setFavoritos(favoritos)
                 // actualizamos el estado del usuario con los favoritos cargados
@@ -66,7 +66,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
     async function agregarFavorito(espacio) {
         if (token) {
             try {
-                const response = await axios.post('http://localhost:1234/api/favoritos', { espacioId: espacio._id }, { withCredentials: true })
+                const response = await axios.post('http://54.219.12.147:8085/api/favoritos', { espacioId: espacio._id }, { withCredentials: true })
 
                 if (response.status === 200) {
                     // ejecutamos la funcion de actualizar para tener el estado mas reciente
@@ -123,7 +123,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
     async function eliminarFavorito(espacio) {
         if (token) {
             try {
-                const response = await axios.delete(`http://localhost:1234/api/favoritos/${espacio._id}`, { withCredentials: true })
+                const response = await axios.delete(`http://54.219.12.147:8085/api/favoritos/${espacio._id}`, { withCredentials: true })
                 if (response.status === 200) {
                     setFavoritos(prevFavoritos => prevFavoritos.filter(favorito => favorito._id !== espacio._id))
                     // ejecutamos la funcion de actualizar para tener el estado mas reciente

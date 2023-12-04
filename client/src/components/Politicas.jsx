@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const Politicas = ({ onAceptarPoliticas }) => {
   const [aceptado, setAceptado] = useState(false);

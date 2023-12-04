@@ -9,15 +9,15 @@
         const [user, setUser] = useState(null)
         const [ready, setReady] = useState(false)
 
-        useEffect(() => {
-            if(!user) {
-                axios.get('http://localhost:1234/api/profile', { withCredentials: true })
-                .then(({data}) => {
-                    setUser(data)
-                    setReady(true)
-                })
-            }
-        }, [user])
+    useEffect(() => {
+        if(!user) {
+            axios.get('http://54.219.12.147:8085/api/profile', { withCredentials: true })
+            .then(({data}) => {
+                setUser(data)
+                setReady(true)
+            })
+        }
+    }, [user])
 
         return (
             <UserContext.Provider value={{user, setUser, ready}}>

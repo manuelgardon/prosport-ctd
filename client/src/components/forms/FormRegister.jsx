@@ -24,7 +24,7 @@ export default function FormRegistro() {
 
   async function registarUsuario() {
     try {
-      const response = await axios.post('http://localhost:1234/registro', {
+      const response = await axios.post('http://54.219.12.147:8085/registro', {
         nombre,
         apellido,
         email,

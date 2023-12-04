@@ -1,6 +1,6 @@
 import Espacios from "../components/Espacios"
 import { useState } from "react"
-import CiudadSelectIndex from "../components/CiudadSelectFiltros"
+import CiudadSelectIndex from "../components/CiudadSelectIndex"
 
 export default function IndexPage() {
 
@@ -29,8 +29,8 @@ export default function IndexPage() {
 
 
   return (
-    <main className="text-white w-[100%] flex flex-col justify-center items-center px-10 py-[80px] lg:py-[145px] grow">
-      <section className="flex flex-col lg:flex-row justify-between w-full lg:w-[900px] text-centergap-10 my-[120px] ">
+    <main className="text-white w-[100%] flex flex-col justify-center items-center px-10 py-[80px] lg:py-[145px] grow ">
+      <section className="flex flex-col lg:flex-row justify-between w-full lg:w-[900px] text-centergap-10 my-[120px]">
         <aside className="flex flex-col justify-center items-start gap-5">
           <h1 className="text-4xl font-bold">Pro-Sport</h1>
           <h2 className="text-xl lg:text-2xl font-bold">Espacios para practicar tus deportes favoritos y realizar tu reserva online.</h2>

@@ -2,6 +2,24 @@ const Usuario = require('../models/usuario.model')
 const Espacio = require('../models/espacios.model')
 const Calificacion = require('../models/calificacion.model')
 const Reserva = require('../models/reserva.model')
+const moment = require('moment')
+
+function formatearFecha(fecha) {
+    const ahora = moment()
+    const minutosDiferencia = ahora.diff(fecha, 'minutes')
+
+    if (minutosDiferencia < 60) {
+        return `Hace ${minutosDiferencia} minutos`
+    } else if (minutosDiferencia < 1440) {
+        const horasDiferencia = ahora.diff(fecha, 'hours')
+        return `Hace ${horasDiferencia} horas`
+    } else if (minutosDiferencia < 10080) {
+        const diasDiferencia = ahora.diff(fecha, 'days')
+        return `Hace ${diasDiferencia} días`
+    } else {
+        return moment(fecha).format('MMMM D, YYYY')
+    }
+}
 
 const obtenerCalificaciones = async (req, res) => {
     const { espacioId } = req.params;
@@ -15,15 +33,19 @@ const obtenerCalificaciones = async (req, res) => {
         const calificaciones = await Promise.all(
             espacio.calificaciones.map(async (calificacionId) => {
                 const calificacion = await Calificacion.findById(calificacionId).populate('usuarioId');
+                const fecha = moment(calificacion.fecha)
+                const fechaFormateada = formatearFecha(fecha)
+
                 return {
                     usuarioId: calificacion.usuarioId._id,
                     usuarioNombre: calificacion.usuarioId.nombre,
                     usuarioApellido: calificacion.usuarioId.apellido,
                     calificacion: calificacion.calificacion,
-                    mensaje: calificacion.mensaje
-                };
+                    mensaje: calificacion.mensaje,
+                    fecha: fechaFormateada
+                }
             })
-        );
+        )
 
         const totalCalificaciones = calificaciones.length;
         const sumaCalificaciones = calificaciones.reduce((total, calificacion) => total + calificacion.calificacion, 0);
@@ -54,17 +76,17 @@ const crear = async (req, res) => {
         const reservaUsuarioEspacio = await Reserva.findOne({
             usuarioId,
             espacioId,
-        });
+        })
 
         if (!reservaUsuarioEspacio) {
-            return res.status(403).json({ message: 'No puedes calificar un espacio sin hacer una reserva' });
+            return res.status(403).json({ message: 'No puedes calificar un espacio sin hacer una reserva' })
         }
+
         /*  CREACION DE CALIIACION Y VALIDACION DE QUE EL USUARIO NO CALIFICO EL ESPACIO ANTERIORMENTE  */
         let usuarioCalifico = await Calificacion.findOne({
             espacioId,
             usuarioId,
-        });
-
+        })
 
         if (usuarioCalifico) {
             // validamos si el usuario ya calificó el espacio
@@ -76,7 +98,8 @@ const crear = async (req, res) => {
                 espacioId,
                 usuarioId,
                 calificacion,
-                mensaje
+                mensaje,
+                fecha: Date.now(),
             });
 
             espacio.calificaciones.push(usuarioCalifico._id)
@@ -96,20 +119,20 @@ const crear = async (req, res) => {
         espacio.calificacionesPromedio =
             espacio.calificaciones.length > 0
                 ? sumaCalificaciones / espacio.calificaciones.length
-                : 0;
+                : 0
 
         await Promise.all([espacio.save(), usuarioCalifico.save()])
         res.status(201).json({
             ...usuarioCalifico.toObject(),
             usuarioNombre: usuario.nombre,
             usuarioApellido: usuario.apellido,
+            fecha: usuarioCalifico.fecha
         });
-
     } catch (error) {
         console.error('Error al crear la calificación:', error)
         res.status(500).json({ message: 'Error al crear la calificación' })
     }
-};
+}
 
 
 module.exports = {

@@ -39,7 +39,7 @@ export default function EspacioPage() {
 
     useEffect(() => {
         if (!id) return
-        axios.get(`http://localhost:1234/api/espacios/${id}`)
+        axios.get(`http://54.219.12.147:8085/api/espacios/${id}`)
             .then((response) => {
                 setEspacio(response.data)
                 const calificaciones = response.data.calificaciones.length
@@ -93,20 +93,26 @@ export default function EspacioPage() {
                             {cantidadCalificaciones === 0 && <p className="text-white text-xl">Sin calificaciones</p>}
                         </div>
                     </div>
+                    <div className="flex items-center text-white ml-auto pr-4">
+                        <h1 className="text-lg p-3">Compartir</h1>
+                        <CompartirEspacio espacio={espacio} /> 
+                    </div>
                 </section>
                 <section className="flex">
                     <div>
                         <GaleriaEspacio espacio={espacio} />
-                        <CompartirEspacio espacio={espacio} />
                     </div>
-                    <Reserva precio={espacio.precio} fechasDisponibles={fechasDisponibles} />
+                    <div className="p-2">
+                        <Reserva precio={espacio.precio} fechasDisponibles={fechasDisponibles} />
+                        <ServiciosRender caracteristicas={espacio.caracteristicas} />
+                    </div>
 
                 </section>
 
-                    <article className="text-white p-9">   
+                    {/*<article className="text-white p-9">   
                         <p>{espacio.descripcion}</p>
                         <ServiciosRender caracteristicas={espacio.caracteristicas} />
-                    </article>
+                    </article> */ }
 
                 
                 <section>

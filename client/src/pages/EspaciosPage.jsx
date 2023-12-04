@@ -21,7 +21,7 @@ export default function EspaciosPage() {
         */}
 
         if (token) {
-            fetch('http://localhost:1234/api/user/espacios', {
+            fetch('http://54.219.12.147:8085/api/user/espacios', {
                 method: 'GET',
                 credentials: 'include' // equivale a withCredentials
             })
@@ -64,7 +64,7 @@ export default function EspaciosPage() {
     }
 
     async function handleConfirm(id) {
-        axios.delete(`http://localhost:1234/api/espacios/${id}`)
+        axios.delete(`http://54.219.12.147:8085/api/espacios/${id}`)
             .then((response) => {
                 if (response.status === 200) {
                     setEspacios(espacios.filter(espacio => espacio._id !== id));
