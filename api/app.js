@@ -37,12 +37,6 @@ app.use(
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   })
 );
-app.use((_req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // o el dominio de tu frontend
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
 
 // Conexión a la base de datos
 mongoose.connect(process.env.MONGO_URL);
