@@ -1,6 +1,6 @@
 import Espacios from "../components/Espacios"
 import { useState } from "react"
-import CiudadSelectIndex from "../components/CiudadSelectFiltros"
+import CiudadSelectIndex from "../components/CiudadSelectIndex"
 
 export default function IndexPage() {
 
