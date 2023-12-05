@@ -16,7 +16,7 @@ export default function ReservaPage() {
         async function obtenerReservas() {
             if (token) {
                 try {
-                    await axios.get('http://54.219.12.147:8085/api/user/reservas', { withCredentials: true })
+                    await axios.get('http://54.219.42.160:8085/api/user/reservas', { withCredentials: true })
                         .then(response => {
                             const reservaEncontrada = response.data.find(({ _id }) => _id === id);
                             if (reservaEncontrada) {

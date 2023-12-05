@@ -39,7 +39,7 @@ export default function EspacioPage() {
 
     useEffect(() => {
         if (!id) return
-        axios.get(`http://54.219.12.147:8085/api/espacios/${id}`)
+        axios.get(`http://54.219.42.160:8085/api/espacios/${id}`)
             .then((response) => {
                 setEspacio(response.data)
                 const calificaciones = response.data.calificaciones.length

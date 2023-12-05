@@ -14,7 +14,7 @@ export default function ListaReservas() {
         async function obtenerReservas() {
             if (token) {
                 try {
-                    const response = await axios.get('http://54.219.12.147:8085/api/user/reservas', { withCredentials: true });
+                    const response = await axios.get('http://54.219.42.160:8085/api/user/reservas', { withCredentials: true });
                     setReservas(response.data);
                     console.log(response.data);
                 } catch (error) {

@@ -24,7 +24,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
 
     async function obtenerCalificaciones() {
         try {
-            const response = await axios.get(`http://54.219.12.147:8085/api/${espacioId}/calificaciones`)
+            const response = await axios.get(`http://54.219.42.160:8085/api/${espacioId}/calificaciones`)
             const data = response.data
             console.log(data)
             setPromedio(data.promedio)
@@ -97,7 +97,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
             if(calificacion !== calificacionInicial || comentario !== comentarioInicial  ) {
                 try {
                     const response = await axios.post(
-                        'http://54.219.12.147:8085/api/calificaciones',
+                        'http://54.219.42.160:8085/api/calificaciones',
                         {
                             espacioId,
                             calificacion,
