@@ -30,9 +30,9 @@ export default function CiudadSelectIndex({ onChange }) {
                 <div className="text-black w-full flex flex-col items-center relative">
                     <div className='relative'>
                         <IconSearch />
-                        <input className='w-[500px] mb-2 my-1 py-2 px-12 rounded-2xl bg-[#131315] h-15 border-[#D08023] border-2 text-[#D08023]'
+                        <input className='w-[500px] mb-2 my-1 py-2 px-12 rounded-full bg-[#131315] h-15 border-[#D08023] border-2 text-[#D08023]'
                         {...getInputProps({
-                            placeholder: 'Selecciona la ciudad de tu espacio',    
+                            placeholder: 'Selecciona la ciudad de tu espacio...',    
                         })}/>
                         <IconCursorFill />
                     </div>
