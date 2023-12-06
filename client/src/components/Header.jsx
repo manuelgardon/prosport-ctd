@@ -59,7 +59,7 @@ export default function Header() {
     }
 
     return (
-        <header className={`flex w-full justify-center fixed z-10 pt-5${scrolling ? 'bg-opacity-90 backdrop-blur-md' : ''}`}>
+        <header className={`flex w-full justify-center fixed z-10 pt-5 ${scrolling ? 'bg-opacity-90 backdrop-blur-md' : ''}`}>
             <div className="text-2xl font-bold"><Link to={'/'} className="flex items-center">
                     <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" /></Link>
                 </div>
