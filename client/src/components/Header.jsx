@@ -59,7 +59,7 @@ export default function Header() {
     }
 
     return (
-        <header className={`flex w-full fixed z-10 pt-5${scrolling ? 'bg-opacity-90 backdrop-blur-md' : ''}`}>
+        <header className={`flex w-full justify-center fixed z-10 pt-5${scrolling ? 'bg-opacity-90 backdrop-blur-md' : ''}`}>
             <div className="text-2xl font-bold"><Link to={'/'} className="flex items-center">
                     <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" /></Link>
                 </div>
@@ -92,7 +92,7 @@ export default function Header() {
             <div className="md:hidden cursor-pointer" id="mobile-menu">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                 </svg>
+                </svg>
             </div>
 
             {isMenuOpen && (

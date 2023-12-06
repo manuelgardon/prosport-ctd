@@ -15,11 +15,9 @@ const Carrusel = () => {
         });
     }
 
-
     const intervalId = setInterval(() => {
         scrollToImage('next');
     }, 5000);
-
 
     return () => clearInterval(intervalId);
     }, [currentIndex]);
@@ -45,12 +43,24 @@ const Carrusel = () => {
     setCurrentIndex(slideIndex);
     };
 
+    const handlePrevClick = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    scrollToImage('prev');
+    };
+
+    const handleNextClick = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    scrollToImage('next');
+    };
+
     return (
-    <div className='w-[100%] h-full mx-auto'>
+    <div className='w-[95%] mx-auto h-full'>
         <div className='relative h-full'>
 
-        <div className='absolute top-1/2 transform -translate-y-1/2 left-5 text-4xl font-semibold text-white z-10 cursor-pointer' onClick={() => scrollToImage('prev')}>&#10092;</div>
-        <div className="absolute top-1/2 transform -translate-y-1/2 right-5 text-4xl font-semibold text-white z-10 cursor-pointer" onClick={() => scrollToImage('next')}>&#10093;</div>
+        <a href="#" className='absolute top-1/2 transform -translate-y-1/2 left-5 text-4xl font-semibold text-white z-10 cursor-pointer' onClick={handlePrevClick}>&#10092;</a>
+        <a href="#" className="absolute top-1/2 transform -translate-y-1/2 right-5 text-4xl font-semibold text-white z-10 cursor-pointer" onClick={handleNextClick}>&#10093;</a>
 
         <div className='w-full overflow-hidden'>
             <ul ref={listRef} className='list-none p-0 m-0 transition-opacity duration-1000'>
@@ -76,5 +86,6 @@ const Carrusel = () => {
 };
 
 export default Carrusel;
+
 
 
