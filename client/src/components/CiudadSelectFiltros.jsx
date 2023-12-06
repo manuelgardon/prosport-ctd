@@ -32,7 +32,7 @@ export default function CiudadSelectIndex({ onChange }) {
                         <IconSearch />
                         <input className='w-[500px] mb-2 my-1 py-2 px-12 rounded-full bg-[#131315] h-15 border-[#D08023] border-2 text-[#D08023]'
                         {...getInputProps({
-                            placeholder: 'Selecciona la ciudad de tu espacio...',    
+                            placeholder: 'En que ciudad deseas reservar?',    
                         })}/>
                         <IconCursorFill />
                     </div>
