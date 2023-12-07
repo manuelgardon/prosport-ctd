@@ -56,16 +56,42 @@ export default function Filters({ onChange, cargarEspacios }) {
 
                 {/* ------------------- Filtros por categoria --------------------- */}
                 <hr className="my-4 border-t-2 border-[#2C4A42]"/>
-                    <div className="flex flex-wrap justify-center md:flex-row sm:flex"> 
-                        <button onClick={() => handleChangeCategoria('All')} className={`flex space-x-4 justify-center items-center p-2 pr-4 m-2 sm:flex-row ${categoriaSeleccionada === 'All' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}><IconBxGridSmall /><a className="text-[22px] pr-5">Todas</a></button>
-                        
-                        <button  onClick={() => handleChangeCategoria('Futbol')}  className={`flex space-x-4 justify-center items-center p-2 pr-4 m-2 ${    categoriaSeleccionada === 'Futbol' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>  <IconFootball />  <a className="text-[22px] pr-5">Futbol</a></button>     
+                    <div className="flex flex-wrap justify-center"> 
+                        <button  
+                            onClick={() => handleChangeCategoria('All')}  
+                            className={`flex flex-col items-center justify-center p-2 m-2 sm:flex-row sm:justify-center ${    categoriaSeleccionada === 'All' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>
+                                <IconBxGridSmall />  
+                                <a className="text-[22px] mt-2 sm:mt-0 sm:ml-2 pr-0 sm:pr-4 ">Todas</a>
+                        </button>
+
+                        <button  
+                            onClick={() => 
+                            handleChangeCategoria('Futbol')}  
+                            className={`flex flex-col justify-center items-center p-2 m-2 sm:flex-row sm:justify-center ${    categoriaSeleccionada === 'Futbol' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>
+                                <IconFootball />  
+                                <a className="text-[22px] mt-2 sm:mt-0 sm:ml-2 pr-0 sm:pr-4 ">Futbol</a>
+                        </button>     
                     
-                        <button  onClick={() => handleChangeCategoria('Basquet')}  className={`flex space-x-4 justify-center items-center p-2 m-2 pr-4 ${    categoriaSeleccionada === 'Basquet' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>  <IconBasketball />  <a className="text-[22px] pr-5">Basket</a></button>
+                        <button  
+                            onClick={() => handleChangeCategoria('Basquet')}  
+                            className={`flex flex-col justify-center items-center p-2 m-2 sm:flex-row sm:justify-center ${    categoriaSeleccionada === 'Basquet' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>
+                                <IconBasketball />
+                                <a className="text-[22px] mt-2 sm:mt-0 sm:ml-2 pr-0 sm:pr-4">Basket</a>
+                        </button>
 
-                        <button  onClick={() => handleChangeCategoria('Voleibol')}  className={`flex space-x-4 justify-center items-center p-2 m-2 pr-4 ${    categoriaSeleccionada === 'Voleibol' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>  <IconVolleyball />  <a className="text-[22px] pr-5">Voley</a></button>
+                        <button  
+                            onClick={() => handleChangeCategoria('Voleibol')}  
+                            className={`flex flex-col justify-center items-center p-2 m-2 sm:flex-row sm:justify-center ${    categoriaSeleccionada === 'Voleibol' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>
+                                <IconVolleyball />  
+                                <a className="text-[22px] mt-2 sm:mt-0 sm:ml-2 pr-0 sm:pr-4">Voley</a>
+                        </button>
 
-                        <button  onClick={() => handleChangeCategoria('Tenis')}  className={`flex space-x-4 justify-center items-center p-2 m-2 pr-4 ${    categoriaSeleccionada === 'Tenis' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>  <IconBxTennisBall />  <a className="text-[22px] pr-5">Tenis</a></button>
+                        <button  
+                            onClick={() => handleChangeCategoria('Tenis')}  
+                            className={`flex flex-col justify-center items-center p-2 m-2 sm:flex-row sm:justify-center ${    categoriaSeleccionada === 'Tenis' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>
+                                <IconBxTennisBall />  
+                                <a className="text-[22px] mt-2 sm:mt-0 sm:ml-2 pr-0 sm:pr-4">Tenis</a>
+                        </button>
                     </div>
                 <div className="flex justify-center pb-5">
                     <div className="left-0 mt-2 bg-[#2C4A42] p-4 rounded-lg flex w-[500px] justify-around items-center gap-3 h-[8em]">

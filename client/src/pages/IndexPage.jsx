@@ -30,7 +30,7 @@ export default function IndexPage() {
 
 
   return (
-    <main className="text-white w-[100%] flex flex-col justify-center items-center px-10 py-[80px] lg:py-[145px]  ">
+    <main className="text-white w-[100%] flex flex-col justify-center items-center px-10 py-[80px] lg:py-[80px]  ">
       <Carrusel />
       <CiudadSelectIndex onChange={(ciudad) => setFiltros((prevFiltros) => ({ ...prevFiltros, ciudad }))} />
       <Espacios changeFilters={setFiltros} espacios={filteredEspacios} setEspacios={setEspacios} filtros={filtros} setFiltros={setFiltros} />
