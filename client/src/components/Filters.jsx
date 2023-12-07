@@ -56,7 +56,7 @@ export default function Filters({ onChange, cargarEspacios }) {
 
                 {/* ------------------- Filtros por categoria --------------------- */}
                 <hr className="my-4 border-t-2 border-[#2C4A42]"/>
-                    <div className="flex flex-wrap justify-center"> 
+                    <div className="flex justify-center"> 
                         <button  
                             onClick={() => handleChangeCategoria('All')}  
                             className={`flex flex-col items-center justify-center p-2 m-2 sm:flex-row sm:justify-center ${    categoriaSeleccionada === 'All' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>

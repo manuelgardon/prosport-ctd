@@ -74,7 +74,7 @@ const Carrusel = () => {
 
         <div className='flex justify-center'>
             {data.map((_, idx) => (
-            <div key={idx} className={`m-2 mt-2 cursor-pointer text-xs text-center text-white ${idx === currentIndex ? "bg-white w-15 h-15 rounded-full" : ""}`} onClick={() => goToSlide(idx)}>
+            <div key={idx} className={`m-2 mt-2 cursor-pointer text-xs text-center text-[#2C4A42] ${idx === currentIndex ? "bg-[#2C4A42] w-3 h-3 rounded-full" : ""}`} onClick={() => goToSlide(idx)}>
                 &#9865;
             </div>
             ))}
