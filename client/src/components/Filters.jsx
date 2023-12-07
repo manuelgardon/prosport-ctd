@@ -55,9 +55,9 @@ export default function Filters({ onChange, cargarEspacios }) {
             <section className="">
 
                 {/* ------------------- Filtros por categoria --------------------- */}
-                <hr className="my-4 border-t-2 border-blue-500"/>
-                    <div className="flex flex-wrap justify-center md:flex-row sm:flex-col"> 
-                        <button onClick={() => handleChangeCategoria('All')} className={`flex space-x-4 justify-center items-center p-2 pr-4 m-2 ${categoriaSeleccionada === 'All' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}><IconBxGridSmall /><a className="text-[22px] pr-5">Todas</a></button>
+                <hr className="my-4 border-t-2 border-[#2C4A42]"/>
+                    <div className="flex flex-wrap justify-center md:flex-row sm:flex"> 
+                        <button onClick={() => handleChangeCategoria('All')} className={`flex space-x-4 justify-center items-center p-2 pr-4 m-2 sm:flex-row ${categoriaSeleccionada === 'All' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}><IconBxGridSmall /><a className="text-[22px] pr-5">Todas</a></button>
                         
                         <button  onClick={() => handleChangeCategoria('Futbol')}  className={`flex space-x-4 justify-center items-center p-2 pr-4 m-2 ${    categoriaSeleccionada === 'Futbol' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>  <IconFootball />  <a className="text-[22px] pr-5">Futbol</a></button>     
                     
@@ -67,8 +67,8 @@ export default function Filters({ onChange, cargarEspacios }) {
 
                         <button  onClick={() => handleChangeCategoria('Tenis')}  className={`flex space-x-4 justify-center items-center p-2 m-2 pr-4 ${    categoriaSeleccionada === 'Tenis' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>  <IconBxTennisBall />  <a className="text-[22px] pr-5">Tenis</a></button>
                     </div>
-                
-                    <div className="left-0 mt-2 bg-[#223331] p-4 rounded-lg flex w-[500px] justify-around items-center gap-3 h-[8em]">
+                <div className="flex justify-center pb-5">
+                    <div className="left-0 mt-2 bg-[#2C4A42] p-4 rounded-lg flex w-[500px] justify-around items-center gap-3 h-[8em]">
                         <div className="flex flex-col w-40 items-center">
                             <label className="text-[#AAF0D5] mb-3">Rango de precios</label>
                                 <Slider
@@ -78,13 +78,16 @@ export default function Filters({ onChange, cargarEspacios }) {
                                     value={[precioMinimo, precioMaximo]}
                                     onChange={handleChangeRangoPrecio}
                                     className="mb-1"/>
-                        <div className="text-center mt-4 text-[#AAF0D5]">Precio: {precioMinimo} - {precioMaximo}</div>
-                    </div>
-                    <div className="flex gap-2">
+                            <div className="text-center mt-4 text-[#AAF0D5]">Precio: {precioMinimo} - {precioMaximo}</div>
+                        </div>
+                        <div className="flex flex-col items-center pb-3">
                         <button onClick={handleAceptar} className="bg-green-500 p-2 text-white rounded-lg hover:bg-green-700 mt-4 w-20">Aceptar</button>
                         <button onClick={reestablecerPrecio} className="bg-[#FF9B27] p-2 text-white rounded-lg hover:bg-[#D08124] mt-4 w-20">Quitar</button>
+                        </div>
                     </div>
                 </div>
+                <hr className="mt-4 border-t-2 border-[#2C4A42]"/>
+                <h1 className="text-[#AAF0D5] opacity-20 text-xl mb-4 ">Espacios disponibles</h1>
             </section>
         </section>
 
