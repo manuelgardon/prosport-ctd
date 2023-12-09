@@ -24,7 +24,7 @@ export default function FormRegistro() {
 
   async function registarUsuario() {
     try {
-      const response = await axios.post('http://54.219.42.160:8085/registro', {
+      const response = await axios.post('https://strongly-secure-kiwi.ngrok-free.app/registro', {
         nombre,
         apellido,
         email,

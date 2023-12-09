@@ -11,7 +11,7 @@ export function UserContextProvider({ children }){
 
     useEffect(() => {
         if(!user) {
-            axios.get('http://54.219.42.160:8085/api/profile', { withCredentials: true })
+            axios.get('https://strongly-secure-kiwi.ngrok-free.app/api/profile', { withCredentials: true })
             .then(({data}) => {
                 setUser(data)
                 setReady(true)

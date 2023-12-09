@@ -21,7 +21,7 @@ export default function EspaciosPage() {
         */}
 
         if (token) {
-            fetch('http://54.219.42.160:8085/api/user/espacios', {
+            fetch('https://strongly-secure-kiwi.ngrok-free.app/api/user/espacios', {
                 method: 'GET',
                 credentials: 'include' // equivale a withCredentials
             })
@@ -64,7 +64,7 @@ export default function EspaciosPage() {
     }
 
     async function handleConfirm(id) {
-        axios.delete(`http://54.219.42.160:8085/api/espacios/${id}`)
+        axios.delete(`https://strongly-secure-kiwi.ngrok-free.app/api/espacios/${id}`)
             .then((response) => {
                 if (response.status === 200) {
                     setEspacios(espacios.filter(espacio => espacio._id !== id));

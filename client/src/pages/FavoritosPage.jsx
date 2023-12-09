@@ -29,7 +29,7 @@ export default function FavoritosPage() {
     useEffect(() => {
         async function cargarFavoritos() {
             try {
-                const response = await axios.get('http://54.219.42.160:8085/api/user/favoritos', { withCredentials: true })
+                const response = await axios.get('https://strongly-secure-kiwi.ngrok-free.app/api/user/favoritos', { withCredentials: true })
                 if (response.data.favoritos) {
                     setFavoritos(response.data.favoritos)
                 }
@@ -57,7 +57,7 @@ export default function FavoritosPage() {
 
     async function eliminarFavorito(favorito) {
         try {
-            const response = await axios.delete(`http://54.219.42.160:8085/api/favoritos/${favorito.espacioId._id}`, { withCredentials: true })
+            const response = await axios.delete(`https://strongly-secure-kiwi.ngrok-free.app/api/favoritos/${favorito.espacioId._id}`, { withCredentials: true })
 
             if (response.status === 200) {
                 console.log(response)
