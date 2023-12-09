@@ -23,7 +23,7 @@ function EspacioFormPage() {
 
     useEffect(() => {
         if (!id) return
-        axios.get(`http:localhost:1234/api/espacios/${id}`)
+        axios.get(`http://18.144.53.6:1234/api/espacios/${id}`)
             .then((response) => {
                 const { data } = response
                 setDeporte(data.deporte)
@@ -50,7 +50,7 @@ function EspacioFormPage() {
         if (!id) {
             if (token) {
                 try {
-                    const response = await axios.post('http:localhost:1234/api/espacios', {
+                    const response = await axios.post('http://18.144.53.6:1234/api/espacios', {
                         deporte,
                         nombre,
                         descripcion,
@@ -71,7 +71,7 @@ function EspacioFormPage() {
             }
         } else {
             try {
-                const response = await axios.put('http:localhost:1234/api/espacios', {
+                const response = await axios.put('http://18.144.53.6:1234/api/espacios', {
                     id,
                     deporte,
                     nombre,
