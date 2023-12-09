@@ -21,7 +21,7 @@ export default function EspaciosPage() {
         */}
 
         if (token) {
-            fetch('https://strongly-secure-kiwi.ngrok-free.app/api/user/espacios', {
+            fetch('http:localhost:1234/api/user/espacios', {
                 method: 'GET',
                 credentials: 'include' // equivale a withCredentials
             })
@@ -64,7 +64,7 @@ export default function EspaciosPage() {
     }
 
     async function handleConfirm(id) {
-        axios.delete(`https://strongly-secure-kiwi.ngrok-free.app/api/espacios/${id}`)
+        axios.delete(`http:localhost:1234/api/espacios/${id}`)
             .then((response) => {
                 if (response.status === 200) {
                     setEspacios(espacios.filter(espacio => espacio._id !== id));

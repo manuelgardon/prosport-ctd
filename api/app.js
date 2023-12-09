@@ -33,7 +33,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(
   cors({
     credentials: true,
-    origin: 'http://1023c07-prosport.s3-website-us-east-1.amazonaws.com',
+    origin: 'https://3af4-18-144-53-6.ngrok-free.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   })
 );
@@ -187,7 +187,7 @@ app.post('/login', async (req, res) => {
       // Creamos un token para el usuario usando su id y email para que se agregue a las cookies con estas propiedades
       jwt.sign({ email: user.email, id: user._id }, process.env.JWT_SECRET, (error, token) => {
         if (error) throw error;
-        res.cookie('token', token, { httpOnly: true, sameSite: 'None', secure: true }).json(user);
+        res.cookie('token', token, { httpOnly: true, sameSite: 'Strict', secure: false }).json(user);
       });
     } else {
       res.status(422).json('La contraseña no es valida');

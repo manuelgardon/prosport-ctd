@@ -14,7 +14,7 @@ export default function ListaReservas() {
         async function obtenerReservas() {
             if (token) {
                 try {
-                    const response = await axios.get('https://strongly-secure-kiwi.ngrok-free.app/api/user/reservas', { withCredentials: true });
+                    const response = await axios.get('http:localhost:1234/api/user/reservas', { withCredentials: true });
                     setReservas(response.data);
                     console.log(response.data);
                 } catch (error) {

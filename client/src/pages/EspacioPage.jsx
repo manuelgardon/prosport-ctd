@@ -39,7 +39,7 @@ export default function EspacioPage() {
 
     useEffect(() => {
         if (!id) return
-        axios.get(`https://strongly-secure-kiwi.ngrok-free.app/api/espacios/${id}`)
+        axios.get(`http:localhost:1234/api/espacios/${id}`)
             .then((response) => {
                 setEspacio(response.data)
                 const calificaciones = response.data.calificaciones.length

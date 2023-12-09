@@ -37,7 +37,7 @@ export default function Header() {
 
     async function logOut() {
         try {
-            await axios.post('https://strongly-secure-kiwi.ngrok-free.app/api/logout')
+            await axios.post('http:localhost:1234/api/logout')
             document.cookie = COOKIE_EXPIRED
             Cookies.remove(`favoritos_${usuarioId}`)
             setUser(null)

@@ -17,7 +17,7 @@ export default function UploaderPhotos({ fotosAgregadas, onChange }) {
     
         const fileNames = Array.from(files).map(file => file.name)
     
-        axios.post('https://strongly-secure-kiwi.ngrok-free.app/uploads', data, {
+        axios.post('http:localhost:1234/uploads', data, {
             headers: { 'Content-Type': 'multipart/form-data' }
         }).then(response => {
             console.log(response)
