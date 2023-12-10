@@ -18,6 +18,8 @@ import ListaReservas from './pages/ReservasPage'
 import jQuery from 'jquery';
 import swal from 'sweetalert2';
 import Politicas from './components/Politicas'
+import StartChat from "./components/StartChat";
+import WhatsAppChatButton from './components/StartChat'
 
 window.$ = jQuery;
 
@@ -47,6 +49,7 @@ function App() {
               <Route path='/politicas' element={<Politicas />}></Route>
             </Route>
           </Routes>
+          <WhatsAppChatButton/>
           <Footer />
         </BrowserRouter>
       </LocalizationProvider>

@@ -50,48 +50,70 @@ export default function Filters({ onChange, cargarEspacios }) {
     }
 
     return (
-        <section className="flex flex-col gap-3 text-black justify-center items-center sm:relative w-full mb-10" >
-            <div>
-                { /*<button
-                    onClick={() => setVentanaPrecios(!ventanaPrecios)}
-                    className="bg-[#222B2A] p-2 text-[#17B289] font-medium rounded-lg hover:bg-[#3d524f]"
-                >
-                    Filtro por Precio
-                </button>*/}
-                {/* aqui debera ir el renderizado condicional de ventanaPrecio && () */}
+        <section className="" >
 
-            </div>
-            <section className="flex gap-3 justify-center items-center sm:relative w-full mb-10">
-                <div className="left-0 mt-2 bg-[#223331] p-4 rounded-lg flex w-[500px] justify-around items-center gap-3 h-[8em]">
-                    <div className="flex flex-col w-40 items-center">
-                        <label className="text-[#AAF0D5] mb-3">Rango de precios</label>
-                            <Slider
-                                range
-                                min={0}
-                                max={1000}
-                                value={[precioMinimo, precioMaximo]}
-                                onChange={handleChangeRangoPrecio}
-                                className="mb-1"/>
-                        <div className="text-center mt-4 text-[#AAF0D5]">Precio: {precioMinimo} - {precioMaximo}</div>
-                    </div>
-                    <div className="flex gap-2">
-                        <button onClick={handleAceptar} className="bg-green-500 p-2 text-white rounded-lg hover:bg-green-700 mt-4 w-20">Aceptar</button>
-                        <button onClick={reestablecerPrecio} className="bg-[#FF9B27] p-2 text-white rounded-lg hover:bg-[#D08124] mt-4 w-20">Quitar</button>
-                    </div>
-                </div>
+            <section className="">
 
                 {/* ------------------- Filtros por categoria --------------------- */}
+                <hr className="my-4 border-t-2 border-[#2C4A42]"/>
+                    <div className="flex justify-center"> 
+                        <button  
+                            onClick={() => handleChangeCategoria('All')}  
+                            className={`flex flex-col items-center justify-center p-2 m-2 sm:flex-row sm:justify-center ${    categoriaSeleccionada === 'All' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>
+                                <IconBxGridSmall />  
+                                <a className="text-[22px] mt-2 sm:mt-0 sm:ml-2 pr-0 sm:pr-4 ">Todas</a>
+                        </button>
 
-                <button onClick={() => handleChangeCategoria('All')} className={`block p-2 my-2 {categoriaSeleccionada === 'All' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#D08124] rounded-3xl`}><IconBxGridSmall />Todas</button>
+                        <button  
+                            onClick={() => 
+                            handleChangeCategoria('Futbol')}  
+                            className={`flex flex-col justify-center items-center p-2 m-2 sm:flex-row sm:justify-center ${    categoriaSeleccionada === 'Futbol' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>
+                                <IconFootball />  
+                                <a className="text-[22px] mt-2 sm:mt-0 sm:ml-2 pr-0 sm:pr-4 ">Futbol</a>
+                        </button>     
+                    
+                        <button  
+                            onClick={() => handleChangeCategoria('Basquet')}  
+                            className={`flex flex-col justify-center items-center p-2 m-2 sm:flex-row sm:justify-center ${    categoriaSeleccionada === 'Basquet' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>
+                                <IconBasketball />
+                                <a className="text-[22px] mt-2 sm:mt-0 sm:ml-2 pr-0 sm:pr-4">Basket</a>
+                        </button>
 
-                <button onClick={() => handleChangeCategoria('Futbol')} className={`block p-2 my-2{categoriaSeleccionada === 'Futbol' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#D08124] rounded-3xl`}><IconFootball />Futbol</button>
+                        <button  
+                            onClick={() => handleChangeCategoria('Voleibol')}  
+                            className={`flex flex-col justify-center items-center p-2 m-2 sm:flex-row sm:justify-center ${    categoriaSeleccionada === 'Voleibol' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>
+                                <IconVolleyball />  
+                                <a className="text-[22px] mt-2 sm:mt-0 sm:ml-2 pr-0 sm:pr-4">Voley</a>
+                        </button>
 
-                <button onClick={() => handleChangeCategoria('Basquet')} className={`block p-2 my-2 {categoriaSeleccionada === 'Basquet' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#D08124] rounded-3xl`}><IconBasketball />Basket</button>
-
-                <button onClick={() => handleChangeCategoria('Voleibol')} className={`block p-2 my-2 {categoriaSeleccionada === 'Voleibol' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#D08124] rounded-3xl`}><IconVolleyball />Voleibol</button>
-
-                <button onClick={() => handleChangeCategoria('Tenis')} className={`block p-2 my-2 {categoriaSeleccionada === 'Tenis' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#D08124] rounded-3xl`}><IconBxTennisBall />Tenis</button>
-
+                        <button  
+                            onClick={() => handleChangeCategoria('Tenis')}  
+                            className={`flex flex-col justify-center items-center p-2 m-2 sm:flex-row sm:justify-center ${    categoriaSeleccionada === 'Tenis' ? 'bg-[#08261f]' : 'bg-none'  } text-[#17B289] font-medium hover:bg-[#08261f] rounded-3xl`}>
+                                <IconBxTennisBall />  
+                                <a className="text-[22px] mt-2 sm:mt-0 sm:ml-2 pr-0 sm:pr-4">Tenis</a>
+                        </button>
+                    </div>
+                <div className="flex justify-center pb-5">
+                    <div className="left-0 mt-2 bg-[#2C4A42] p-4 rounded-lg flex w-[500px] justify-around items-center gap-3 h-[8em]">
+                        <div className="flex flex-col w-40 items-center">
+                            <label className="text-[#AAF0D5] mb-3">Rango de precios</label>
+                                <Slider
+                                    range
+                                    min={0}
+                                    max={1000}
+                                    value={[precioMinimo, precioMaximo]}
+                                    onChange={handleChangeRangoPrecio}
+                                    className="mb-1"/>
+                            <div className="text-center mt-4 text-[#AAF0D5]">Precio: {precioMinimo} - {precioMaximo}</div>
+                        </div>
+                        <div className="flex flex-col items-center pb-3">
+                        <button onClick={handleAceptar} className="bg-green-500 p-2 text-white rounded-lg hover:bg-green-700 mt-4 w-20">Aceptar</button>
+                        <button onClick={reestablecerPrecio} className="bg-[#FF9B27] p-2 text-white rounded-lg hover:bg-[#D08124] mt-4 w-20">Quitar</button>
+                        </div>
+                    </div>
+                </div>
+                <hr className="mt-4 border-t-2 border-[#2C4A42]"/>
+                <h1 className="text-[#AAF0D5] opacity-20 text-xl mb-4 ">Espacios disponibles</h1>
             </section>
         </section>
 

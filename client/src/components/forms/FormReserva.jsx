@@ -28,12 +28,12 @@ export default function FormReserva({
 
     return (
         <section className="">
-            <form className="flex flex-col place-content-center w-[400px] bg-opacity-70 backdrop-blur-lg bg-[#525252] px-4 py-4 rounded-lg" onSubmit={handleReserva}>
+            <form className="flex flex-col place-content-center w-[400px] bg-opacity-40 backdrop-blur-lg bg-[#135241] px-4 py-4 rounded-xl " onSubmit={handleReserva}>
                 <div className="mb-4">
-                    <label htmlFor="startDate" className="block text-[#E1E1E1] text-xl mb-3">
+                    <label htmlFor="startDate" className="block text-white text-xl mb-3">
                         Fecha de inicio:
                     </label>
-                     <DatePicker
+                    <DatePicker
                         value={new Date(fechaReserva)}
                         onChange={(date) => setFechaReserva(date)}
                         renderInput={(startProps) => (
@@ -54,7 +54,7 @@ export default function FormReserva({
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="startTime" className="block text-[#E1E1E1] text-xl mb-3">
+                    <label htmlFor="startTime" className="block text-white text-xl mb-3">
                         Hora de inicio:
                     </label>
                     <TimePicker
@@ -72,7 +72,7 @@ export default function FormReserva({
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="endTime" className="block text-[#E1E1E1] text-xl mb-3">
+                    <label htmlFor="endTime" className="block text-white text-xl mb-3">
                         Hora de fin:
                     </label>
                     <TimePicker

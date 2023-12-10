@@ -102,6 +102,18 @@ export default function FormRegistro() {
     await registarUsuario();
   }
 
+  const [aceptado, setAceptado] = useState(false);
+  const [mostrarPoliticas, setMostrarPoliticas] = useState(false);
+
+  const handleAceptoChange = () => {
+    const nuevoEstado = !aceptado;
+    setAceptado(nuevoEstado);
+    setRegistroHabilitado(nuevoEstado);
+  };
+
+  const handleLeerPoliticasClick = () => {
+    setMostrarPoliticas(!mostrarPoliticas);
+  };
   const [registroHabilitado, setRegistroHabilitado] = useState(false);
 
   const handleAceptarPoliticas = (aceptado) => {
@@ -153,14 +165,22 @@ export default function FormRegistro() {
                 <label htmlFor="password" className="text-[#8AB0A6] block mb-2 text-sm text-base dark:text-white">Contraseña</label>
                 <input type="password" value={contrasenia} onChange={(e => setContrasenia(e.target.value))} placeholder="• • • • • • • • • • • • • • •" className="bg-[#8AB0A6] bg-opacity-0 border-b-2 border-[#8AB0A6] text-[#8AB0A6] sm:text-sm block w-full" required />
               </div>
+              <p className="text-[#E1E1E1] text-sm">Debes aceptar nuestras políticas de uso para crear una cuenta</p>
+              <button className="text-[#FF9B27] space-y-4 md:space-y-6 sm:p-2" onClick={handleLeerPoliticasClick}>Leer políticas</button>
+              {mostrarPoliticas && (     
                 <Politicas onAceptarPoliticas={handleAceptarPoliticas} />
-                {registroHabilitado && (
-                  <div>
-                    {<div className="flex flex-col items-center justify-center">
-                      <button type="submit" className="font-normal m-[30px] tracking-widest text-xl w-60 h-35 text-[#59B9A0] bg-[#8AB0A6] bg-opacity-20 border border-[#59B9A0] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center">CREAR CUENTA</button>
-                    </div>}
-                  </div>
-                )}            
+              )}
+              <label className='flex'>
+                <input type="checkbox" checked={aceptado} onChange={handleAceptoChange} />
+                <p className="text-white m-5">Acepto las políticas</p>
+              </label>
+              {registroHabilitado && (
+                <div>
+                  {<div className="flex flex-col items-center justify-center">
+                    <button type="submit" className="font-normal m-[30px] tracking-widest text-xl w-60 h-35 text-[#59B9A0] bg-[#8AB0A6] bg-opacity-20 border border-[#59B9A0] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center">CREAR CUENTA</button>
+                  </div>}
+                </div>
+              )}                
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 ¿Tienes una cuenta?<Link to={'/login'} className="font-medium text-primary-600 hover:underline dark:text-primary-500 px-1" >Inicia Sesión</Link>
               </p>

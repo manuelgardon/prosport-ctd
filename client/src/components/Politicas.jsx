@@ -1,31 +1,16 @@
 import { useState } from 'react';
 
 const Politicas = ({ onAceptarPoliticas }) => {
-  const [aceptado, setAceptado] = useState(false);
-  const [mostrarPoliticas, setMostrarPoliticas] = useState(false);
-
-  const handleAceptoChange = () => {
-    const nuevoEstado = !aceptado;
-    setAceptado(nuevoEstado);
-    onAceptarPoliticas(nuevoEstado);
-  };
-
-  const handleLeerPoliticasClick = () => {
-    setMostrarPoliticas(!mostrarPoliticas);
-  };
+  
 
   return (
     <div className='grow my-[200px]'>
       <h2 className="text-xl bg-[#17B289] space-y-4 md:space-y-6 sm:p-2 text-center">POLITICAS DE USO</h2>
-      <p className="text-[#E1E1E1] text-sm">Debes aceptar nuestras políticas de uso para crear una cuenta</p>
-      <label className='flex'>
-        <input type="checkbox" checked={aceptado} onChange={handleAceptoChange} />
-        <p className="text-white m-5">Acepto las políticas</p>
-      </label>
+      
+      
       <br />
-      <button className="text-[#FF9B27] space-y-4 md:space-y-6 sm:p-2" onClick={handleLeerPoliticasClick}>Leer políticas</button>
-      {mostrarPoliticas && (
-        <div className="bg-[#E1E1E1] p-3 font-style:italic font-semibold">
+      
+        <div className="grid-3bg-[#E1E1E1] p-3 font-style:italic font-semibold">
           <div>
             <br/>
             <h3>Políticas de Uso ProSport:</h3>
@@ -61,7 +46,7 @@ const Politicas = ({ onAceptarPoliticas }) => {
             <p>8.1. Al utilizar nuestra aplicación, aceptas estas políticas de uso.</p>
           </div>
         </div>
-      )}
+      
     </div>
   );
 };
