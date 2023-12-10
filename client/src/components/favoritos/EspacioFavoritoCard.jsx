@@ -14,17 +14,17 @@ export default function EspacioFavoritoCard({ favorito, handleDelete }) {
                         <div>
                             {favorito.espacioId?.fotos?.[0] && (
                                 //foto principal
-                                <img className="aspect-square object-cover cursor-pointer" src={`https://1023c07-prosport.s3.amazonaws.com/${favorito.espacioId.fotos[0]}`} alt=''
+                                <img className="aspect-square object-cover cursor-pointer" src={`http://18.144.53.6:1234/${favorito.espacioId.fotos[0]}`} alt=''
                                 />
                             )}
                         </div>
                         <div className="grid">
                             {favorito.espacioId?.fotos?.[1] && (
-                                <img className="aspect-square object-cove cursor-pointer" src={`https://1023c07-prosport.s3.amazonaws.com/${favorito.espacioId.fotos[1]}`} alt=""
+                                <img className="aspect-square object-cove cursor-pointer" src={`http://18.144.53.6:1234/${favorito.espacioId.fotos[1]}`} alt=""
                                 />
                             )}
                             {favorito.espacioId?.fotos?.[2] && (
-                                <img className="aspect-square object-cover cursor-pointer" src={`https://1023c07-prosport.s3.amazonaws.com/${favorito.espacioId.fotos[2]}`} alt=""
+                                <img className="aspect-square object-cover cursor-pointer" src={`http://18.144.53.6:1234/${favorito.espacioId.fotos[2]}`} alt=""
                                 />
                             )}
                         </div>
