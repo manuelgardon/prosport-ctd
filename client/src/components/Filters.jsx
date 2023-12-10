@@ -39,6 +39,7 @@ export default function Filters({ onChange, cargarEspacios }) {
     function handleChangeRangoPrecio([min, max]) {
         setPrecioMinimo(min);
         setPrecioMaximo(max);
+	console.log("abm")
     }
 
     function handleAceptar() {
