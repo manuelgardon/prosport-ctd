@@ -30,7 +30,7 @@ export default function EspacioCard({ espacio, agregarFavorito, eliminarFavorito
                 <Link to={'/espacio/' + espacio?._id}>
                     <div className="rounded-2xl mb-2 flex">
                         {espacio?.fotos?.[0] && (
-                            <img className="rounded-2xl object-cover aspect-square" src={`https://1023c07-prosport.s3.amazonaws.com/${espacio?.fotos[0]}`} alt=""/>
+                            <img className="rounded-2xl object-cover aspect-square" src={`https://18.144.53.6:1234/${espacio?.fotos[0]}`} alt=""/>
                         )}
                     </div>
                     <p className="bg-[#1D2223] text-[#17B289] text-2xl">{espacio?.nombre}</p>

@@ -17,7 +17,7 @@ export default function UploaderPhotos({ fotosAgregadas, onChange }) {
     
         const fileNames = Array.from(files).map(file => file.name)
     
-        axios.post('http://54.219.12.147:8085/uploads', data, {
+        axios.post('http://18.144.53.6:1234/uploads', data, {
             headers: { 'Content-Type': 'multipart/form-data' }
         }).then(response => {
             console.log(response)

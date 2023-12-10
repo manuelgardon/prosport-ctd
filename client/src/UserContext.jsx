@@ -11,7 +11,7 @@
 
     useEffect(() => {
         if(!user) {
-            axios.get('http://54.219.12.147:8085/api/profile', { withCredentials: true })
+            axios.get('http://18.144.53.6:1234/api/profile', { withCredentials: true })
             .then(({data}) => {
                 setUser(data)
                 setReady(true)
