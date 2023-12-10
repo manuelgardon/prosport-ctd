@@ -18,7 +18,6 @@ const obtenerPorId = async (req, res) => {
 
 const obtenerEspaciosPaginados = async (req, res) => {
   try {
-    console.log("mierda");
     const porPagina = 10
     const filtroDeporte = req.query.deporte
     const filtroFecha = req.query.diasDisponibles
