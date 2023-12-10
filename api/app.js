@@ -1,12 +1,12 @@
-const clubDeportivoController = require('./controllers/club.controller')
-const espacioController = require('./controllers/espacio.controller')
-const usuarioController = require('./controllers/usuario.controller')
-const reservaController = require('./controllers/reserva.controller')
-const favoritoController = require('./controllers/favorito.controller')
-const calificacionController = require('./controllers/calificacion.controller')
-const authMiddleware = require('./middlewares/auth.middleware')
-const Usuario = require('./models/usuario.model')
-const Reserva = require('./models/reserva.model')
+const clubDeportivoController = require('./controllers/club.controller.js')
+const espacioController = require('./controllers/espacio.controller.js')
+const usuarioController = require('./controllers/usuario.controller.js')
+const reservaController = require('./controllers/reserva.controller.js')
+const favoritoController = require('./controllers/favorito.controller.js')
+const calificacionController = require('./controllers/calificacion.controller.js')
+const authMiddleware = require('./middlewares/auth.middleware.js')
+const Usuario = require('./models/usuario.model.js')
+const Reserva = require('./models/reserva.model.js')
 
 // Funciones del controlador para manejar rutas CRUD
 const express = require('express');
@@ -33,7 +33,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(
   cors({
     credentials: true,
-    origin: 'http://localhost:8085',
+    origin: 'http://18.144.53.6',
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
   })
 );
 
@@ -186,7 +187,7 @@ app.post('/login', async (req, res) => {
       // Creamos un token para el usuario usando su id y email para que se agregue a las cookies con estas propiedades
       jwt.sign({ email: user.email, id: user._id }, process.env.JWT_SECRET, (error, token) => {
         if (error) throw error;
-        res.cookie('token', token).json(user);
+        res.cookie('token', token, { httpOnly: true, sameSite: 'Lax', secure: false }).json(user);
       });
     } else {
       res.status(422).json('La contraseña no es valida');
@@ -195,7 +196,7 @@ app.post('/login', async (req, res) => {
 })
 
 app.get('/api/profile', (req, res) => {
-  const { token } = req.cookies;
+ const { token } = req.cookies;
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, {}, async (error, data) => {
       if (error) throw error;

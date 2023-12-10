@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react'
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie'
+import Swal from "sweetalert2"
+import "../../utils/utilsCSS.css"
 
 export default function EspaciosPage() {
 
@@ -21,7 +23,7 @@ export default function EspaciosPage() {
         */}
 
         if (token) {
-            fetch('http://localhost:1234/api/user/espacios', {
+            fetch('http://18.144.53.6:1234/api/user/espacios', {
                 method: 'GET',
                 credentials: 'include' // equivale a withCredentials
             })
@@ -65,7 +67,7 @@ export default function EspaciosPage() {
 
     async function handleConfirm(id) {
         try {
-          const response = await axios.delete(`http://localhost:1234/api/espacios/${id}`);
+          const response = await axios.delete(`http://18.144.53.6:1234/api/espacios/${id}`);
           if (response.status === 200) {
             setEspacios(espacios.filter(espacio => espacio._id !== id));
             setAlerta(false);
@@ -130,7 +132,7 @@ export default function EspaciosPage() {
                 <article key={espacio._id} className="border-[#83F3C8] border-2 m-4">
                     <div className="flex w-32 h-32 bg-gray-300 grow shrink-0">
                         {espacio.fotos.length > 0 && (
-                            <img className="" src={`https://1023c07-prosport.s3.amazonaws.com/${espacio?.fotos[0]}`} alt={espacio.nombre} />
+                            <img className="" src={`http://18.144.53.6:1234/${espacio?.fotos[0]}`} alt={espacio.nombre} />
                         )}
                     </div>
                     <div className="grow-0 shrink text-white flex flex-col justify-center items-center">

@@ -47,7 +47,7 @@ export default function Header() {
 
     async function logOut() {
         try {
-            await axios.post('http://localhost:1234/api/logout')
+            await axios.post('http://18.144.53.6:1234/api/logout')
             document.cookie = COOKIE_EXPIRED
             Cookies.remove(`favoritos_${usuarioId}`)
             setUser(null)
