@@ -33,7 +33,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(
   cors({
     credentials: true,
-    origin: 'http://1023c07-prosport.s3-website-us-east-1.amazonaws.com/',
+    origin: 'http://18.144.53.6',
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   })
 );

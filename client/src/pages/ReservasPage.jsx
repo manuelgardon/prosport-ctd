@@ -43,7 +43,7 @@ export default function ListaReservas() {
                             <article className='flex gap-4 bg-[#8AB0A6] bg-opacity-20 rounded-2xl overflow-hidden font-medium mb-10'>
                                 <div className='w-48'>
                                     {reserva.espacioId?.fotos[0] && (
-                                        <img src={`https://1023c07-prosport.s3.amazonaws.com/${reserva.espacioId.fotos[0]}`}
+                                        <img src={`https://18.144.53.6:1234/${reserva.espacioId.fotos[0]}`}
                                             className='object-cover' />
                                     )}
                                 </div>

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { DatePicker, TimePicker } from "@mui/x-date-pickers";
 import TextField from '@mui/material/TextField';
+
 export default function FormReserva({
     fechaReserva,
     horaInicio,
@@ -11,7 +12,7 @@ export default function FormReserva({
     handleReserva,
     setFechaReserva,
     diasDisponibles,
-}) {
+    }) {
     const fechaMaxima = diasDisponibles ? new Date(Math.max(...diasDisponibles.map(date => new Date(date)))) : new Date();
 
     const highlightDates = (date) => {
@@ -25,7 +26,6 @@ export default function FormReserva({
             return null;
         }
     };
-
     return (
         <section className="">
             <form className="flex flex-col place-content-center w-[400px] bg-opacity-70 backdrop-blur-lg bg-[#525252] px-4 py-4 rounded-lg" onSubmit={handleReserva}>

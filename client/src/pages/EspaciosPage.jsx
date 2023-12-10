@@ -93,14 +93,14 @@ export default function EspaciosPage() {
                 <article key={espacio._id} className="border-[#83F3C8] border-2 m-4">
                     <div className="flex w-32 h-32 bg-gray-300 grow shrink-0">
                         {espacio.fotos.length > 0 && (
-                            <img className="" src={`https://1023c07-prosport.s3.amazonaws.com/${espacio?.fotos[0]}`} alt={espacio.nombre} />
+                            <img className="" src={`https://18.144.53.6:1234/${espacio?.fotos[0]}`} alt={espacio.nombre} />
                         )}
                     </div>
                     <div className="grow-0 shrink text-white flex flex-col justify-center items-center">
                         <h2 className="text-2xl text-[#A8F2DE]">{espacio.nombre}</h2>
                         <p className='text-xl'><small>{espacio.deporte}</small></p>
                         <button className='bg-green-500 p-2 text-white rounded-lg hover:bg-green-700 mt-4 w-50'>
-                        <Link to={'/account/espacios/' + espacio._id}>
+                        <Link to={`/account/espacios/${espacio._id}`}>
                             EDITAR
                         </Link>
                         </button>
