@@ -50,7 +50,7 @@ export default function UploaderPhotos({ fotosAgregadas, onChange }) {
                 <div className=" ">
                     {fotosAgregadas.length > 0 && fotosAgregadas.map(foto => (
                         <div className="h-32 flex relative" key={foto}>
-                            <img className='w-full rounded-2xl' src={`https://1023c07-prosport.s3.amazonaws.com/${foto}`} alt="" />
+                            <img className='w-full rounded-2xl' src={`http://18.144.53.6:1234/${foto}`} alt="" />
                             <button className="absolute top-2 right-2" onClick={(e) => eliminarFoto(foto, e)}>
                                 <FaRegTrashAlt />
                             </button>

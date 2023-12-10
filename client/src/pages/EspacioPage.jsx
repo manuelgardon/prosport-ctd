@@ -62,7 +62,7 @@ export default function EspacioPage() {
                 </article>
                 {espacio.fotos.length > 0 && espacio.fotos.map((foto, index) => (
                     <article key={index}>
-                        <img src={`https://1023c07-prosport.s3.amazonaws.com/${foto}`} alt={espacio.nombre} />
+                        <img src={`http://18.144.53.6:1234/${foto}`} alt={espacio.nombre} />
                     </article>
                 ))}
             </section>
