@@ -18,23 +18,21 @@ const obtenerPorId = async (req, res) => {
 
 const obtenerEspaciosPaginados = async (req, res) => {
   try {
+
     const porPagina = 10
     const filtroDeporte = req.query.deporte
-    const filtroFecha = req.query.diasDisponibles
-    console.log('filtro fecha:', filtroFecha);
+
     let query = {}
     if (filtroDeporte && filtroDeporte !== 'All') {
-      query.deporte = filtroDeporte 
+      query = { deporte: filtroDeporte }
     }
-    if (filtroFecha !== undefined) {
-     query.diasDisponibles = filtroFecha
-    } 
 
     const totalEspacios = await Espacio.countDocuments(query)
     const pagina = parseInt(req.query.pagina) || 1
     const inicio = (pagina - 1) * porPagina
+
     const espaciosPaginados = await Espacio.find(query)
-      .skip(inicio) 
+      .skip(inicio)
       .limit(porPagina)
 
     res.json({espacios: espaciosPaginados, totalEspacios})

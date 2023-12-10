@@ -28,31 +28,18 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
 
         async function cargarEspacios() {
             try {
-
-                let apiUrl;
-
-                if (filtros.date) {
-                // Si filtros.date no es undefined, construir la URL con la fecha
-                apiUrl = `http://18.144.53.6:1234/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}&ciudad=${filtros.ciudad}&diasDisponibles=${filtros.date}`;
-                } else {
-                // Si filtros.date es undefined, construir la URL sin la fecha
-                apiUrl = `http://18.144.53.6:1234/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}&ciudad=${filtros.ciudad}`;
-                }
-
-                console.log('API URL:', apiUrl);
-
-                const response = await axios.get(apiUrl);
-                console.log(response);
-        
+                const response = await axios.get(
+                    `http://18.144.53.6:1234/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}&ciudad=${filtros.ciudad}`
+                )
+    
                 if (!response.data) {
-                    throw new Error('Error al cargar los espacios.');
+                    throw new Error('Error al cargar los espacios.')
                 }
-        
-                setEspacios(response.data.espacios);
-                setTotalEspacios(response.data.totalEspacios);
-                console.log(response.data);
+                setEspacios(response.data.espacios)
+                setTotalEspacios(response.data.totalEspacios)
+                console.log(response.data)
             } catch (error) {
-                console.error('Error al cargar espacios:', error);
+                console.error(error)
             }
         }
 
@@ -70,7 +57,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
         }
         cargarEspacios()
         cargarFavoritos()
-    }, [pagina, setEspacios, filtros.deporte, filtros.ciudad, filtros.date, usuarioId, token, setUser])
+    }, [pagina, setEspacios, filtros.deporte, filtros.ciudad, usuarioId, token, setUser])
 
     const cambiarPagina = (nuevaPagina) => {
         setPagina(nuevaPagina)

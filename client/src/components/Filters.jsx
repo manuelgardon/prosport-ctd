@@ -3,8 +3,6 @@ import { useState } from "react";
 import Slider from "rc-slider";
 import 'rc-slider/assets/index.css';
 import { IconFootball, IconBasketball, IconVolleyball, IconBxGridSmall, IconBxTennisBall } from "./icons";
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 
 export default function Filters({ onChange, cargarEspacios }) {
 
@@ -12,7 +10,6 @@ export default function Filters({ onChange, cargarEspacios }) {
     const [precioMaximo, setPrecioMaximo] = useState(0)
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('All')
     // const [ventanaPrecios, setVentanaPrecios] = useState(false)
-    const [fechaSeleccionada, setFechaSeleccionada] = useState(undefined);
 
     function handleChangeCategoria(deporte) {
         onChange((prevState) => ({
@@ -51,26 +48,6 @@ export default function Filters({ onChange, cargarEspacios }) {
         cargarEspacios()
         // setVentanaPrecios(false);
     }
-
-    function handlefechas(date) {
-        const nuevaFechaSeleccionada = date || undefined;
-    
-        onChange((prevState) => ({
-          ...prevState,
-          date: nuevaFechaSeleccionada,
-        }));
-        setFechaSeleccionada(date)
-        cargarEspacios();
-    }
-    function reestablecerFecha() {
-        onChange((prevState) => ({
-            ...prevState,
-            date: undefined
-        }));
-        setFechaSeleccionada()
-        cargarEspacios()
-    }
-
 
     return (
         <section className="flex flex-col gap-3 text-black justify-center items-center sm:relative w-full mb-10" >
@@ -116,16 +93,6 @@ export default function Filters({ onChange, cargarEspacios }) {
                 <button onClick={() => handleChangeCategoria('Tenis')} className={`block p-2 my-2 {categoriaSeleccionada === 'Tenis' ? 'bg-[#3d524f]' : 'bg-[#222B2A]'} text-[#17B289] font-medium hover:bg-[#D08124] rounded-3xl`}><IconBxTennisBall />Tenis</button>
 
             </section>
-            <div className="flex flex-col w-40 items-center">
-                        <label className="text-[#AAF0D5] mb-3">Selecciona una fecha:</label>
-                        <DatePicker
-                         selected={fechaSeleccionada}
-                        onChange={handlefechas}
-                         dateFormat="yyyy-MM-dd"
-                           className="mb-1"
-                        />
-                        <button onClick={reestablecerFecha} className="bg-[#FF9B27] p-2 text-white rounded-lg hover:bg-[#D08124] mt-4 w-20">Limpiar fecha</button>
-            </div>
         </section>
 
     );
