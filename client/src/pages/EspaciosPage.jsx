@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie'
 import Swal from "sweetalert2"
-import "../../utils/utilsCSS.css"
+import "../utils/utilsCSS.css"
 
 export default function EspaciosPage() {
 
