@@ -190,7 +190,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
 
     return (
         <section className='container max-w-screen-xl grow'>
-            <Filters onChange={changeFilters} />
+            <Filters onChange={changeFilters}/>
             {espacios.length > 0 ? (
                 <ul className="grid gap-x-6 gap-y-8 grid md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-4 text-center">
                     {espacios.map((espacio) => (

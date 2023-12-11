@@ -33,12 +33,21 @@ function EspacioFormPage() {
                 setCaracterisitcas(data.caracteristicas)
                 setFotosAgregadas(data.fotos)
                 setCantidadDeParticipantes(data.cantidadDeParticipantes)
-                setDiasDisponibles({
-                    startDate : new Date(data.diasDisponibles.startDate),
-                    endDate: new Date(data.diasDisponibles.endDate),
-                })
+                const startDate = new Date(data.diasDisponibles.startDate);
+                const endDate = new Date(data.diasDisponibles.endDate);
+                if (!isNaN(startDate.getTime()) && !isNaN(endDate.getTime())) {
+                    setDiasDisponibles({
+                      startDate,
+                      endDate,
+                    });
+                  } else {
+                    console.error('Fechas almacenadas en formato inválido');
+                  }
                 setPrecio(data.precio)
             })
+            .catch((error) => {
+                console.error('Error al obtener el espacio:', error);
+            });
     }, [id])
 
 

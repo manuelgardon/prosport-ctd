@@ -19,7 +19,7 @@ const usuarioSchema = new mongoose.Schema({
     required: true
   },
   fechaNacimiento: {
-    type: String,
+    type: Date,
     required: true
   },
   telefono: {

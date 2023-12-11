@@ -21,7 +21,7 @@ const obtenerEspaciosPaginados = async (req, res) => {
 
     const porPagina = 10
     const filtroDeporte = req.query.deporte
-    const filtroFecha = req.query.fecha
+    const filtroFecha = req.query.diasDisponibles
     let query = {}
     if (filtroDeporte && filtroDeporte !== 'All') {
       query.deporte = filtroDeporte 

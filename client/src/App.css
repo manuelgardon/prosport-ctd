@@ -8,6 +8,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background: linear-gradient( #0e3e32 , #18181b 90%);
+    
 }
 
 .hora-ocupada{

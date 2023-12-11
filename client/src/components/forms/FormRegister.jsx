@@ -81,6 +81,7 @@ export default function FormRegistro() {
   if (redirect) {
     <Navigate to={'/'} />
   }
+
   const sendWelcomeEmail = async () => {
     // Envía el correo de bienvenida
     const templateParams = {
@@ -142,7 +143,7 @@ export default function FormRegistro() {
               </div>
               <div>
                 <label className="text-[#8AB0A6] block mb-2 text-sm text-base">Fecha Nacimiento</label>
-                <input type="text" value={fechaNacimiento} onChange={(e => setFechaNacimiento(e.target.value))} className="bg-[#8AB0A6] bg-opacity-0 border-b-2 border-[#8AB0A6] text-[#8AB0A6] sm:text-sm block w-full" placeholder="" required />
+                <input type="date" value={fechaNacimiento} onChange={(e => setFechaNacimiento(e.target.value))} className="bg-[#8AB0A6] bg-opacity-0 border-b-2 border-[#8AB0A6] text-[#8AB0A6] sm:text-sm block w-full" placeholder="" required />
               </div>
               <div>
                 <label className="text-[#8AB0A6] block mb-2 text-sm text-base">Domicilio</label>

@@ -23,7 +23,7 @@ const FormLogin = () => {
       const { data } = await axios.post('http://18.144.53.6:1234/login', {
         email,
         contrasenia
-      }, { withCredentials: true })
+      }, { withCredentials: true,   })
       setUser(data)
       setRedirect(true)
       Swal.fire({
