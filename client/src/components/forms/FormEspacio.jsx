@@ -63,34 +63,49 @@ export default function FormEspacio({ nombre, deporte, fotosAgregadas, descripci
                         <h3 className="text-xl text-[#E1E1E1] font-semi-bold">Precio por hora</h3>
                         <span className="text-[#E1E1E1]">(El precio de tu espacio no puede ser mayor a $1000)</span>
                         <input type="number"
-                            value={precio}
-                            step='any'
-                            onChange={(e) => {
-                                const newValue = parseInt(e.target.value, 10);
-                                if (!isNaN(newValue) && newValue <= 1000) {
-                                    setPrecio(newValue);
-                                }
-                            }} placeholder="12"
+                                    value={precio}
+                                    step='any'
+                                    onChange={(e) => {
+                                        const newValue = parseFloat(e.target.value, 10);
+                                        if (!isNaN(newValue) && newValue <= 1000) {
+                                            setPrecio(newValue);
+                                        }else{
+                                            console.log('precio invalido');
+                                        }
+                                }} placeholder="12"
                             required />
+
                     </div>
                 </section>
                 <div>
                     <h3 className="text-xl text-[#E1E1E1] font-semi-bold mb-5">Días disponibles</h3>
                     <span className="text-[#E1E1E1]">Ingresá los días en que tu espacio estará disponible para realizar reservas</span>
                     <DateRangePicker
-                        onChange={(ranges) => setDiasDisponibles({
-                            startDate: new Date(ranges.selection.startDate),
-                            endDate: new Date(ranges.selection.endDate),
-                        })}
-                        showSelectionPreview={true}
-                        moveRangeOnFirstSelection={false}
-                        ranges={[{
-                            startDate: new Date(diasDisponibles.startDate),
-                            endDate: new Date(diasDisponibles.endDate),
-                            key: 'selection'
-                        }]}
-                        direction="horizontal"
-                    />
+                                onChange={(ranges) => {
+                                    const startDate = new Date(ranges.selection.startDate);
+                                    const endDate = new Date(ranges.selection.endDate);
+                                
+                                    if (!isNaN(startDate.getTime()) && !isNaN(endDate.getTime())) {
+                                        setDiasDisponibles({
+                                          startDate,
+                                          endDate,
+                                        });
+                                      } else {
+                                        console.error('Fechas inválidas');
+                                      }
+                                
+                                    console.log(startDate);
+                                    console.log(endDate);
+                                }}
+                                showSelectionPreview={true}
+                                moveRangeOnFirstSelection={false}
+                                ranges={[{
+                                    startDate: new Date(diasDisponibles?.startDate),
+                                    endDate: new Date(diasDisponibles?.endDate),
+                                    key: 'selection'
+                                }]}
+                                direction="horizontal"
+                            />
                 </div>
                 <Servicios selected={caracteristicas} onChange={setCaracterisitcas} />
                 <button className="font-normal m-[30px] tracking-widest text-xl w-60 h-35 text-[#59B9A0] bg-[#8AB0A6] bg-opacity-20 border border-[#59B9A0] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center">GUARDAR</button>
