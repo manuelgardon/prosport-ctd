@@ -197,7 +197,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
                         <EspacioCard
                             key={espacio._id}
                             espacio={espacio}
-                            esFavoritoInicial={favoritos.some((favorito) => favorito.espacioId._id === espacio._id)}
+                            esFavoritoInicial={favoritos.some((favorito) => favorito.espacioId?._id === espacio._id)}
                             agregarFavorito={agregarFavorito}
                             eliminarFavorito={eliminarFavorito}
                         />

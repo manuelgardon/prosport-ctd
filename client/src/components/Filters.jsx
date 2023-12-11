@@ -131,16 +131,18 @@ export default function Filters({ onChange, cargarEspacios }) {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-40 items-center">
-                        <label className="text-[#AAF0D5] mb-3">Selecciona una fecha:</label>
-                        <DatePicker
-                         selected={fechaSeleccionada}
-                        onChange={handlefechas}
-                         dateFormat="yyyy-MM-dd"
-                           className="mb-1"
-                        />
-                        <button onClick={reestablecerFecha} className="bg-[#FF9B27] p-2 text-white rounded-lg hover:bg-[#D08124] mt-4 w-20">Limpiar fecha</button>
-            </div>
+                <div>
+                    <div className="flex flex-col w-40 items-center">
+                            <label className="text-[#AAF0D5] mb-3">Selecciona una fecha:</label>
+                            <DatePicker
+                            selected={fechaSeleccionada}
+                            onChange={handlefechas}
+                            dateFormat="yyyy-MM-dd"
+                            className="mb-1"
+                            />
+                            <button onClick={reestablecerFecha} className="bg-[#FF9B27] p-2 text-white rounded-lg hover:bg-[#D08124] mt-4 w-20">Limpiar fecha</button>
+                    </div>
+                </div>
                 <hr className="mt-4 border-t-2 border-[#2C4A42]"/>
                 <h1 className="text-[#AAF0D5] opacity-20 text-xl mb-4 ">Espacios disponibles</h1>
             </section>
