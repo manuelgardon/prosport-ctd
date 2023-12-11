@@ -27,7 +27,7 @@ export default function Reserva({ precio }) {
     useEffect(() => {
         async function obtenerReservaExistente() {
           try {
-            const response = await axios.get(`http://18.144.53.6:1234/api/reservas?espacioId=${id}`);
+            const response = await axios.get(`http://localhost:1234/api/reservas?espacioId=${id}`);
             setReservasExistente(response.data);
           } catch (error) {
             console.error('Error al obtener las reservas:', error);
@@ -36,7 +36,7 @@ export default function Reserva({ precio }) {
     
         async function obtenerDiasDisponibles() {
           try {
-            const response = await axios.get(`http://18.144.53.6:1234/api/espacios/${id}`);
+            const response = await axios.get(`http://localhost:1234/api/espacios/${id}`);
             setDiasDisponibles(response.data.diasDisponibles);
             setNombreEspacio(response.data.nombre);
             sendReservaEmail(user.email, user.nombre, user.apellido, response.data.nombre);
@@ -186,7 +186,7 @@ export default function Reserva({ precio }) {
             try {
                 calcularPrecio()
                 const response = await axios.post(
-                    'http://127.0.0.1:1234/api/reservas',
+                    'http://localhost:1234/api/reservas',
                     {
                         espacioId: id,
                         fechaReserva: fechaReservaISO,

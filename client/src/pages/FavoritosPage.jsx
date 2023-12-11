@@ -29,7 +29,7 @@ export default function FavoritosPage() {
     useEffect(() => {
         async function cargarFavoritos() {
             try {
-                const response = await axios.get('http://127.0.0.1:1234/api/user/favoritos', { withCredentials: true })
+                const response = await axios.get('http://localhost:1234/api/user/favoritos', { withCredentials: true })
                 if (response.data.favoritos) {
                     setFavoritos(response.data.favoritos)
                 }
@@ -57,7 +57,7 @@ export default function FavoritosPage() {
 
     async function eliminarFavorito(favorito) {
         try {
-            const response = await axios.delete(`http://127.0.0.1:1234/api/favoritos/${favorito.espacioId._id}`, { withCredentials: true })
+            const response = await axios.delete(`http://localhost:1234/api/favoritos/${favorito.espacioId._id}`, { withCredentials: true })
 
             if (response.status === 200) {
                 console.log(response)
