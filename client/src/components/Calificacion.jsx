@@ -24,7 +24,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
 
     async function obtenerCalificaciones() {
         try {
-            const response = await axios.get(`http://18.144.53.6:1234/api/${espacioId}/calificaciones`)
+            const response = await axios.get(`http://127.0.0.1:1234/api/${espacioId}/calificaciones`)
             const data = response.data
             console.log(data)
             setPromedio(data.promedio)
@@ -53,7 +53,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
     /*async function eliminarCalificacion(calificacion) {
         try {
             const response = await axios.delete(
-                `http://18.144.53.6:1234/api/calificaciones/${calificacion._id}`,
+                `http://127.0.0.1:1234/api/calificaciones/${calificacion._id}`,
                 { withCredentials: true }
             )
             if (response.status === 200) {
@@ -97,7 +97,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
             if(calificacion !== calificacionInicial || comentario !== comentarioInicial  ) {
                 try {
                     const response = await axios.post(
-                        'http://18.144.53.6:1234/api/calificaciones',
+                        'http://127.0.0.1:1234/api/calificaciones',
                         {
                             espacioId,
                             calificacion,

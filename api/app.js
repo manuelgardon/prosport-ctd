@@ -33,7 +33,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(
   cors({
     credentials: true,
-    origin: 'http://18.144.53.6',
+    origin: 'http://127.0.0.1:8086',
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   })
 );

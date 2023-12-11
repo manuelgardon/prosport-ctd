@@ -16,14 +16,14 @@ export default function EspaciosPage() {
 
     useEffect(() => {
         {/*
-            axios.get('http://18.144.53.6:1234/espacios', { withCredentials: true })
+            axios.get('http://127.0.0.1:1234/espacios', { withCredentials: true })
                     .then(({ data }) => {
                         setEspacios(data);
             });
         */}
 
         if (token) {
-            fetch('http://18.144.53.6:1234/api/user/espacios', {
+            fetch('http://127.0.0.1:1234/api/user/espacios', {
                 method: 'GET',
                 credentials: 'include' // equivale a withCredentials
             })
@@ -67,7 +67,7 @@ export default function EspaciosPage() {
 
     async function handleConfirm(id) {
         try {
-          const response = await axios.delete(`http://18.144.53.6:1234/api/espacios/${id}`);
+          const response = await axios.delete(`http://127.0.0.1:1234/api/espacios/${id}`);
           if (response.status === 200) {
             setEspacios(espacios.filter(espacio => espacio._id !== id));
             setAlerta(false);
@@ -132,7 +132,7 @@ export default function EspaciosPage() {
                 <article key={espacio._id} className="border-[#83F3C8] border-2 m-4">
                     <div className="flex w-32 h-32 bg-gray-300 grow shrink-0">
                         {espacio.fotos.length > 0 && (
-                            <img className="" src={`http://18.144.53.6:1234/${espacio?.fotos[0]}`} alt={espacio.nombre} />
+                            <img className="" src={`https://1023c07-prosport.s3.amazonaws.com/${espacio?.fotos[0]}`} alt={espacio.nombre} />
                         )}
                     </div>
                     <div className="grow-0 shrink text-white flex flex-col justify-center items-center">

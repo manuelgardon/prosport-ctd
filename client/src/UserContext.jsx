@@ -11,7 +11,7 @@ export function UserContextProvider({ children }){
 
     useEffect(() => {
         if(!user) {
-            axios.get('http://18.144.53.6:1234/api/profile', { withCredentials: true })
+            axios.get('http://127.0.0.1:1234/api/profile', { withCredentials: true })
             .then(({data}) => {
                 setUser(data)
                 setReady(true)

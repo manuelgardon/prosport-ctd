@@ -33,10 +33,10 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
 
                 if (filtros.date) {
                 // Si filtros.date no es undefined, construir la URL con la fecha
-                apiUrl = `http://18.144.53.6:1234/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}&ciudad=${filtros.ciudad}&diasDisponibles=${filtros.date}`;
+                apiUrl = `http://127.0.0.1:1234/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}&ciudad=${filtros.ciudad}&diasDisponibles=${filtros.date}`;
                 } else {
                 // Si filtros.date es undefined, construir la URL sin la fecha
-                apiUrl = `http://18.144.53.6:1234/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}&ciudad=${filtros.ciudad}`;
+                apiUrl = `http://127.0.0.1:1234/api/espacios?pagina=${pagina}&porPagina=${espaciosPorPagina}&deporte=${filtros.deporte}&ciudad=${filtros.ciudad}`;
                 }
 
                 const response = await axios.get(apiUrl);
@@ -55,7 +55,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
         async function cargarFavoritos() {
             // cargamos los favoritos de cada usuario
             try {
-                const responseFavoritos = await axios.get(`http://18.144.53.6:1234/api/user/favoritos`, { withCredentials: true })
+                const responseFavoritos = await axios.get(`http://127.0.0.1:1234/api/user/favoritos`, { withCredentials: true })
                 const favoritos = responseFavoritos.data.favoritos || []
                 setFavoritos(favoritos)
                 // actualizamos el estado del usuario con los favoritos cargados
@@ -75,7 +75,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
     async function agregarFavorito(espacio) {
         if (token) {
             try {
-                const response = await axios.post('http://18.144.53.6:1234/api/favoritos', { espacioId: espacio._id }, { withCredentials: true })
+                const response = await axios.post('http://127.0.0.1:1234/api/favoritos', { espacioId: espacio._id }, { withCredentials: true })
 
                 if (response.status === 200) {
                     // ejecutamos la funcion de actualizar para tener el estado mas reciente
@@ -132,7 +132,7 @@ export default function Espacios({ espacios, setEspacios, changeFilters, filtros
     async function eliminarFavorito(espacio) {
         if (token) {
             try {
-                const response = await axios.delete(`http://18.144.53.6:1234/api/favoritos/${espacio._id}`, { withCredentials: true })
+                const response = await axios.delete(`http://127.0.0.1:1234/api/favoritos/${espacio._id}`, { withCredentials: true })
                 if (response.status === 200) {
                     setFavoritos(prevFavoritos => prevFavoritos.filter(favorito => favorito._id !== espacio._id))
                     // ejecutamos la funcion de actualizar para tener el estado mas reciente
