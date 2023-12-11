@@ -53,7 +53,7 @@ export default function Calificacion({ espacioId, obtenerPromedio, obtenerCalifi
     /*async function eliminarCalificacion(calificacion) {
         try {
             const response = await axios.delete(
-                `http://localhost:1234/api/calificaciones/${calificacion._id}`,
+                `http://18.144.53.6:1234/api/calificaciones/${calificacion._id}`,
                 { withCredentials: true }
             )
             if (response.status === 200) {

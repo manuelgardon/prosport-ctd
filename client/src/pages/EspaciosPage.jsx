@@ -16,7 +16,7 @@ export default function EspaciosPage() {
 
     useEffect(() => {
         {/*
-            axios.get('http://localhost:1234/espacios', { withCredentials: true })
+            axios.get('http://18.144.53.6:1234/espacios', { withCredentials: true })
                     .then(({ data }) => {
                         setEspacios(data);
             });
