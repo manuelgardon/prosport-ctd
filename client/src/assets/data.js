@@ -1,18 +1,18 @@
 export const data = [
     {
         id:1,
-        imgUrl: "./images/basket1.png"
+        imgUrl: "https://1023c07-prosport.s3.amazonaws.com/basket1.png"
     },
     {
         id:2,
-        imgUrl: "./images/futbol1.png"
+        imgUrl: "https://1023c07-prosport.s3.amazonaws.com/futbol1.png"
     },
     {
         id:3,
-        imgUrl: "./images/tenis1.png"
+        imgUrl: "https://1023c07-prosport.s3.amazonaws.com/tenis1.png"
     },
     {
         id:4,
-        imgUrl: "./images/voley1.png"
+        imgUrl: "https://1023c07-prosport.s3.amazonaws.com/voley1.png"
     }
 ]
